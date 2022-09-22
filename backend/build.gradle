@@ -1,12 +1,13 @@
-buildscript{
-	ext {
-		queryDslVersion = '4.4.0'
-	}
-}
+//buildscript{
+//	ext {
+//		queryDslVersion = '5.0.0'
+//	}
+//}
 
 plugins {
 	id 'org.springframework.boot' version '2.7.3'
 	id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+	//id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 	id 'java'
 }
 
@@ -26,9 +27,10 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	annotationProcessor("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation 'mysql:mysql-connector-java:8.0.29'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.8.0'
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'
@@ -42,14 +44,38 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	// QueryDSL
-	implementation("com.querydsl:querydsl-jpa:${queryDslVersion}")
-	implementation("com.querydsl:querydsl-apt:${queryDslVersion}")
-
-	//IntelliJ에서는 하기 annotationProcessor를 쓰면 별도의 querydsl 플러그인 및 플러그인 설정이 불필요.
-	annotationProcessor("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+//	// QueryDSL
+//	implementation("com.querydsl:querydsl-jpa:${queryDslVersion}")
+//	implementation("com.querydsl:querydsl-apt:${queryDslVersion}")
+//
+//	//IntelliJ에서는 하기 annotationProcessor를 쓰면 별도의 querydsl 플러그인 및 플러그인 설정이 불필요.
+//	annotationProcessor("com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+test {
+	useJUnitPlatform()
+}
+
+////querydsl 추가 시작
+//def querydslDir = "$buildDir/generated/querydsl"
+//
+//querydsl {
+//	jpa = true
+//	querydslSourcesDir = querydslDir
+//}
+//sourceSets {
+//	main.java.srcDir querydslDir
+//}
+//compileQuerydsl{
+//	options.annotationProcessorPath = configurations.querydsl
+//}
+//configurations {
+////	compileOnly {
+////		extendsFrom annotationProcessor
+////	}
+//	querydsl.extendsFrom compileClasspath
+//}

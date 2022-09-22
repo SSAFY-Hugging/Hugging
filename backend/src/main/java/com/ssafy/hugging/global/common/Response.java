@@ -1,4 +1,4 @@
-package com.ssafy.hugging.common;
+package com.ssafy.hugging.global.common;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ import lombok.Getter;
 
 @Component
 public class Response {
-	public ResponseEntity<?> success(Object data, String msg, HttpStatus status){
+	public ResponseEntity<?> success(Object data, String msg, HttpStatus status) {
 		Body body = Body.builder()
 			.code(status.value())
 			.data(data)
@@ -24,17 +24,19 @@ public class Response {
 		return ResponseEntity.ok(body);
 	}
 
-	public ResponseEntity<?> success(Object data){
+	public ResponseEntity<?> success(Object data) {
 		return this.success(data, null, HttpStatus.OK);
 	}
-	public ResponseEntity<?> success(String msg){
+
+	public ResponseEntity<?> success(String msg) {
 		return this.success(Collections.emptyList(), msg, HttpStatus.OK);
 	}
-	public ResponseEntity<?> success(){
+
+	public ResponseEntity<?> success() {
 		return this.success(Collections.emptyList(), null, HttpStatus.OK);
 	}
 
-	public ResponseEntity<?> fail(Object data, String msg, HttpStatus status){
+	public ResponseEntity<?> fail(Object data, String msg, HttpStatus status) {
 		Body body = Body.builder()
 			.code(status.value())
 			.data(data)
@@ -45,11 +47,11 @@ public class Response {
 		return ResponseEntity.ok(body);
 	}
 
-	public ResponseEntity<?> fail(String msg, HttpStatus status){
+	public ResponseEntity<?> fail(String msg, HttpStatus status) {
 		return this.fail(Collections.emptyList(), msg, status);
 	}
 
-	public ResponseEntity<?> invalidField(LinkedList<LinkedHashMap<String, String>> error){
+	public ResponseEntity<?> invalidField(LinkedList<LinkedHashMap<String, String>> error) {
 		Body body = Body.builder()
 			.code(HttpStatus.BAD_REQUEST.value())
 			.data(Collections.emptyList())
@@ -62,7 +64,7 @@ public class Response {
 
 	@Getter
 	@Builder
-	static class Body{
+	static class Body {
 		private String isSuccess;
 		private int code;
 		private String message;
