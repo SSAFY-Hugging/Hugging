@@ -1,4 +1,4 @@
-package com.ssafy.hugging.counselorReview.domain;
+package com.ssafy.hugging.review.domain;
 
 import java.time.LocalDateTime;
 

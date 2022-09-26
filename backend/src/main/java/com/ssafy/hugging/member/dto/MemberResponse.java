@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
-import com.ssafy.hugging.counselorReview.domain.CounselorReview;
+import com.ssafy.hugging.review.domain.CounselorReview;
 import com.ssafy.hugging.counselor.domain.FavoriteCounselor;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.model.Gender;
