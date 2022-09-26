@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom'
 import UserLogin from './pages/user/UserLogin.js'
-import CounselorLogin from './counselor/CounselorLogin';
+import CounselorLogin from './pages/counselor/CounselorLogin';
 import RegisterCategory from './pages/user/RegisterCategory';
 import RegisterProfile from './pages/user/RegisterProfile';
 import Navbar from './components/ui/NavBar';

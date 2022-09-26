@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginCounselor } from '../store';
+import { loginCounselor } from '../../store';
 
 function CounselorLogin() {
 
