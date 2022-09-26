@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom'
 import UserLogin from './pages/user/UserLogin.js'
-import CounselorLogin from './counselor/CounselorLogin';
+import CounselorLogin from './pages/counselor/CounselorLogin';
 import RegisterCategory from './pages/user/RegisterCategory';
 import RegisterProfile from './pages/user/RegisterProfile';
 import Navbar from './components/ui/NavBar';
@@ -12,6 +12,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import MyCalendar from './components/counselor/MyCalendar';
 import Location from './components/main/Location';
 import RedirectUri from './pages/user/RedirectUri';
+import MediaView from './pages/media/MediaView';
+import MusicPlayingPage from './pages/media/MusicPlayingPage';
 // import scrollbar from 'smooth-scrollbar';
 
 // // smooth scroll 설정
@@ -33,6 +35,8 @@ function App() {
         <Route path="/category" element={<RegisterCategory/>} />
         <Route path="/profile" element={<RegisterProfile/>} />
         <Route path="/profile_img" element={ <></>}></Route>
+        <Route path="/recommend_media" element={<MediaView/>} />
+        <Route path="/playing_music" element={<MusicPlayingPage/>} />
       </Routes>
     </div>
   );
