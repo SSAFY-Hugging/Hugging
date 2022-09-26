@@ -1,0 +1,77 @@
+.category_title {
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px ;
+}
+.hug {
+    color: #92A3FD ;
+
+}
+
+
+.order {
+    height: 70px;
+    width: 200px;
+    background-image: url('../../img/next.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.writing {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: 500;
+    margin-bottom: 20px ;
+    
+}
+
+.gomin {
+    color: #92A3FD ;
+    padding: 2px;
+    font-weight: 600;
+}
+
+#category_card {
+    height: 200px;
+    width: 300px;
+    margin: auto;
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px 0px gray;
+}
+
+#category_card button {
+    background-color: #E0EAFF;
+    border-color: #92A3FD;
+    padding: 15px 25px;
+    border-radius: 20px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color: #7B6F72;
+    font-size: 12px;
+}
+
+.counselor_login_btn{
+    display: flex;
+    margin: auto;
+    background: linear-gradient(to left,#92A3FD, #9DCEFF);
+    border-radius: 30px;
+    border: none;
+    font-size: 15px;
+    font-weight: 900;
+    padding : 15px 80px;
+    margin-top: 80px;
+    color: white;
+}

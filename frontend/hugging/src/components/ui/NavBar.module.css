@@ -1,0 +1,52 @@
+.App {
+    width: 360px;
+    height: 740px;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+    border: solid 0.3px;
+    overflow:auto;
+}
+
+.header {
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+    margin : auto;
+    color : black;
+    padding : 10px;
+    font-size: 10px;
+    box-shadow: 1px 1px 5px 0px gray;
+
+}
+
+.header_title {
+
+    font-weight: 700;
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.header_title1 {
+
+    color: #92A3FD;
+    font-weight: 700;
+}
+
+.header_title2 {
+    font-weight: 700;
+}
+
+.header_icons {
+
+}
+
+.icon_btn {
+    border: none;
+    background-color: white;
+    margin-top: 5px;
+}
+
