@@ -1,5 +1,8 @@
-package com.ssafy.hugging.counselor.domain;
+package com.ssafy.hugging.review.domain;
 
+import java.time.LocalDateTime;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -20,7 +23,14 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class FavoriteCounselor extends BaseEntity {
+public class CounselorReview extends BaseEntity {
+	@Column(nullable = false)
+	private Integer score;
+	@Column(nullable = false)
+	private String content;
+	@Column(nullable = false)
+	private LocalDateTime reg_date;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "counselorId")
 	private Counselor counselor;

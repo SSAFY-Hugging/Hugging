@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
-import com.ssafy.hugging.counselorReview.domain.CounselorReview;
-import com.ssafy.hugging.counselor.domain.FavoriteCounselor;
+import com.ssafy.hugging.review.domain.CounselorReview;
+import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.model.Gender;
 
@@ -15,7 +15,6 @@ import lombok.Getter;
 public class MemberResponse {
 	private final Integer id;
 	private final String email;
-	private final String name;
 	private final Integer age;
 	private final String nickname;
 	private final Gender gender;
@@ -28,7 +27,6 @@ public class MemberResponse {
 	public MemberResponse(Member member) {
 		id = member.getId();
 		email = member.getEmail();
-		name = member.getName();
 		age = member.getAge();
 		nickname = member.getNickname();
 		gender = member.getGender();
