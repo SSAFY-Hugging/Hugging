@@ -45,8 +45,6 @@ public class Member implements UserDetails {
 	private Integer id;
 	@Column(unique = true, nullable = false)
 	private String email;
-	@Column(nullable = false)
-	private String name;
 	private Integer age;
 	@Column(unique = true, nullable = false)
 	private String nickname;
@@ -69,7 +67,6 @@ public class Member implements UserDetails {
 			.age(memberJoinRequest.getAge())
 			.nickname(memberJoinRequest.getNickname())
 			.gender(memberJoinRequest.getGender())
-			.name(memberJoinRequest.getName())
 			.profileImage(memberJoinRequest.getProfileImage())
 			.build();
 	}
