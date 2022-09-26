@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import styles from './NavBar.module.css'
-import '../App.css';
+import '../../App.css';
 
 function Navbar() {
 

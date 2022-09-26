@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Calendar, { MonthView } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './MyCalendar.css';
+// import '.;
 import axios from 'axios'
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import moment from "moment"

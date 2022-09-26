@@ -4,7 +4,7 @@ import styles from './RegisterProfile.module.css'
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
-import { changeUser } from '../store';
+import { changeUser } from '../../store';
 import promiseMiddleware from 'redux-promise';
  
 function RegisterProfile() {
@@ -37,9 +37,11 @@ function RegisterProfile() {
         age,
         gender,
       }
+
       dispatch(changeUser(body))
-      console.log(user)
-      axios.post('https://j7b204.p.ssafy.io/api/members/join', user)
+      .then((res)=>{
+        if ( res.payload.status === 200) {
+          axios.post('https://j7b204.p.ssafy.io/api/members/join', user)
                 .then((res)=>{
                     console.log(res)
                     console.log(user)
@@ -48,7 +50,10 @@ function RegisterProfile() {
                 .catch((res)=>{
                     console.log(user)
                     console.log('error')})
-      }
+        }
+        })
+        
+    }
 
     
  return (

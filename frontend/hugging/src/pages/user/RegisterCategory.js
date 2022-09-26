@@ -2,7 +2,7 @@ import './RegisterCategory.module.css';
 import {React,  useEffect }from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux"
-import { changeEmotion } from '../store';
+import { changeEmotion } from '../../store';
 import styles from './RegisterCategory.module.css'
 import axios from 'axios'
 

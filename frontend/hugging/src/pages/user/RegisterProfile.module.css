@@ -15,7 +15,7 @@
 .order2 {
     height: 70px;
     width: 200px;
-    background-image: url('../img/order2.png');
+    background-image: url('../../img/order2.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -39,7 +39,7 @@
     border: solid 2px #DEDCDC;
     border-radius: 50%;
     margin: auto;
-    background-image: url('../img/mainimg.png');
+    background-image: url('../../img/mainimg.png');
     background-size: contain;
     background-repeat: no-repeat;
     position: relative;

@@ -5,7 +5,7 @@ body {
 .main_bg {
     height: 120px;
     width: 200px;
-    background-image: url('../img/mainimg.png');
+    background-image: url('../../img/mainimg.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -82,7 +82,7 @@ body {
     position: absolute;
     left: 10px;
     top: 10px;
-    background-image: url('../img/kakao_logo.png');
+    background-image: url('../../img/kakao_logo.png');
     background-size: cover;
     margin-right: 10px;
     align-items: center;

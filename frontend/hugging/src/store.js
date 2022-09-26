@@ -25,20 +25,21 @@ let user = createSlice({
     name: 'user',
     initialState: {
       "email": "",
-      "name": "",
       "nickname": "",
       "age": "",
       "gender": "",
-      "emotion" : {}
+      "emotion" : {},
+      "profileImage": 0
    },
     reducers: {
+
       changeUser(state, action) {
         state.nickname = action.payload.nickname;
         state.age = action.payload.age;
         state.gender = action.payload.gender
       },
       changeEmotion(state, action) {
-        state.emotion = action.payload
+        state.emotion.push(action.payload)
       },
       loginUser: (state, action)=> {       
           state.name = action.payload.name;

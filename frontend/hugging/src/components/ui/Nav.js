@@ -1,46 +1,8 @@
 import styled from "styled-components";
 import styles from './Nav.module.css'
-import '../App.css';
+import '../../App.css';
 
 function Nav() {
-
-    let Nav = styled.div`
-        margin-bottom: 0px;
-        position: absolute;
-        bottom: 0px;
-        height: 60px;
-        width: 360px;
-        display: flex;
-        justify-content: space-around;
-        box-shadow: 1px 1px 3px 0px gray;
-        position: fixed;
-    `
-    let NavBtnTitle = styled.p`
-        color: #ADA4A5;
-        font-size: 8px;
-    `
-
-    let NavBtn = styled.button`
-        border: none;
-        background-color: white;
-        position: relative;
-        padding: 5px;
-
-        
-    `
-    let HomeBtn = styled.button`
-        height: 60px;
-        width: 60px;
-        border: none;
-        background: linear-gradient(to left,#92A3FD, #9DCEFF);
-        border-radius: 50%;
-        position: absolute;
-        bottom: 30px;
-        left: 150px;
-        z-index: 9999;
-        box-shadow: 1px 1px 3px 0px gray;
-
-    `
 
     return (
         <div className={styles.app}>

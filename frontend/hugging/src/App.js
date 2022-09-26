@@ -1,17 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route, Link } from 'react-router-dom'
-import UserLogin from './user/UserLogin.js'
+import UserLogin from './pages/user/UserLogin.js'
 import CounselorLogin from './counselor/CounselorLogin';
-import RegisterCategory from './user/RegisterCategory';
-import RegisterProfile from './user/RegisterProfile';
-import Navbar from './components/NavBar';
-import Nav from './components/Nav'
+import RegisterCategory from './pages/user/RegisterCategory';
+import RegisterProfile from './pages/user/RegisterProfile';
+import Navbar from './components/ui/NavBar';
+import Nav from './components/ui/Nav'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import MyCalendar from './components/MyCalendar';
-import Location from './components/Location';
-import RedirectUri from './user/RedirectUri';
+import MyCalendar from './components/counselor/MyCalendar';
+import Location from './components/main/Location';
+import RedirectUri from './pages/user/RedirectUri';
 // import scrollbar from 'smooth-scrollbar';
 
 // // smooth scroll 설정
@@ -20,8 +20,8 @@ import RedirectUri from './user/RedirectUri';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <Nav/>
+      {/* <Navbar/>
+      <Nav/> */}
        {/* <Location></Location> */}
       <Routes>
         {/* <MyCalendar></MyCalendar> */}

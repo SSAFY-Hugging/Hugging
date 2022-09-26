@@ -22,8 +22,10 @@ const RedirectUri = (props) => {
         })
       .then((res) => {
         console.log(res);     
-        const ACCESS_TOKEN = res.data.accessToken;
-        localStorage.setItem("token", ACCESS_TOKEN);   
+        const ACCESS_TOKEN = res.data.token;
+        const email = res.data.email;
+        localStorage.setItem("token", ACCESS_TOKEN);
+        localStorage.setItem("email", email);
         navigate('/category')
 
         }).catch((err) => {
