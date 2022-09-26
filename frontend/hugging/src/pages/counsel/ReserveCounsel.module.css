@@ -1,0 +1,26 @@
+.btn {
+  display: flex;
+  margin: 10px 0px;
+  padding: 0px;
+  /* text-align: center;
+  align-items: center; */
+  justify-content: space-between;
+  /* align-items: flex-end; */
+  align-items: center;
+}
+
+.btn button {
+  display: block;
+  margin: auto;
+  background: linear-gradient(135deg, #eea4ce 0%, #c58bf2 100%);
+  color: white;
+  border-radius: 50px;
+  border: 0px solid;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: 160px;
+  height: 37px;
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+}
