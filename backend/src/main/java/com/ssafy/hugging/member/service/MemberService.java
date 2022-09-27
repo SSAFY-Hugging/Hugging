@@ -22,6 +22,7 @@ import com.google.gson.JsonParser;
 import com.ssafy.hugging.member.MemberConstant;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
+import com.ssafy.hugging.member.dto.MemberResponse;
 import com.ssafy.hugging.member.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,12 @@ public class MemberService implements UserDetailsService {
 	private String kakao_redirectUri;
 
 	private final MemberRepository memberRepository;
+
+	public MemberResponse getMemberById(Integer id) {
+		Member member = memberRepository.findMemberById(id)
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		return new MemberResponse(member);
+	}
 
 	public String getKakaoAccessToken(String code) {
 		String access_Token = "";
@@ -149,7 +156,7 @@ public class MemberService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
-		return memberRepository.findById(Long.parseLong(id))
+		return memberRepository.findById(Integer.parseInt(id))
 			.orElseThrow(() -> new UsernameNotFoundException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
 	}
 }
