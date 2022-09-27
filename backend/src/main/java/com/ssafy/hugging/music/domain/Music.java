@@ -39,5 +39,5 @@ public class Music {
 	private MusicCategory musicCategory;
 
 	@OneToMany(mappedBy = "music")
-	List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
+	private List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
 }

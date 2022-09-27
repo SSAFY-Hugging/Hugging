@@ -1,6 +1,8 @@
 package com.ssafy.hugging.member.dto;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
@@ -21,11 +23,11 @@ public class MemberResponse {
 	private final Gender gender;
 	private final Integer profileImage;
 
-	private final List<Counsel> counselList;
-	private final List<FavoriteCounselor> favoriteCounselorList;
-	private final List<CounselorReview> counselorReviewList;
-	private final List<FavoriteMusic> favoriteMusicList;
-	private final List<MusicReview> musicReviewList;
+	private final List<Counsel> counselList = new ArrayList<>();
+	private final List<FavoriteCounselor> favoriteCounselorList = new ArrayList<>();
+	private final List<CounselorReview> counselorReviewList = new ArrayList<>();
+	private final List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
+	private final List<MusicReview> musicReviewList = new ArrayList<>();
 
 	public MemberResponse(Member member) {
 		id = member.getId();
@@ -34,10 +36,18 @@ public class MemberResponse {
 		nickname = member.getNickname();
 		gender = member.getGender();
 		profileImage = member.getProfileImage();
-		counselList = member.getCounselList();
-		favoriteCounselorList = getFavoriteCounselorList();
-		counselorReviewList = getCounselorReviewList();
-		favoriteMusicList = getFavoriteMusicList();
-		musicReviewList = getMusicReviewList();
+
+		//TODO : RESPONSE DTO 추가 후 리스트 반환
+
+		// counselList.addAll(
+		// 	member.getCounselList()
+		// 		.stream()
+		// 		.map(counsel -> new counselResponse(counsel))
+		// 		.collect(Collectors.toList())
+		// );
+		// favoriteCounselorList = getFavoriteCounselorList();
+		// counselorReviewList = getCounselorReviewList();
+		// favoriteMusicList = getFavoriteMusicList();
+		// musicReviewList = getMusicReviewList();
 	}
 }

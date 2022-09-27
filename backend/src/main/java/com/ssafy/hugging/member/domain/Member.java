@@ -16,11 +16,12 @@ import javax.persistence.OneToMany;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.hugging.counsel.domain.Counsel;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
+import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
 import com.ssafy.hugging.model.Gender;
-import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.review.domain.CounselorReview;
 import com.ssafy.hugging.review.domain.MusicReview;
 
@@ -37,7 +38,8 @@ import lombok.NoArgsConstructor;
  */
 
 @Entity
-@Builder @Getter
+@Builder
+@Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member implements UserDetails {
@@ -57,15 +59,19 @@ public class Member implements UserDetails {
 	private List<Counsel> counselList = new ArrayList<>();
 
 	@OneToMany(mappedBy = "member")
+	@JsonManagedReference
 	private List<FavoriteCounselor> favoriteCounselorList = new ArrayList<>();
 
 	@OneToMany(mappedBy = "member")
+	@JsonManagedReference
 	private List<CounselorReview> counselorReviewList = new ArrayList<>();
 
 	@OneToMany(mappedBy = "member")
+	@JsonManagedReference
 	private List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
 
 	@OneToMany(mappedBy = "member")
+	@JsonManagedReference
 	private List<MusicReview> musicReviewList = new ArrayList<>();
 
 	public static Member from(MemberJoinRequest memberJoinRequest) {

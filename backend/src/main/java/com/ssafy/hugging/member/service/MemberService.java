@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,10 +41,9 @@ public class MemberService implements UserDetailsService {
 
 	private final MemberRepository memberRepository;
 
-	public MemberResponse getMemberById(Integer id) {
-		Member member = memberRepository.findMemberById(id)
+	public Member getMemberById(Integer id) {
+		return memberRepository.findMemberById(id)
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
-		return new MemberResponse(member);
 	}
 
 	public String getKakaoAccessToken(String code) {
@@ -159,4 +159,5 @@ public class MemberService implements UserDetailsService {
 		return memberRepository.findById(Integer.parseInt(id))
 			.orElseThrow(() -> new UsernameNotFoundException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
 	}
+
 }

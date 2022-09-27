@@ -32,7 +32,8 @@ public class MemberController {
 	@GetMapping("/{id}")
 	@ApiOperation(value = "Id로 회원정보 조회", notes = "회원 ID 값으로 회원 상세 정보 모두 조회")
 	public ResponseEntity<MemberResponse> getMemberInfo(@PathVariable Integer id) {
-		return new ResponseEntity<>(memberService.getMemberById(id), HttpStatus.OK);
+
+		return new ResponseEntity<>(new MemberResponse(memberService.getMemberById(id)), HttpStatus.OK);
 	}
 
 	@PostMapping("/")
