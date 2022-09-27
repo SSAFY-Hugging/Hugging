@@ -1,6 +1,7 @@
 package com.ssafy.hugging.member.service;
 
 import static com.ssafy.hugging.member.MemberConstant.*;
+import static com.ssafy.hugging.music.MusicConstant.*;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,7 +10,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,11 +22,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.ssafy.hugging.favorite.domain.FavoriteMusic;
+import com.ssafy.hugging.favorite.dto.FavoriteMusicRequest;
+import com.ssafy.hugging.favorite.repository.FavoriteMusicRepository;
 import com.ssafy.hugging.member.MemberConstant;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
-import com.ssafy.hugging.member.dto.MemberResponse;
 import com.ssafy.hugging.member.repository.MemberRepository;
+import com.ssafy.hugging.music.domain.Music;
+import com.ssafy.hugging.music.dto.MusicResponse;
+import com.ssafy.hugging.music.repository.MusicRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -40,6 +47,8 @@ public class MemberService implements UserDetailsService {
 	private String kakao_redirectUri;
 
 	private final MemberRepository memberRepository;
+	private final FavoriteMusicRepository favoriteMusicRepository;
+	private final MusicRepository musicRepository;
 
 	public Member getMemberById(Integer id) {
 		return memberRepository.findMemberById(id)
@@ -160,4 +169,25 @@ public class MemberService implements UserDetailsService {
 			.orElseThrow(() -> new UsernameNotFoundException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
 	}
 
+	public List<MusicResponse> getFavoriteMusicList(Integer id) {
+		Member member = memberRepository.findMemberById(id)
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		return member.getFavoriteMusicList()
+			.stream()
+			.map(favoriteMusic -> new MusicResponse(favoriteMusic.getMusic()))
+			.collect(Collectors.toList());
+	}
+
+	public void registerFavoriteMusic(FavoriteMusicRequest favoriteMusicRequest) {
+		Member member = memberRepository.findMemberById(favoriteMusicRequest.getMemberId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		Music music = musicRepository.getMusicById(favoriteMusicRequest.getMusicId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MUSIC_ERROR_MESSAGE));
+		FavoriteMusic favoriteMusic = new FavoriteMusic(member, music);
+		favoriteMusicRepository.save(favoriteMusic);
+	}
+
+	public void deleteFavoriteMusic(Integer memberId, Integer musicId) {
+		favoriteMusicRepository.deleteFavoriteMusicByMemberIdAndMusicId(memberId, musicId);
+	}
 }
