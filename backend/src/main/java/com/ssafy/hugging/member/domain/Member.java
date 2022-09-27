@@ -17,8 +17,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
-import com.ssafy.hugging.counsel.domain.CounselorReview;
-import com.ssafy.hugging.counsel.domain.FavoriteCounselor;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
 import com.ssafy.hugging.model.Gender;
@@ -53,7 +51,7 @@ public class Member implements UserDetails {
 	private String nickname;
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
-	private Integer profile_image;
+	private Integer profileImage;
 
 	@OneToMany(mappedBy = "member")
 	private List<Counsel> counselList = new ArrayList<>();
