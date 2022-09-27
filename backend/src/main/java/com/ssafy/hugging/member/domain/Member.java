@@ -19,9 +19,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.hugging.counsel.domain.Counsel;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
+import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
 import com.ssafy.hugging.model.Gender;
-import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.review.domain.CounselorReview;
 import com.ssafy.hugging.review.domain.MusicReview;
 
@@ -38,7 +38,8 @@ import lombok.NoArgsConstructor;
  */
 
 @Entity
-@Builder @Getter
+@Builder
+@Getter
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member implements UserDetails {
@@ -79,7 +80,7 @@ public class Member implements UserDetails {
 			.age(memberJoinRequest.getAge())
 			.nickname(memberJoinRequest.getNickname())
 			.gender(memberJoinRequest.getGender())
-			.profileImage(memberJoinRequest.getProfileImage())
+			.profile_image(memberJoinRequest.getProfileImage())
 			.build();
 	}
 

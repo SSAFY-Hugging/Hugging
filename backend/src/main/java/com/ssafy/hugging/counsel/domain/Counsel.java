@@ -31,6 +31,7 @@ public class Counsel extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private Subject subject;
 	@Enumerated(EnumType.STRING)
+	// @Column(columnDefinition = "varchar(32) default 'INCOMPLETE")
 	private Status status;
 
 	@ManyToOne(fetch = FetchType.LAZY)

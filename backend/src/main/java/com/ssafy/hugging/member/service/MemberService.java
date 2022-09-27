@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -158,5 +159,12 @@ public class MemberService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 		return memberRepository.findById(Integer.parseInt(id))
 			.orElseThrow(() -> new UsernameNotFoundException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+	}
+
+	public Member getMemberById(Integer id) {
+		Optional<Member> member = memberRepository.findById(id);
+		if (!member.isPresent())
+			throw new UsernameNotFoundException(NOT_FOUND_MEMBER_ERROR_MESSAGE);
+		return member.get();
 	}
 }
