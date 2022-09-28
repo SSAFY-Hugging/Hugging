@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
+import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
 import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.member.domain.Member;
