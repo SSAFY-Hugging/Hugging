@@ -23,8 +23,8 @@ public class MusicResponse {
 		tag = music.getTag();
 		musicUrl = music.getMusicUrl();
 		thumbnailUrl = music.getThumbnailUrl();
+		hits = music.getHits();
 		type = music.getType();
 		category = music.getMusicCategory().getName();
-		hits = music.getMusicHitsList().size();
 	}
 }

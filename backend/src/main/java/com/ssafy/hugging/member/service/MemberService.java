@@ -181,7 +181,7 @@ public class MemberService implements UserDetailsService {
 	public void registerFavoriteMusic(FavoriteMusicRequest favoriteMusicRequest) {
 		Member member = memberRepository.findMemberById(favoriteMusicRequest.getMemberId())
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
-		Music music = musicRepository.getMusicById(favoriteMusicRequest.getMusicId())
+		Music music = musicRepository.findMusicById(favoriteMusicRequest.getMusicId())
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MUSIC_ERROR_MESSAGE));
 		FavoriteMusic favoriteMusic = new FavoriteMusic(member, music);
 		favoriteMusicRepository.save(favoriteMusic);

@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 
 import lombok.AllArgsConstructor;
@@ -34,6 +36,8 @@ public class Music {
 	private String tag;
 	private String musicUrl;
 	private String thumbnailUrl;
+	@ColumnDefault("0")
+	private Integer hits;
 	@Enumerated(EnumType.STRING)
 	private Type type;
 
@@ -44,6 +48,7 @@ public class Music {
 	@OneToMany(mappedBy = "music")
 	private List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "music")
-	private List<MusicHits> musicHitsList = new ArrayList<>();
+	public void updateHits() {
+		hits++;
+	}
 }

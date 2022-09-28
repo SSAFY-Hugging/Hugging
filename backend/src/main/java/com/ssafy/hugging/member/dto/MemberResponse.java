@@ -2,7 +2,6 @@ package com.ssafy.hugging.member.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
@@ -10,7 +9,7 @@ import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.model.Gender;
 import com.ssafy.hugging.review.domain.CounselorReview;
-import com.ssafy.hugging.review.domain.MusicReview;
+import com.ssafy.hugging.music.domain.MusicReview;
 
 import lombok.Getter;
 
