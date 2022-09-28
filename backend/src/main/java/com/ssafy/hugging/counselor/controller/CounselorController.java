@@ -1,5 +1,7 @@
 package com.ssafy.hugging.counselor.controller;
 
+import static com.ssafy.hugging.counselor.CounselorConstant.*;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ssafy.hugging.counselor.dto.CounselorLoginRequest;
 import com.ssafy.hugging.counselor.dto.CounselorReviewRequest;
 import com.ssafy.hugging.counselor.service.CounselorService;
 import com.ssafy.hugging.global.common.Response;
@@ -50,5 +53,12 @@ public class CounselorController {
 	public ResponseEntity<?> writeCounselorReview(@RequestBody CounselorReviewRequest counselorReviewRequest) {
 		counselorService.insertCounselorReview(counselorReviewRequest);
 		return response.success(HttpStatus.OK);
+	}
+
+	@PostMapping("/login")
+	@ApiOperation(value = "상담사 로그인", notes = "상담사 이메일 비밀번호로 로그인")
+	public ResponseEntity<?> writeCounselorReview(@RequestBody CounselorLoginRequest counselorLoginRequest) {
+		return response.success(counselorService.login(counselorLoginRequest), COUNSELOR_LOGIN_SUCCESS_MESSAGE,
+			HttpStatus.OK);
 	}
 }

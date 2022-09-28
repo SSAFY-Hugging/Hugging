@@ -1,5 +1,6 @@
 package com.ssafy.hugging.counselor.service;
 
+import static com.ssafy.hugging.counselor.CounselorConstant.*;
 import static com.ssafy.hugging.member.MemberConstant.*;
 
 import java.util.ArrayList;
@@ -13,12 +14,14 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.counselor.domain.CounselorReview;
+import com.ssafy.hugging.counselor.dto.CounselorLoginRequest;
 import com.ssafy.hugging.counselor.dto.CounselorResponse;
 import com.ssafy.hugging.counselor.dto.CounselorReviewRequest;
 import com.ssafy.hugging.counselor.dto.CounselorReviewResponse;
 import com.ssafy.hugging.counselor.repository.CounselorRepository;
 import com.ssafy.hugging.counselor.repository.CounselorReviewRepository;
-import com.ssafy.hugging.member.service.MemberService;
+import com.ssafy.hugging.member.JwtTokenProvider;
+import com.ssafy.hugging.member.repository.MemberRepository;
 import com.ssafy.hugging.model.Subject;
 
 import lombok.RequiredArgsConstructor;
@@ -29,7 +32,8 @@ import lombok.RequiredArgsConstructor;
 public class CounselorService {
 	private final CounselorRepository counselorRepository;
 	private final CounselorReviewRepository counselorReviewRepository;
-	private final MemberService memberService;
+	private final MemberRepository memberRepository;
+	private final JwtTokenProvider jwtTokenProvider;
 
 	// 전문분야별 상담사 조회
 	public List<CounselorResponse> getCounselorBySubject(Subject subject) {
@@ -64,12 +68,12 @@ public class CounselorService {
 
 	// 상담사 리뷰 작성
 	public void insertCounselorReview(CounselorReviewRequest counselorReviewRequest) {
-		CounselorReview counselorReview = counselorReviewRepository.save(CounselorReview.builder()
-			.content(counselorReviewRequest.getContent())
-			// .reg_date(LocalDateTime.now())
-			.score(counselorReviewRequest.getScore())
-			.build());
-		counselorReview.setMember(memberService.getMemberById(counselorReviewRequest.getMemberId()));
+		CounselorReview counselorReview = counselorReviewRepository.save(
+			CounselorReview.builder().content(counselorReviewRequest.getContent())
+				// .reg_date(LocalDateTime.now())
+				.score(counselorReviewRequest.getScore()).build());
+		counselorReview.setMember(memberRepository.findMemberById(counselorReviewRequest.getMemberId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE)));
 		counselorReview.setCounselor(counselorRepository.findCounselorById(counselorReviewRequest.getCounselorId()));
 	}
 
@@ -79,5 +83,14 @@ public class CounselorService {
 		if (!counselor.isPresent())
 			throw new UsernameNotFoundException(NOT_FOUND_MEMBER_ERROR_MESSAGE);
 		return counselor.get();
+	}
+
+	public String login(CounselorLoginRequest counselorLoginRequest) {
+		Counselor counselor = counselorRepository.findCounselorByEmail(counselorLoginRequest.getEmail())
+			.orElseThrow(() -> new IllegalArgumentException(MISMATCH_COUNSELOR_EMAIL_ERROR_MESSAGE));
+		if (!counselor.confirmPassword(counselorLoginRequest.getPassword())) {
+			throw new IllegalArgumentException(MISMATCH_COUNSELOR_PASSWORD_ERROR_MESSAGE);
+		}
+		return jwtTokenProvider.createToken(String.valueOf(counselor.getId()));
 	}
 }

@@ -1,6 +1,7 @@
 package com.ssafy.hugging.counselor.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,4 +15,6 @@ public interface CounselorRepository extends JpaRepository<Counselor, Integer> {
 	List<Counselor> findCounselorsBySubject(@Param("subject") Subject subject);
 
 	Counselor findCounselorById(Integer id);
+
+	Optional<Counselor> findCounselorByEmail(String email);
 }

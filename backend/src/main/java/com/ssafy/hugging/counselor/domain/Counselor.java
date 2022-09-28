@@ -50,4 +50,8 @@ public class Counselor extends BaseEntity {
 
 	@OneToMany(mappedBy = "counselor")
 	private List<FavoriteCounselor> favoriteCounselorList = new ArrayList<>();
+
+	public boolean confirmPassword(String password) {
+		return password == null || this.password.equals(password);
+	}
 }
