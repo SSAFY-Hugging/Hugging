@@ -1,45 +1,43 @@
 .music {
-    display: flex;
-    align-items: center;
-    width: 266px;
-    height: 67.56px;
-    left: 16px;
-    top: 436px;
-    border: 2px solid;
-    border-radius: 24px;
-    border-color: black;
-    margin: 10px;
-  }
-  .image {
-  
-    width: 50px;
-    height: 50px;
-    left: 29px;
-    top: 445px;
-    margin-left: 10px;
-    border-radius: 9px;
-  }
-  .PlayButton {
-    left: 72.23%;
-    right: 22.37%;  
-    top: 46.28%;
-    bottom: 51.77%;
-    margin-left: 10px;
-    margin-right: 10px;
-  
-  }
-  .MusicText {
-    left: 25.56%;
-    right: 43.72%;
-    top: 45.43%;
-    bottom: 53.05%;
-    margin:5px;
-  }
-  .MusicTop {
-    display: flex;
-    overflow-x: scroll;
-  }
-  .TitleText {
-    margin-left: 10px;
-
-  }
+  display: flex;
+  align-items: center;
+  width: 266px;
+  height: 67.56px;
+  left: 16px;
+  top: 436px;
+  border: 2px solid;
+  border-radius: 24px;
+  border-color: black;
+  margin: 10px;
+  background-color: #ffffff;
+}
+.image {
+  width: 50px;
+  height: 50px;
+  left: 29px;
+  top: 445px;
+  margin-left: 10px;
+  border-radius: 9px;
+}
+.PlayButton {
+  left: 72.23%;
+  right: 22.37%;
+  top: 46.28%;
+  bottom: 51.77%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.MusicText {
+  left: 25.56%;
+  right: 43.72%;
+  top: 45.43%;
+  bottom: 53.05%;
+  margin: 5px;
+}
+.MusicTop {
+  display: flex;
+  overflow-x: scroll;
+}
+.TitleText {
+  margin-left: 10px;
+}

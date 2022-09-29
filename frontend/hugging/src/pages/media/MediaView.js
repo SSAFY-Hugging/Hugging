@@ -1,25 +1,20 @@
-import React from 'react';
+import React from "react";
 
-import TopMusic from '../../components/media/TopMusic'; 
+import TopMusic from "../../components/media/TopMusic";
 
-import ToggleButton from '../../components/media/ToggleButton';
-import Recommend from '../../components/media/Recommend';
-import Topic from '../../components/media/Topic';
+import ToggleButton from "../../components/media/ToggleButton";
+import Recommend from "../../components/media/Recommend";
+import Topic from "../../components/media/Topic";
 
-
-function MediaView () {
+function MediaView() {
   return (
     <div>
-    <ToggleButton/>
-    <Recommend/>
-    <TopMusic/>
-    <Topic/>
+      <ToggleButton />
+      <Recommend />
+      <TopMusic />
+      <Topic />
     </div>
-  )
-
-
+  );
 }
-
-
 
 export default MediaView;

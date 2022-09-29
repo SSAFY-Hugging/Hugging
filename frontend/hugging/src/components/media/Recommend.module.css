@@ -14,6 +14,8 @@
   margin: 10px;
   justify-content: center;
   width: 250px;
+  border: none;
+  background-color: #ffffff;
 }
 .MusicImage {
   width: 125px;

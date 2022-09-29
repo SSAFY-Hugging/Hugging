@@ -1,7 +1,7 @@
 .Icon {
-    display: flex;
-    justify-content: end;
-  }
+  display: flex;
+  justify-content: end;
+}
 .image {
-margin: 20px;
+  margin: 20px;
 }

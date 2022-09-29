@@ -14,6 +14,7 @@ import Location from "./components/main/Location";
 import RedirectUri from "./pages/user/RedirectUri";
 import MediaView from "./pages/media/MediaView";
 import MusicPlayingPage from "./pages/media/MusicPlayingPage";
+import TopicMediaPage from "./pages/media/TopicMediaPage";
 import ReserveCounsel from "./pages/counsel/ReserveCounsel";
 import SelectCounsel from "./pages/counsel/SelectCounsel";
 import CounselCommunity from "./pages/counsel/CounselCommunity";
@@ -41,6 +42,7 @@ function App() {
         <Route path="/profile_img" element={<></>}></Route>
         <Route path="/recommend_media" element={<MediaView />} />
         <Route path="/playing_music" element={<MusicPlayingPage />} />
+        <Route path="/TopicMediaPage" element={<TopicMediaPage />}/>
         <Route path="/counselreserve" element={<ReserveCounsel />} />
         <Route path="/" element={<ReserveCounsel />} />
         <Route path="/counselselect" element={<SelectCounsel />}></Route>
