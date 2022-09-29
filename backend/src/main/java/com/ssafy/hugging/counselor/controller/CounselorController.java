@@ -31,7 +31,7 @@ public class CounselorController {
 	@GetMapping("/{id}")
 	@ApiOperation(value = "상담사 정보 조회", notes = "상담사 정보 조회")
 	public ResponseEntity<?> getCounselorById(@PathVariable Integer id) {
-		return response.success(counselorService.getCounselorById(id), "getCounselorById success", HttpStatus.OK);
+		return response.success(counselorService.getCounselor(id), "getCounselorById success", HttpStatus.OK);
 	}
 
 	@GetMapping("")

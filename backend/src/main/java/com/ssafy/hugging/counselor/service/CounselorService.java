@@ -78,6 +78,11 @@ public class CounselorService {
 	}
 
 	// 상담사 정보 조회
+	public CounselorResponse getCounselor(Integer id) {
+		return CounselorResponse.of(counselorRepository.findCounselorById(id),
+			counselorReviewRepository.findAvgByCounselorId(id));
+	}
+
 	public Counselor getCounselorById(Integer id) {
 		Optional<Counselor> counselor = counselorRepository.findById(id);
 		if (!counselor.isPresent())
