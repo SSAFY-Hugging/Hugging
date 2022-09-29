@@ -22,6 +22,7 @@ import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
 import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
+import com.ssafy.hugging.mission.domain.ProceedingMission;
 import com.ssafy.hugging.model.Gender;
 import com.ssafy.hugging.music.domain.MusicReview;
 
@@ -73,6 +74,10 @@ public class Member implements UserDetails {
 	@OneToMany(mappedBy = "member")
 	@JsonManagedReference
 	private List<MusicReview> musicReviewList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "member")
+	@JsonManagedReference
+	private List<ProceedingMission> proceedingMissionList = new ArrayList<>();
 
 	public static Member from(MemberJoinRequest memberJoinRequest) {
 		return Member.builder()
