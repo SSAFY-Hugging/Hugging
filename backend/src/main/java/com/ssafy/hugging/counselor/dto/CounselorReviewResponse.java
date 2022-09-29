@@ -22,9 +22,8 @@ public class CounselorReviewResponse {
 	private Double average;
 
 	public static CounselorReviewResponse of(CounselorReview counselorReview, Double average) {
-		return new CounselorReviewResponseBuilder()
-			.content(counselorReview.getContent())
-			.regDate(counselorReview.getReg_date())
+		return new CounselorReviewResponseBuilder().content(counselorReview.getContent())
+			.regDate(counselorReview.getRegDate())
 			.score(counselorReview.getScore())
 			.average(average)
 			.build();

@@ -30,8 +30,7 @@ public class CounselorResponse {
 	// }
 
 	public static CounselorResponse of(Counselor counselor, Double average) {
-		return new CounselorResponseBuilder()
-			.availableTime(counselor.getAvailable_time())
+		return new CounselorResponseBuilder().availableTime(counselor.getAvailableTime())
 			.career(counselor.getCareer())
 			.certificate(counselor.getCertificate())
 			.email(counselor.getEmail())

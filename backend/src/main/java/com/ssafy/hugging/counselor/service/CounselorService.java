@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.counselor.dto.CounselorLoginRequest;
+import com.ssafy.hugging.counselor.dto.CounselorLoginResponse;
 import com.ssafy.hugging.counselor.dto.CounselorResponse;
 import com.ssafy.hugging.counselor.dto.CounselorReviewRequest;
 import com.ssafy.hugging.counselor.dto.CounselorReviewResponse;
@@ -88,5 +89,16 @@ public class CounselorService {
 			throw new IllegalArgumentException(MISMATCH_COUNSELOR_PASSWORD_ERROR_MESSAGE);
 		}
 		return jwtTokenProvider.createToken(String.valueOf(counselor.getId()));
+	}
+
+	public CounselorLoginResponse loginResponses(Integer counselorId) {
+		Optional<Counselor> counselor = counselorRepository.findById(counselorId);
+		if (!counselor.isPresent()) {
+			throw new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE);
+		}
+		Double average = counselorReviewRepository.findAvgByCounselorId(counselorId);
+		if (average == null)
+			average = 0.0;
+		return new CounselorLoginResponse(counselor.get(), average);
 	}
 }

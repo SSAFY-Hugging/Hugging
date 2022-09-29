@@ -33,7 +33,7 @@ public class Counselor extends BaseEntity {
 	private String password;
 	@Column(nullable = false)
 	private String name;
-	private String available_time;
+	private String availableTime;
 	private String certificate;
 	@Enumerated(EnumType.STRING)
 	private Subject subject;

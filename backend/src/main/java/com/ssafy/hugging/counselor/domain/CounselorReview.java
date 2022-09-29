@@ -28,7 +28,7 @@ public class CounselorReview extends BaseEntity {
 	private String content;
 	@CreatedDate
 	@Column(updatable = false)
-	private LocalDateTime reg_date;
+	private LocalDateTime regDate;
 	@Column(nullable = false)
 	private Integer score;
 
