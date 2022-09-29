@@ -26,6 +26,9 @@ public class CounselorResponse {
 	private Subject subject;
 	private Double average;
 
+	// public CounselorResponse(Counselor counselor, Double average) {
+	// }
+
 	public static CounselorResponse of(Counselor counselor, Double average) {
 		return new CounselorResponseBuilder()
 			.availableTime(counselor.getAvailable_time())

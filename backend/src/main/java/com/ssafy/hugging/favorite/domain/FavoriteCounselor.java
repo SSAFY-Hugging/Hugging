@@ -28,4 +28,10 @@ public class FavoriteCounselor extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "memberId")
 	private Member member;
+
+	@Builder
+	public FavoriteCounselor(Member member, Counselor counselor) {
+		this.member = member;
+		this.counselor = counselor;
+	}
 }

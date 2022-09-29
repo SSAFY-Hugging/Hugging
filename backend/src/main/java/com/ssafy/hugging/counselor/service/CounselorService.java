@@ -40,18 +40,9 @@ public class CounselorService {
 		System.out.println(subject);
 		List<CounselorResponse> counselorList = new ArrayList<>();
 		for (Counselor counselor : counselorRepository.findCounselorsBySubject(subject)) {
-			// counselorList.add(CounselorResponse.of(counselor));
-			// Double average = 0.0, cnt = 0.0;
-			// for (CounselorReview counselorReview : counselorReviewRepository.findCounselorReviewsByCounselorId(
-			// 	counselor.getId())) {
-			// 	average += counselorReview.getScore();
-			// 	cnt++;
-			// }
-			// average /= cnt;
 			counselorList.add(
 				CounselorResponse.of(counselor, counselorReviewRepository.findAvgByCounselorId(counselor.getId())));
 		}
-
 		return counselorList;
 	}
 

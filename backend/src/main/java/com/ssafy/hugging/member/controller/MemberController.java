@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.ssafy.hugging.favorite.dto.FavoriteCounselorRequest;
 import com.ssafy.hugging.favorite.dto.FavoriteMusicRequest;
 import com.ssafy.hugging.global.common.Response;
 import com.ssafy.hugging.member.JwtTokenProvider;
@@ -88,5 +89,27 @@ public class MemberController {
 	public ResponseEntity<?> deleteFavoriteMusic(@RequestParam Integer memberId, @RequestParam Integer musicId) {
 		memberService.deleteFavoriteMusic(memberId, musicId);
 		return response.success("delete favorite music success");
+	}
+
+	@GetMapping("/counselor/{id}")
+	@ApiOperation(value = "즐겨찾기 상담사 리스트 검색", notes = "회원 아이디로 즐겨찾기 한 상담사 리스트 검색")
+	public ResponseEntity<?> getFavoriteCounselorList(@PathVariable Integer id) {
+		return response.success(memberService.getFavoriteCounselorList(id), "getFavoriteCounselorList success",
+			HttpStatus.OK);
+	}
+
+	@PostMapping("/counselor")
+	@ApiOperation(value = "즐겨찾기 상담사 등록", notes = "즐겨찾기 상담사 등록")
+	public ResponseEntity<?> registerFavoriteCounselor(@RequestBody FavoriteCounselorRequest favoriteCounselorRequest) {
+		memberService.registerFavoriteCounselor(favoriteCounselorRequest);
+		return response.success("register favorite counselor success");
+	}
+
+	@DeleteMapping("/cousnelor")
+	@ApiOperation(value = "즐겨찾기 상담사 삭제", notes = "상담사 아이디로 즐겨찾기한 상담사 리스트 모두 삭제")
+	public ResponseEntity<?> deleteFavoriteCounselor(@RequestParam Integer memberId,
+		@RequestParam Integer counselorId) {
+		memberService.deleteFavoriteCounselor(memberId, counselorId);
+		return response.success("delete favorite counselor success");
 	}
 }
