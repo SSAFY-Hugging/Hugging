@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 
@@ -32,6 +36,9 @@ public class Music {
 	private String tag;
 	private String musicUrl;
 	private String thumbnailUrl;
+	@ColumnDefault("0")
+	private Integer hits;
+	@Enumerated(EnumType.STRING)
 	private Type type;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -40,4 +47,8 @@ public class Music {
 
 	@OneToMany(mappedBy = "music")
 	private List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
+
+	public void updateHits() {
+		hits++;
+	}
 }

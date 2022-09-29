@@ -11,9 +11,9 @@ import javax.persistence.OneToMany;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
-import com.ssafy.hugging.review.domain.CounselorReview;
 import com.ssafy.hugging.model.BaseEntity;
 import com.ssafy.hugging.model.Gender;
+import com.ssafy.hugging.model.Subject;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -35,7 +35,8 @@ public class Counselor extends BaseEntity {
 	private String name;
 	private String available_time;
 	private String certificate;
-	private String subject;
+	@Enumerated(EnumType.STRING)
+	private Subject subject;
 	private String career;
 	private String explanation;
 	@Enumerated(EnumType.STRING)
@@ -49,4 +50,8 @@ public class Counselor extends BaseEntity {
 
 	@OneToMany(mappedBy = "counselor")
 	private List<FavoriteCounselor> favoriteCounselorList = new ArrayList<>();
+
+	public boolean confirmPassword(String password) {
+		return password == null || this.password.equals(password);
+	}
 }

@@ -12,6 +12,7 @@ import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.music.domain.Music;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -32,4 +33,10 @@ public class FavoriteMusic {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "memberId")
 	private Member member;
+
+	@Builder
+	public FavoriteMusic(Member member, Music music) {
+		this.member = member;
+		this.music = music;
+	}
 }
