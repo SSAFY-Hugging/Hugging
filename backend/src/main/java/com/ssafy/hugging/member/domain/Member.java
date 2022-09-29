@@ -18,12 +18,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ssafy.hugging.counsel.domain.Counsel;
+import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
 import com.ssafy.hugging.favorite.domain.FavoriteMusic;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
 import com.ssafy.hugging.model.Gender;
-import com.ssafy.hugging.review.domain.CounselorReview;
-import com.ssafy.hugging.review.domain.MusicReview;
+import com.ssafy.hugging.music.domain.MusicReview;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
