@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.counselor.dto.CounselorLoginRequest;
+import com.ssafy.hugging.counselor.dto.CounselorLoginResponse;
 import com.ssafy.hugging.counselor.dto.CounselorResponse;
 import com.ssafy.hugging.counselor.dto.CounselorReviewRequest;
 import com.ssafy.hugging.counselor.dto.CounselorReviewResponse;
@@ -40,18 +41,9 @@ public class CounselorService {
 		System.out.println(subject);
 		List<CounselorResponse> counselorList = new ArrayList<>();
 		for (Counselor counselor : counselorRepository.findCounselorsBySubject(subject)) {
-			// counselorList.add(CounselorResponse.of(counselor));
-			// Double average = 0.0, cnt = 0.0;
-			// for (CounselorReview counselorReview : counselorReviewRepository.findCounselorReviewsByCounselorId(
-			// 	counselor.getId())) {
-			// 	average += counselorReview.getScore();
-			// 	cnt++;
-			// }
-			// average /= cnt;
 			counselorList.add(
 				CounselorResponse.of(counselor, counselorReviewRepository.findAvgByCounselorId(counselor.getId())));
 		}
-
 		return counselorList;
 	}
 
@@ -97,5 +89,16 @@ public class CounselorService {
 			throw new IllegalArgumentException(MISMATCH_COUNSELOR_PASSWORD_ERROR_MESSAGE);
 		}
 		return jwtTokenProvider.createToken(String.valueOf(counselor.getId()));
+	}
+
+	public CounselorLoginResponse loginResponses(Integer counselorId) {
+		Optional<Counselor> counselor = counselorRepository.findById(counselorId);
+		if (!counselor.isPresent()) {
+			throw new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE);
+		}
+		Double average = counselorReviewRepository.findAvgByCounselorId(counselorId);
+		if (average == null)
+			average = 0.0;
+		return new CounselorLoginResponse(counselor.get(), average);
 	}
 }

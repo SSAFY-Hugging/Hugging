@@ -22,8 +22,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.ssafy.hugging.counselor.domain.Counselor;
+import com.ssafy.hugging.counselor.dto.CounselorResponse;
+import com.ssafy.hugging.counselor.repository.CounselorRepository;
+import com.ssafy.hugging.counselor.repository.CounselorReviewRepository;
+import com.ssafy.hugging.favorite.domain.FavoriteCounselor;
 import com.ssafy.hugging.favorite.domain.FavoriteMusic;
+import com.ssafy.hugging.favorite.dto.FavoriteCounselorRequest;
 import com.ssafy.hugging.favorite.dto.FavoriteMusicRequest;
+import com.ssafy.hugging.favorite.repository.FavoriteCounselorRepository;
 import com.ssafy.hugging.favorite.repository.FavoriteMusicRepository;
 import com.ssafy.hugging.member.MemberConstant;
 import com.ssafy.hugging.member.domain.Member;
@@ -49,6 +56,12 @@ public class MemberService implements UserDetailsService {
 	private final MemberRepository memberRepository;
 	private final FavoriteMusicRepository favoriteMusicRepository;
 	private final MusicRepository musicRepository;
+
+	private final FavoriteCounselorRepository favoriteCounselorRepository;
+
+	private final CounselorRepository counselorRepository;
+
+	private final CounselorReviewRepository counselorReviewRepository;
 
 	public Member getMemberById(Integer id) {
 		return memberRepository.findMemberById(id)
@@ -189,5 +202,28 @@ public class MemberService implements UserDetailsService {
 
 	public void deleteFavoriteMusic(Integer memberId, Integer musicId) {
 		favoriteMusicRepository.deleteFavoriteMusicByMemberIdAndMusicId(memberId, musicId);
+	}
+
+	public List<CounselorResponse> getFavoriteCounselorList(Integer id) {
+		Member member = memberRepository.findMemberById(id)
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		return member.getFavoriteCounselorList()
+			.stream()
+			.map(favoriteCounselor -> CounselorResponse.of(favoriteCounselor.getCounselor(),
+				counselorReviewRepository.findAvgByCounselorId(favoriteCounselor.getCounselor().getId())))
+			.collect(Collectors.toList());
+	}
+
+	public void registerFavoriteCounselor(FavoriteCounselorRequest favoriteCounselorRequest) {
+		Member member = memberRepository.findMemberById(favoriteCounselorRequest.getMemberId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		Counselor counselor = counselorRepository.findById(favoriteCounselorRequest.getCounselorId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_COUNSELOR_ERROR_MESSAGE));
+		FavoriteCounselor favoriteCounselor = new FavoriteCounselor(member, counselor);
+		favoriteCounselorRepository.save(favoriteCounselor);
+	}
+
+	public void deleteFavoriteCounselor(Integer memberId, Integer counselorId) {
+		favoriteCounselorRepository.deleteFavoriteCounselorByMemberIdAndCounselorId(memberId, counselorId);
 	}
 }
