@@ -14,13 +14,13 @@ body {
 
 
 .App {
-    width: 360px;
+    /* width: 360px;
     height: 740px;
     margin: auto;
     justify-content: center;
     position: relative;
     border: solid 0.3px;
-    overflow:auto;
+    overflow:auto; */
 }
 
 .App-logo {

@@ -1,28 +1,23 @@
 .item {
-  align-items: center;
+  /* align-items: center; */
   /* margin: 8px 8px; */
   padding: 0px 20px;
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex; 
+  flex-direction: column;
   /* justify-content: space-between; */
   /* align-items: flex-end; */
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: hsl(0, 0%, 95%);
-  border: 1px solid #ccc4c4;
-  height: 122px;
-  width: 500px;
-  left: 16px;
-  top: 436px;
+  border: 1.5px solid #ccc4c4;
+
+  margin: 10px;
   box-shadow: 0 2px 8px rgba(217, 217, 217, 0.94);
 }
 
 .title {
   font-weight: bold;
-  margin: 30px 10px 1px 10px;
-}
-
-.time {
-
+  font-size: 15px;
+  margin: 20px 0px 5px 0px;
 }
 
 .counselorName{
@@ -37,12 +32,13 @@
   color: #FF0909;
   border-radius: 50px;
   border: 0px solid;
-  padding: 0.3rem 1rem;
+
   font-size: 1px;
   font-weight: bold;
   cursor: pointer;
-  width: 56px;
-  height: 20px;
+  margin:10px;
+  width: 80px;
+  height: 30px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
 }
 
@@ -53,11 +49,14 @@
   color: white;
   border-radius: 50px;
   border: 0px solid;
-  padding: 0.3rem 1rem;
   font-size: 1px;
   font-weight: bold;
   cursor: pointer;
-  width: 56px;
-  height: 20px;
+  margin:10px;
+  width: 80px;
+  height: 30px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+}
+.Button {
+  display: flex;
 }

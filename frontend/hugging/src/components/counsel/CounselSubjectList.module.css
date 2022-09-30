@@ -1,0 +1,10 @@
+.title {
+  margin: 10px 20px;
+  font-weight: bolder;
+}
+
+.subject {
+  display: flex;
+  overflow-x: scroll;
+  margin: 0px 20px;
+}

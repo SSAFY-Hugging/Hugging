@@ -1,0 +1,15 @@
+.title {
+  margin: 10px 0px 10px 20px;
+  font-weight: bolder;
+}
+
+.explain {
+  text-align: center;
+  font-size: 0.5rem;
+  margin: auto;
+}
+
+/* .time {
+  width: 300px;
+  height: 300px;
+} */

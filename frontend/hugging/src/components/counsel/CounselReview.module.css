@@ -1,0 +1,17 @@
+.background {
+  border-radius: 20px;
+  background: #e9eefe;
+}
+
+.title {
+  color: #5b71e7;
+  font-weight: bold;
+  padding: 10px 0px 0px 20px;
+}
+
+.review {
+  background: white;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 16px;
+}

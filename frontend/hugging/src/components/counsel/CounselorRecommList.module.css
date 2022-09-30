@@ -1,0 +1,10 @@
+.title {
+    margin: 10px 20px;
+    font-weight: bolder;
+}
+
+.counselor {
+  display: flex;
+  overflow-x: scroll;
+  margin: 0px 0px 0px 10px;
+}

@@ -1,0 +1,25 @@
+.profile {
+  display: flex;
+  overflow-x: scroll;
+  padding: 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.title {
+  color: #5b71e7;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.explanation {
+  padding: 10px;
+}
+
+.blue {
+  color: #5b71e7;
+  font-weight: bold;
+  /* font-size: 1rem; */
+}
