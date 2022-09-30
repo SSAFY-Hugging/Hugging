@@ -28,7 +28,9 @@ let user = createSlice({
       "nickname": "",
       "age": "",
       "gender": "",
-      "emotion" : [],
+      "emotion" : [
+        "불안", "우울", "상실"
+      ],
       "profileImage": 0
    },
     reducers: {

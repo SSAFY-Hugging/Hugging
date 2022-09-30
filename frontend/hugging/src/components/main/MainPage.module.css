@@ -1,0 +1,136 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+.App {
+    width: 360px;
+    height: 740px;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+    border: solid 0.3px;
+    overflow:auto;
+    background-color: #F7F8F8;
+}  
+
+.Nav {
+    display: flex;
+    margin : auto;
+    color : black;
+    font-size: 10px;
+    box-shadow: 1px 1px 5px 0px gray;
+    justify-content: center;
+    position: fixed;
+    background-color: white;
+    width: 360px;
+
+}    
+
+.counselor_title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.emotion_div {
+
+    height: 200px;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+}
+
+.emotion_div_title {
+    font-weight: 600;
+}
+
+.emotion_div_text {
+    color:#928585 ;
+    font-size: 12px;
+}
+
+.counseling {
+    
+    height: 300px;
+
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+}
+
+.counseling_btn {
+    border: none;
+    background-color: white;
+    color: #C77CFB ;
+}
+
+.counseling_title {
+    font-weight: 700;
+}
+
+.counseling_choice {
+    display: flex;
+}
+
+.counseling_choice_btn1 {
+    height: 100px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    margin: auto;
+    color: white;
+    align-items: center;
+    background: linear-gradient(to left, #C58BF2, #EEA4CE);
+}
+
+.counseling_choice_btn2 {
+    height: 100px;
+    width: 100px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 1px;
+    margin-right: auto;
+    color: white;
+    align-items: center;
+    background: linear-gradient(to left, #92A3FD, #9DCEFF);
+}
+
+.counseling_btn_title {
+    display: flex;
+    margin: auto;
+    font-weight: 600;
+}
+
+.test_btn {
+    display: flex;
+    background: linear-gradient(to left,#C58BF2, #EEA4CE);
+    border-radius: 30px;
+    border: none;
+    font-size: 13px;
+    font-weight: 900;
+    padding : 15px 40px;
+    margin-top: 40px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px 30px 15px 60px;
+
+}
+
+.test_btn_logo {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 90px;
+    top: 785px;
+    background-image: url('../../img/test_icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    align-items: center;
+}

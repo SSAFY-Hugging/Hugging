@@ -14,8 +14,9 @@
     display: flex;
     justify-content: space-around;
     box-shadow: 1px 1px 3px 0px gray;
-    position: fixed;
+    position: sticky;
     bottom: 0px;
+    background-color: white;
 }
 .nav_btn_title{
     color: #ADA4A5;

@@ -13,7 +13,7 @@ function RegisterCategory({history}) {
     let dispatch = useDispatch()
     let user = useSelector((state)=> { return state.user})
     let [btn, setBtn] = useState(false)
-    let [emotion, setEmotion] = useState({})
+    let [emotion, setEmotion] = useState([])
     
     useEffect(()=>{
                 // let emotion = localStorage.getItem('emotion')               
@@ -34,15 +34,21 @@ function RegisterCategory({history}) {
         <div id={styles.category_card}>
             <button onClick={()=>{ 
                 if ( btn === false ) {
-                    setEmotion()
-                    
-                    dispatch(changeEmotion({emotion:"cool"}))
+                    emotion.push("슬픔")
+                    setEmotion(emotion)
+                    // dispatch(changeEmotion("슬픔"))
                 }
                 else{
-                    dispatch(deleteEmotion({emotion:"cool"}))
+                emotion.map(function(a, i){
+                    if (emotion[i] === "슬픔") {
+                        emotion.splice(i, 1)
+                    }
+
+                })
                           }
                 setBtn(!btn)
                 console.log(user)
+                console.log(emotion)
                 console.log(btn)
                 // let emotion = localStorage.getItem('emotion')
                 // emotion = JSON.parse(emotion)
@@ -50,11 +56,24 @@ function RegisterCategory({history}) {
                 // localStorage.setItem('emotion', JSON.stringify('rage'))
                 // console.log(emotion)
             }}>불안할 때</button>
-            <button onClick={()=>{ dispatch(changeEmotion({emotion:"happy"}))}}>불안할 때</button>
+            <button onClick={()=>{  
+                if ( btn === false ) {
+                    emotion.push("우울함")
+                    setEmotion(emotion)
+                }
+                else{
+                    emotion.map(function(a, i){
+                        if (emotion[i] === "우울함") {
+                            emotion.splice(i, 1)}
+                         })
+                console.log(emotion) 
+                setBtn(!btn)}}}
+                          >우울함</button>
             <button>불안할 때</button>
             <button>불안할 때</button>
             <button>불안할 때</button>
             <button>불안할 때</button>
+            <div></div>
         </div>
         <button className={styles.counselor_login_btn} onClick={()=>{navigate("/profile")}}>다음</button>
        </>
