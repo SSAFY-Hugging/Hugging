@@ -1,5 +1,7 @@
 package com.ssafy.hugging.counsel.service;
 
+import static com.ssafy.hugging.member.MemberConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ import com.ssafy.hugging.counsel.dto.CounselReservationResponse;
 import com.ssafy.hugging.counsel.dto.CounselReserveRequest;
 import com.ssafy.hugging.counsel.repository.CounselRepository;
 import com.ssafy.hugging.counselor.service.CounselorService;
-import com.ssafy.hugging.member.service.MemberService;
+import com.ssafy.hugging.member.repository.MemberRepository;
 import com.ssafy.hugging.model.Status;
 
 import lombok.RequiredArgsConstructor;
@@ -22,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class CounselService {
 	private final CounselRepository counselRepository;
-	private final MemberService memberService;
+	private final MemberRepository memberRepository;
 	private final CounselorService counselorService;
 
 	// 상담 예약
@@ -33,7 +35,8 @@ public class CounselService {
 			.status(Status.INCOMPLETE)
 			.build());
 		counsel.setCounselor(counselorService.getCounselorById(counselReserveRequest.getCounselorId()));
-		counsel.setMember(memberService.getMemberById(counselReserveRequest.getMemberId()));
+		counsel.setMember(memberRepository.findMemberById(counselReserveRequest.getMemberId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE)));
 	}
 
 	// 상담 예약 취소

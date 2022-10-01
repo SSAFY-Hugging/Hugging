@@ -35,6 +35,7 @@ import com.ssafy.hugging.favorite.repository.FavoriteMusicRepository;
 import com.ssafy.hugging.member.MemberConstant;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
+import com.ssafy.hugging.member.dto.MemberResponse;
 import com.ssafy.hugging.member.repository.MemberRepository;
 import com.ssafy.hugging.music.domain.Music;
 import com.ssafy.hugging.music.dto.MusicResponse;
@@ -63,9 +64,15 @@ public class MemberService implements UserDetailsService {
 
 	private final CounselorReviewRepository counselorReviewRepository;
 
-	public Member getMemberById(Integer id) {
-		return memberRepository.findMemberById(id)
+	public MemberResponse getMemberById(Integer id) {
+		Member member = memberRepository.findMemberById(id)
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		List<CounselorResponse> counselorList = member.getFavoriteCounselorList()
+			.stream()
+			.map(favoriteCounselor -> CounselorResponse.of(favoriteCounselor.getCounselor(),
+				counselorReviewRepository.findAvgByCounselorId(favoriteCounselor.getCounselor().getId())))
+			.collect(Collectors.toList());
+		return new MemberResponse(member, counselorList);
 	}
 
 	public String getKakaoAccessToken(String code) {
@@ -166,9 +173,8 @@ public class MemberService implements UserDetailsService {
 	}
 
 	public Member login(String email) {
-		Member findMember = memberRepository.findByEmail(email)
+		return memberRepository.findByEmail(email)
 			.orElseThrow(() -> new IllegalArgumentException(MemberConstant.MISMATCH_EMAIL_ERROR_MESSAGE));
-		return findMember;
 	}
 
 	public void join(MemberJoinRequest memberJoinRequest) {
