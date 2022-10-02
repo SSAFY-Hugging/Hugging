@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.model.BaseEntity;
@@ -27,7 +28,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Counsel extends BaseEntity {
-	private LocalDateTime reservation_date;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Asia/Seoul")
+	private LocalDateTime reservationDate;
 	@Enumerated(EnumType.STRING)
 	private Subject subject;
 	@Enumerated(EnumType.STRING)

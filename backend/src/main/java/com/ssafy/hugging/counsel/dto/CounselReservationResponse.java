@@ -28,8 +28,8 @@ public class CounselReservationResponse {
 	public static CounselReservationResponse of(Counsel counsel) {
 		return new CounselReservationResponseBuilder()
 			.counselId(counsel.getCounselor().getId())
-			.reservationDate(counsel.getReservation_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
-			.reservationTime(counsel.getReservation_date().format(DateTimeFormatter.ofPattern("HH:mm")))
+			.reservationDate(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
+			.reservationTime(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("HH:mm")))
 			.subject(counsel.getSubject())
 			.status(counsel.getStatus())
 			.build();
