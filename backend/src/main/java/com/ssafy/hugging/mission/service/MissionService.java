@@ -18,7 +18,6 @@ import com.ssafy.hugging.mission.domain.Mission;
 import com.ssafy.hugging.mission.domain.ProceedingMission;
 import com.ssafy.hugging.mission.dto.MissionResponse;
 import com.ssafy.hugging.mission.dto.ProceedingMissionRequest;
-import com.ssafy.hugging.mission.dto.Stamp;
 import com.ssafy.hugging.mission.dto.StampResponse;
 import com.ssafy.hugging.mission.repository.MissionRepository;
 import com.ssafy.hugging.mission.repository.ProceedingMissionRepository;

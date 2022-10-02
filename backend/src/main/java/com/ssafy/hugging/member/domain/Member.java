@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.ssafy.hugging.psychologicalTest.domain.PsychologicalTestResult;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -78,6 +79,10 @@ public class Member implements UserDetails {
 	@OneToMany(mappedBy = "member")
 	@JsonManagedReference
 	private List<ProceedingMission> proceedingMissionList = new ArrayList<>();
+
+	@OneToMany(mappedBy = "member")
+	@JsonManagedReference
+	private List<PsychologicalTestResult> psychologicalTestResultList = new ArrayList<>();
 
 	public static Member from(MemberJoinRequest memberJoinRequest) {
 		return Member.builder()
