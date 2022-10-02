@@ -10,7 +10,6 @@ import lombok.Getter;
 public class MusicResponse {
 	private final Integer id;
 	private final String name;
-	private final String tag;
 	private final String musicUrl;
 	private final String thumbnailUrl;
 	private final Type type;
@@ -20,7 +19,6 @@ public class MusicResponse {
 	public MusicResponse(Music music) {
 		id = music.getId();
 		name = music.getName();
-		tag = music.getTag();
 		musicUrl = music.getMusicUrl();
 		thumbnailUrl = music.getThumbnailUrl();
 		hits = music.getHits();

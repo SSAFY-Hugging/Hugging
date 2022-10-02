@@ -33,7 +33,6 @@ public class Music {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
-	private String tag;
 	private String musicUrl;
 	private String thumbnailUrl;
 	@ColumnDefault("0")

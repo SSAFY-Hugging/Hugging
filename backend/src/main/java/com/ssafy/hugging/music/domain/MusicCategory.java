@@ -25,6 +25,7 @@ public class MusicCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String title;
 
 	@Enumerated(EnumType.STRING)
 	private Category name;
