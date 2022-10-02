@@ -4,12 +4,12 @@ import styles from "./RegisterProfile.module.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { changeUser, loginUser } from "../../store";
+import { changeUser, loginUser, changeImg } from "../../store";
 import promiseMiddleware from "redux-promise";
 import { API_HOST_URL } from "../../config";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
-function RegisterProfile() {
+function RegisterProfile(props) {
   const navigate = useNavigate();
   let user = useSelector((state) => {
     return state.user;
@@ -19,7 +19,11 @@ function RegisterProfile() {
 
   const [nickname, setNickname] = useState("");
   const [age, setAge] = useState("");
-
+  let [modal, setModal] = useState(false);
+  let [profileimg, setProfileimg] = useState("");
+  const modalClose = () => {
+    setModal(!modal);
+  };
   const handleNickname = (e) => {
     setNickname(e.target.value);
   };
@@ -35,48 +39,49 @@ function RegisterProfile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const email = localStorage.getItem('email')
+    const email = localStorage.getItem("email");
+    let emotion = sessionStorage.getItem("emotion");
+    let profileimg = user.profileimg;
     let body = {
       nickname,
       age,
       gender,
-      emotion: user.emotion,
+      emotion: JSON.parse(emotion),
       email,
+      profileimg,
     };
-
-    axios.post(API_HOST_URL + "members/join", body)
+    console.log(body);
+    axios
+      .post(API_HOST_URL + "members/join", body)
       .then((res) => {
-        if (res.data.newMember){
-          sessionStorage.setItem('token', res.data)
-          sessionStorage.setItem('isSocialLogin', true)
-          let userId = jwt_decode(res.data)
+        if (res.data.newMember) {
+          sessionStorage.setItem("token", res.data);
+          sessionStorage.setItem("isSocialLogin", true);
+          let userId = jwt_decode(res.data);
           axios({
-            url: 'https://j7b204.p.ssafy.io/api/members/'+userId.sub,
-             method: "GET"
+            url: "https://j7b204.p.ssafy.io/api/members/" + userId.sub,
+            method: "GET",
           })
-          .then((res)=> {
-            console.log('성공')
-            console.log(res.data)
-            localStorage.setItem('userprofile', JSON.stringify(res.data))
-          })
-          .then((res)=>{
-            console.log(user)
-          })
-          .catch((err) =>{
-            console.log('실패')
-            console.log(err)
-            });}
-           else{
-
-              } 
+            .then((res) => {
+              console.log("성공");
+              console.log(res.data);
+              localStorage.setItem("userprofile", JSON.stringify(res.data));
+              sessionStorage.removeItem("emotion");
             })
-      
-      .catch((err)=>{
-        console.log(err)
+            .catch((err) => {
+              console.log("실패");
+              console.log(err);
+            });
+        } else {
+        }
       })
-    }
+
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <>
+    <div className={styles.APP}>
       <div className={styles.category_title}>
         <h2 className={styles.hug}>Hug</h2>
         <h2>ging</h2>
@@ -84,7 +89,12 @@ function RegisterProfile() {
       <div className={styles.order2}></div>
       <p className={styles.profile_title}>프로필 이미지</p>
       <div className={styles.profile_circle}>
-        <button className={styles.profile_edit}>
+        <button
+          className={styles.profile_edit}
+          onClick={() => {
+            setModal(!modal);
+          }}
+        >
           <svg
             color="white"
             xmlns="http://www.w3.org/2000/svg"
@@ -137,24 +147,55 @@ function RegisterProfile() {
           >
             이전
           </button>
-          <button
-            type="submit"
-            className={styles.next}
-            // onClick={()=> {
-            // axios.post('https://j7b204.p.ssafy.io/api/members/join', user)
-            // .then((res)=>{
-            //     console.log(res)
-            //     console.log(user)
-
-            // }).catch((res)=>{
-            //     console.log(user)
-            //     console.log('error')}) }}
-          >
+          <button type="submit" className={styles.next}>
             가입 완료
           </button>
         </div>
       </form>
-    </>
+
+      {modal === true ? <Modal modalClose={modalClose} /> : null}
+    </div>
+  );
+}
+
+function Modal(props) {
+  let dispatch = useDispatch();
+  let user = useSelector((state) => {
+    return state.user;
+  });
+
+  return (
+    <div className={styles.App}>
+      <div className={styles.modal_back}>
+        <div className={styles.modal}>
+          <div className={styles.modal_bar}></div>
+          <button
+            className={styles.modal_select}
+            onClick={() => {
+              dispatch(changeImg(1));
+              console.log(user.profileImage);
+            }}
+          ></button>
+          <button
+            className={styles.modal_select2}
+            onClick={() => {
+              dispatch(changeImg(2));
+              console.log(user);
+            }}
+          ></button>
+          <button
+            className={styles.modal_select3}
+            onClick={() => {
+              dispatch(changeImg(3));
+              console.log(user);
+            }}
+          ></button>
+        </div>
+        <button className={styles.select_btn} onClick={props.modalClose}>
+          확인
+        </button>
+      </div>
+    </div>
   );
 }
 

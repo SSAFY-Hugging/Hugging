@@ -69,7 +69,7 @@ public class VoiceManager : MonoBehaviour
         //RtcEngine.OnJoinChannelSuccess = OnJoinChannelSuccessHandler;
         //RtcEngine.OnUserJoined = OnUserJoined;
         //RtcEngine.OnUserOffline = onUserOffline;
-        RtcEngine.OnLeaveChannel += OnLeaveChannelHandler;
+        //RtcEngine.OnLeaveChannel += OnLeaveChannelHandler;
 
         RtcEngine.OnWarning = (int warn, string msg) =>
         {
@@ -116,13 +116,13 @@ public class VoiceManager : MonoBehaviour
     //    this.Log.UpdateLog("UpdateChannelMediaOptions: " + nRet);
     //}
 
-
-    void OnLeaveChannelHandler(RtcStats stats)
+    public void LeaveVoiceChat()
     {
         if (RtcEngine == null)
             return;
         RtcEngine.LeaveChannel();
     }
+
 
     private void HandleError(int error, string msg)
     {
@@ -132,8 +132,6 @@ public class VoiceManager : MonoBehaviour
     private void OnDestroy()
     {
         Debug.Log("OnDestroy");
-        if (RtcEngine == null)
-            return;
-        RtcEngine.LeaveChannel();
+        LeaveVoiceChat();
     }
 }

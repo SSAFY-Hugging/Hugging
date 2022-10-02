@@ -8,7 +8,11 @@ const CounselRecommList = (props) => {
     <Fragment>
       <div>
         <span className={classes.title}>추천 상담사</span>
-        <Link to="/" className={classes.more}>
+        <Link
+          to="/counselorlist"
+          state={props.counselors}
+          className={classes.more}
+        >
           더보기
         </Link>
       </div>

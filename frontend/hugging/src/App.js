@@ -19,8 +19,10 @@ import ReserveCounsel from "./pages/counsel/ReserveCounsel";
 import SelectCounsel from "./pages/counsel/SelectCounsel";
 import CounselCommunity from "./pages/counsel/CounselCommunity";
 import CounselProfile from "./pages/counsel/CounselProfile";
+import ListCounselor from "./pages/counsel/ListCounselor";
 import MainPage from "./pages/main/MainPage";
-
+import CounselorMypage from './pages/counselor/CounselorMypage'
+import CounselDone from "./pages/counsel/CounselDone";
 
 // import scrollbar from 'smooth-scrollbar';
 
@@ -40,12 +42,13 @@ function App() {
         <Route path="/calendar" element={<MyCalendar />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/counselor/login" element={<CounselorLogin />} />
+        <Route path="/counselor/mypage" element={<CounselorMypage />}/>
         <Route path="/category" element={<RegisterCategory />} />
         <Route path="/profile" element={<RegisterProfile />} />
         <Route path="/profile_img" element={<></>}></Route>
         <Route path="/recommend_media" element={<MediaView />} />
         <Route path="/playing_music" element={<MusicPlayingPage />} />
-        <Route path="/TopicMediaPage" element={<TopicMediaPage />}/>
+        <Route path="/TopicMediaPage" element={<TopicMediaPage />} />
         <Route path="/counselreserve" element={<ReserveCounsel />} />
         <Route path="/" element={<ReserveCounsel />} />
         <Route path="/counselselect" element={<SelectCounsel />}></Route>
@@ -54,8 +57,10 @@ function App() {
           path="/counselprofile/:counselorId"
           element={<CounselProfile />}
         ></Route>
-        <Route path="/counselReserve" element={<ReserveCounsel />} />
-        <Route path="/main" element={<MainPage/>}/>
+        <Route path="/counselreserve" element={<ReserveCounsel />} />
+        <Route path="/main" element={<MainPage />} />
+        <Route path="/counselorlist" element={<ListCounselor />}></Route>
+        <Route path="/counseldone" element={<CounselDone />}></Route>
       </Routes>
     </div>
   );

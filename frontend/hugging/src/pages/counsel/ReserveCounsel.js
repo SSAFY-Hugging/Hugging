@@ -80,7 +80,7 @@ const ReserveCounsel = () => {
       )}
       <Header />
       <MyReservationList reservations={DUMMY_RESERVE} />
-      <CounselSubjectList />
+      <CounselSubjectList title="상담 주제" />
       <CounselorRecommList counselors={DUMMY_COUNSELOR} />
       <CounselCalendar />
       <CounselTime />

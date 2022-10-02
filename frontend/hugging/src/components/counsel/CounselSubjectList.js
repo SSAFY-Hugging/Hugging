@@ -40,10 +40,10 @@ const DUMMY_SUBJECT2 = [
   },
 ];
 
-const CounselSubjectList = () => {
+const CounselSubjectList = (props) => {
   return (
     <Fragment>
-      <div className={classes.title}>상담 주제</div>
+      <div className={classes.title}>{props.title}</div>
       <div>
         <div className={classes.subject}>
           {DUMMY_SUBJECT1.map((subject) => (

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { FaStar } from 'react-icons/fa';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import { FaStar } from "react-icons/fa";
+import styled from "styled-components";
 
 const ARRAY = [0, 1, 2, 3, 4];
 
 function Rating() {
   const [clicked, setClicked] = useState([false, false, false, false, false]);
 
-  const handleStarClick = index => {
+  const handleStarClick = (index) => {
     let clickStates = [...clicked];
     for (let i = 0; i < 5; i++) {
       clickStates[i] = i <= index ? true : false;
@@ -24,7 +24,7 @@ function Rating() {
               key={idx}
               size="25"
               onClick={() => handleStarClick(el)}
-              className={clicked[el] && 'yellowStar'}
+              className={clicked[el] && "yellowStar"}
             />
           );
         })}

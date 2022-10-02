@@ -26,11 +26,17 @@ let user = createSlice({
     email: "",
     nickname: "",
     age: "",
+    emotion: "",
     gender: "",
-    emotion: ["불안", "우울", "상실"],
     profileImage: 0,
   },
   reducers: {
+    changeImg(state, action) {
+      state.profileImage = action.payload;
+    },
+    changeEmotion(state, action) {
+      state.emotion = action.payload;
+    },
     deleteEmotion(state, action) {
       state.emotion.map((a, i) => {
         console.log(state.emotion);
@@ -58,13 +64,13 @@ let user = createSlice({
       state.age = action.payload.age;
       state.gender = action.payload.gender;
     },
-    changeEmotion(state, action) {
-      state.emotion.push(action.payload);
-    },
+    // changeEmotion(state, action) {
+    //   state.emotion.push(action.payload);
+    // },
   },
 });
 
-const initialCounselorState = { counter: 0, counselor: undefined };
+const initialCounselorState = { counselor: undefined, subject: undefined };
 
 let counselSlice = createSlice({
   name: "counsel",
@@ -75,11 +81,23 @@ let counselSlice = createSlice({
       console.log(action.payload);
       state.counselor = action.payload;
     },
+    selectSubject(state, action) {
+      console.log("in subject store");
+      state.subject = action.payload;
+      console.log(state.subject);
+    },
   },
 });
 
-export let { loginUser, changeEmotion, changeUser, deleteEmotion, clearUser } =
-  user.actions;
+export let {
+  loginUser,
+  changeEmotion,
+  changeUser,
+  deleteEmotion,
+  clearUser,
+  changeImg,
+} = user.actions;
+
 export let { loginCounselor } = counselor.actions;
 export const counselActions = counselSlice.actions;
 

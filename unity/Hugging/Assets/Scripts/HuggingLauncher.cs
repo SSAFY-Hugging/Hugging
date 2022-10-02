@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Runtime.InteropServices;
 
 public class HuggingLauncher : MonoBehaviourPunCallbacks
 {
+    [DllImport("__Internal")]
+    private static extern void Exit();
+
     public GameObject canvas;
     public Text roomNameText;
     public Text playerCountText;
@@ -198,10 +202,16 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-    public void leaveRoom()
+    public void LeaveRoom()
     {
-        PhotonNetwork.LeaveRoom();
+        if (PhotonNetwork.InRoom)
+        {
+            PhotonNetwork.LeaveRoom();
+        }
+        VoiceManager.instance.LeaveVoiceChat();
+        PhotonNetwork.Disconnect();
         Application.Quit();
+        Exit();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)

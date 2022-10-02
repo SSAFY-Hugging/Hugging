@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import classes from "./CounselProfile.module.css";
-// import { counselorActions } from "../../store/counselor";
 import { counselActions } from "../../store";
 
 import { useDispatch } from "react-redux";
@@ -47,6 +46,7 @@ const CounselProfile = () => {
 
   const selectCounselorHandler = () => {
     dispatch(counselActions.selectCounselor(params.counselorId));
+    dispatch(counselActions.selectSubject(DUMMY_PROFILE.subject));
     navigate(-1);
   };
 

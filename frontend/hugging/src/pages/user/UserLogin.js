@@ -30,12 +30,11 @@ function UserLogin() {
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URL;
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
- 
 
-  useEffect(()=>{
-    localStorage.setItem("emotion", JSON.stringify([]))
-  },[])
-  
+  useEffect(() => {
+    localStorage.setItem("emotion", JSON.stringify([]));
+  }, []);
+
   return (
     <>
       <div className={styles.main_bg}></div>
@@ -52,7 +51,7 @@ function UserLogin() {
       </a>
 
       {/* 로그 아웃 기능 (지우지 마시오) */}
-        {/* <button className={styles.KakaoBtn} onClick={()=>{
+      {/* <button className={styles.KakaoBtn} onClick={()=>{
           sessionStorage.removeItem('token')
           localStorage.removeItem('userprofile')
           localStorage.removeItem('emotion')
@@ -63,7 +62,7 @@ function UserLogin() {
           <p className={styles.kakaoBtn_title}> 로그아웃</p>
           <div className={styles.kakao_logo}></div>
         </button> */}
-        
+
       {/* <Route path="/oauth/kakao/callback">
             <Auth />
         </Route> */}
