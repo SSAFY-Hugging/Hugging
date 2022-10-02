@@ -23,6 +23,10 @@ const CounselCommunity = () => {
     navigate("/counseldone");
   }, []);
 
+  function setLandscape() {
+    window.screen.orientation.lock("landscape");
+  }
+
   function sendToUnity() {
     // AgoraRTC.createStream({ video: false, audio: true });
     // AgoraRTC.getDevices();
@@ -43,6 +47,7 @@ const CounselCommunity = () => {
 
   return (
     <div>
+      {setLandscape()}
       {requestFullscreen(true)}
       <Unity
         style={{
