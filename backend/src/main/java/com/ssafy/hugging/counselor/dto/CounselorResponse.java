@@ -24,6 +24,7 @@ public class CounselorResponse {
 	private Gender gender;
 	private String name;
 	private Subject subject;
+	private String profileImage;
 	private Double average;
 
 	// public CounselorResponse(Counselor counselor, Double average) {
@@ -38,6 +39,7 @@ public class CounselorResponse {
 			.gender(counselor.getGender())
 			.name(counselor.getName())
 			.subject(counselor.getSubject())
+			.profileImage(counselor.getProfileImage())
 			.average(average)
 			.build();
 	}

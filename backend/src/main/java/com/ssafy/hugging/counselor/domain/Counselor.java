@@ -41,6 +41,7 @@ public class Counselor extends BaseEntity {
 	private String explanation;
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	private String profileImage;
 
 	@OneToMany(mappedBy = "counselor")
 	private List<Counsel> counselList = new ArrayList<>();
