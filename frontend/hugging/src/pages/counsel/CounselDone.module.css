@@ -1,0 +1,60 @@
+.pink {
+  height: 100px;
+  width: 266px;
+  border-radius: 10px;
+  background: #f9ebf8;
+  padding: 10px 20px 0px 20px;
+  margin: 10px 45px;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+  /* font-size: 10px; */
+}
+
+.back {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.title2 {
+  font-weight: bold;
+}
+
+.cancel {
+  margin: auto;
+  background: linear-gradient(135deg, #9dceff 0%, #92a3fd 100%);
+  color: white;
+  border-radius: 50px;
+  border: 0px solid;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+  height: 38px;
+  width: 130px;
+
+  border-radius: 99px;
+}
+
+.done {
+  margin: auto;
+  background: linear-gradient(135deg, #eea4ce 0%, #c58bf2 100%);
+  color: white;
+  border-radius: 99px;
+  border: 0px solid;
+  padding: 0.3rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  height: 38px;
+  width: 130px;
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+}
+
+.ck.ck-editor__editable:not(.ck-editor__nested-editable) {
+  min-height: 400px;
+  margin-bottom: 20px;
+}

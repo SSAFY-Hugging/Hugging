@@ -64,7 +64,7 @@ let user = createSlice({
   },
 });
 
-const initialCounselorState = { counter: 0, counselor: undefined };
+const initialCounselorState = { counselor: undefined, subject: undefined };
 
 let counselSlice = createSlice({
   name: "counsel",
@@ -74,6 +74,11 @@ let counselSlice = createSlice({
       console.log("in store");
       console.log(action.payload);
       state.counselor = action.payload;
+    },
+    selectSubject(state, action) {
+      console.log("in subject store");
+      state.subject = action.payload;
+      console.log(state.subject);
     },
   },
 });

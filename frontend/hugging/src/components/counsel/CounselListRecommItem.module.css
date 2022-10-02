@@ -1,0 +1,44 @@
+.back {
+  padding: 10px;
+}
+
+.titleImage {
+  display: block;
+  width: 91px;
+  height: 91px;
+}
+
+.score {
+  display: flex;
+  overflow-x: scroll;
+}
+
+.number {
+  font-size: 1px;
+}
+
+.starImage {
+  width: 12px;
+  height: 12px;
+}
+
+.name {
+  /* color: #5b71e7; */
+  font-weight: bold;
+  font-size: 0.5rem;
+}
+
+.detail {
+  display: flex;
+  overflow-x: scroll;
+  font-size: 0.5rem;
+}
+
+.field {
+  border-radius: 5px;
+  width: 50px;
+  height: 15px;
+  background: #fce9fe;
+  text-align: center;
+  font-size: 1px;
+}
