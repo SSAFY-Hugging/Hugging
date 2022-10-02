@@ -9703,9 +9703,6 @@
   dependencies:
     "crypto-random-string" "^2.0.0"
 
-"unity-init@file:./public/Build/WebGLBuild.loader.js":
-  "resolved" "file:public/Build/WebGLBuild.loader.js"
-
 "universalify@^0.2.0":
   "integrity" "sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg=="
   "resolved" "https://registry.npmjs.org/universalify/-/universalify-0.2.0.tgz"

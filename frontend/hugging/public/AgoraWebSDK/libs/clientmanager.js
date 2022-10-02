@@ -116,11 +116,11 @@ class ClientManager {
     this.videoEnabled = false; // set to default
     localTracks.audioMixingTrack = null;
 
-    if (_isCopyVideoToMainCanvasOn) {
-      _isCopyVideoToMainCanvasOn = false;
-      customVideoTrack.stop();
-      customVideoTrack.close();
-    }
+    // if (_isCopyVideoToMainCanvasOn) {
+    //   _isCopyVideoToMainCanvasOn = false;
+    //   customVideoTrack.stop();
+    //   customVideoTrack.close();
+    // }
 
     if (mixingStatus == true) {
       try {
@@ -246,7 +246,11 @@ class ClientManager {
     return false;
   }
 
-  async joinChannelWithUserAccount_WGL(token_str, channelId_str, userAccount_str) {
+  async joinChannelWithUserAccount_WGL(
+    token_str,
+    channelId_str,
+    userAccount_str
+  ) {
     // setting options
     this.options.channel = channelId_str;
     this.options.token = token_str;
@@ -258,17 +262,25 @@ class ClientManager {
     this.client.on("error", this.handleError.bind(this));
 
     if (this.videoEnabled && this.isHosting()) {
-      [this.options.uid, localTracks.audioTrack, localTracks.videoTrack] = await Promise.all([
-        this.client.join(this.options.appid, this.options.channel, this.options.token || null, userAccount_str.toString() || null),
-        AgoraRTC.createMicrophoneAudioTrack(),
-        // AgoraRTC.createCameraVideoTrack(),
-      ]);
+      [this.options.uid, localTracks.audioTrack, localTracks.videoTrack] =
+        await Promise.all([
+          this.client.join(
+            this.options.appid,
+            this.options.channel,
+            this.options.token || null,
+            userAccount_str.toString() || null
+          ),
+          AgoraRTC.createMicrophoneAudioTrack(),
+          // AgoraRTC.createCameraVideoTrack(),
+        ]);
 
       // currentVideoDevice = wrapper.getCameraDeviceIdFromDeviceName(
       //   localTracks.videoTrack._deviceName
       // );
 
-      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(localTracks.audioTrack._deviceName);
+      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(
+        localTracks.audioTrack._deviceName
+      );
 
       // event_manager.raiseGetCurrentVideoDevice();
       event_manager.raiseGetCurrentAudioDevice();
@@ -279,26 +291,43 @@ class ClientManager {
       //   mirror: mlocal,
       // });
 
-      event_manager.raiseJoinChannelSuccess(this.options.uid.toString(), this.options.channel);
+      event_manager.raiseJoinChannelSuccess(
+        this.options.uid.toString(),
+        this.options.channel
+      );
 
       if (this.client_role == 1) {
-        await this.client.publish(Object.values(localTracks).filter((track) => track !== null));
+        await this.client.publish(
+          Object.values(localTracks).filter((track) => track !== null)
+        );
       }
     } else {
       [this.options.uid, localTracks.audioTrack] = await Promise.all([
-        this.client.join(this.options.appid, this.options.channel, this.options.token || null, userAccount_str.toString() || null),
+        this.client.join(
+          this.options.appid,
+          this.options.channel,
+          this.options.token || null,
+          userAccount_str.toString() || null
+        ),
         AgoraRTC.createMicrophoneAudioTrack(),
       ]);
 
-      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(localTracks.audioTrack._deviceName);
+      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(
+        localTracks.audioTrack._deviceName
+      );
 
       event_manager.raiseGetCurrentAudioDevice();
       event_manager.raiseGetCurrentPlayBackDevice();
 
-      event_manager.raiseJoinChannelSuccess(this.options.uid.toString(), this.options.channel);
+      event_manager.raiseJoinChannelSuccess(
+        this.options.uid.toString(),
+        this.options.channel
+      );
 
       if (this.client_role == 1) {
-        await this.client.publish(Object.values(localTracks).filter((track) => track !== null));
+        await this.client.publish(
+          Object.values(localTracks).filter((track) => track !== null)
+        );
       }
     }
   }
@@ -311,17 +340,25 @@ class ClientManager {
     this.client.on("error", this.handleError.bind(this));
 
     if (this.videoEnabled && this.isHosting()) {
-      [this.options.uid, localTracks.audioTrack, localTracks.videoTrack] = await Promise.all([
-        this.client.join(this.options.appid, this.options.channel, this.options.token || null, this.options.uid || null),
-        AgoraRTC.createMicrophoneAudioTrack(),
-        // AgoraRTC.createCameraVideoTrack(),
-      ]);
+      [this.options.uid, localTracks.audioTrack, localTracks.videoTrack] =
+        await Promise.all([
+          this.client.join(
+            this.options.appid,
+            this.options.channel,
+            this.options.token || null,
+            this.options.uid || null
+          ),
+          AgoraRTC.createMicrophoneAudioTrack(),
+          // AgoraRTC.createCameraVideoTrack(),
+        ]);
 
       // currentVideoDevice = wrapper.getCameraDeviceIdFromDeviceName(
       //   localTracks.videoTrack._deviceName
       // );
 
-      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(localTracks.audioTrack._deviceName);
+      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(
+        localTracks.audioTrack._deviceName
+      );
 
       // event_manager.raiseGetCurrentVideoDevice();
       event_manager.raiseGetCurrentAudioDevice();
@@ -332,26 +369,41 @@ class ClientManager {
         mirror: mlocal,
       });
 
-      event_manager.raiseJoinChannelSuccess(this.options.uid.toString(), this.options.channel);
+      event_manager.raiseJoinChannelSuccess(
+        this.options.uid.toString(),
+        this.options.channel
+      );
 
       $("#local-player-name").text(`localVideo(${this.options.uid})`);
     } else {
       // video is not enabled
       [this.options.uid, localTracks.audioTrack] = await Promise.all([
-        this.client.join(this.options.appid, this.options.channel, this.options.token || null, this.options.uid || null),
+        this.client.join(
+          this.options.appid,
+          this.options.channel,
+          this.options.token || null,
+          this.options.uid || null
+        ),
         AgoraRTC.createMicrophoneAudioTrack(),
       ]);
 
-      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(localTracks.audioTrack._deviceName);
+      currentAudioDevice = wrapper.getMicrophoneDeviceIdFromDeviceName(
+        localTracks.audioTrack._deviceName
+      );
 
       event_manager.raiseGetCurrentAudioDevice();
       event_manager.raiseGetCurrentPlayBackDevice();
 
-      event_manager.raiseJoinChannelSuccess(this.options.uid.toString(), this.options.channel);
+      event_manager.raiseJoinChannelSuccess(
+        this.options.uid.toString(),
+        this.options.channel
+      );
     }
 
     if (this.client_role == 1) {
-      await this.client.publish(Object.values(localTracks).filter((track) => track !== null));
+      await this.client.publish(
+        Object.values(localTracks).filter((track) => track !== null)
+      );
     }
   }
 
@@ -457,7 +509,9 @@ class ClientManager {
         mediaStreamTrack: dest.stream.getAudioTracks()[0],
       };
 
-      [localTracks.audioTrack] = await Promise.all([AgoraRTC.createCustomAudioTrack(CustomVideoTrackInitConfig)]);
+      [localTracks.audioTrack] = await Promise.all([
+        AgoraRTC.createCustomAudioTrack(CustomVideoTrackInitConfig),
+      ]);
 
       // play local video track
       await this.client.publish(localTracks.audioTrack);
@@ -470,7 +524,9 @@ class ClientManager {
 
       await this.client.unpublish(localTracks.audioTrack);
 
-      [localTracks.audioTrack] = await Promise.all([AgoraRTC.createMicrophoneAudioTrack()]);
+      [localTracks.audioTrack] = await Promise.all([
+        AgoraRTC.createMicrophoneAudioTrack(),
+      ]);
 
       await this.client.publish(localTracks.audioTrack);
     }
@@ -503,7 +559,9 @@ class ClientManager {
 
       await this.client.unpublish(localTracks.videoTrack);
 
-      [localTracks.videoTrack] = await Promise.all([AgoraRTC.createCameraVideoTrack()]);
+      [localTracks.videoTrack] = await Promise.all([
+        AgoraRTC.createCameraVideoTrack(),
+      ]);
 
       localTracks.videoTrack.play("local-player");
       await this.client.publish(localTracks.videoTrack);
@@ -599,7 +657,9 @@ class ClientManager {
     screenCaptureBitrate,
     screenCaptureCaptureMouseCursor
   ) {
-    console.error("Note this API should be replaced by startScreenCaptureForWeb instead.");
+    console.error(
+      "Note this API should be replaced by startScreenCaptureForWeb instead."
+    );
     localTracks.videoTrack.stop();
     localTracks.videoTrack.close();
     await this.client.unpublish(localTracks.videoTrack);
@@ -683,8 +743,10 @@ class ClientManager {
   }
 
   SetRemoteUserPriority(uid, userPriority) {
-    if (userPriority == 50 || userPriority == 0) this.client.setRemoteVideoStreamType(uid, 0);
-    else if (userPriority == 100 || userPriority == 1) this.client.setRemoteVideoStreamType(uid, 1);
+    if (userPriority == 50 || userPriority == 0)
+      this.client.setRemoteVideoStreamType(uid, 0);
+    else if (userPriority == 100 || userPriority == 1)
+      this.client.setRemoteVideoStreamType(uid, 1);
   }
 
   setRemoteSubscribeFallbackOption_WGL(option) {

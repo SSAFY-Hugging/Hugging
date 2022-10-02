@@ -2,9 +2,9 @@
 function cacheDevices() {
   AgoraRTC.getPlaybackDevices()
     .then((cameras) => {
-      wrapper.savePlayBackDevices(cameras);
-      var fstr = "";
-      var delim = "";
+      // wrapper.savePlayBackDevices(cameras);
+      // var fstr = "";
+      // var delim = "";
       // cameras.forEach((cam) => {
       //   fstr += delim + cam.deviceId + "," + cam.kind + "," + cam.label + "," + cam.groupId;
       //   delim = "|";
@@ -22,7 +22,15 @@ function cacheDevices() {
       var fstr = "";
       var delim = "";
       mics.forEach((cam) => {
-        fstr += delim + cam.deviceId + "," + cam.kind + "," + cam.label + "," + cam.groupId;
+        fstr +=
+          delim +
+          cam.deviceId +
+          "," +
+          cam.kind +
+          "," +
+          cam.label +
+          "," +
+          cam.groupId;
         delim = "|";
       });
 

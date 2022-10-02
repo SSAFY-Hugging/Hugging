@@ -35,8 +35,16 @@ function setMRemote(val) {
 }
 
 // set beauty effect On
-async function setBeautyEffectOn(lighteningLevel, rednessLevel, smoothnessLevel) {
-  client_manager.setBeautyEffectOn(lighteningLevel, rednessLevel, smoothnessLevel);
+async function setBeautyEffectOn(
+  lighteningLevel,
+  rednessLevel,
+  smoothnessLevel
+) {
+  client_manager.setBeautyEffectOn(
+    lighteningLevel,
+    rednessLevel,
+    smoothnessLevel
+  );
 }
 
 // set beauty effect Off
@@ -45,7 +53,7 @@ async function setBeautyEffectOff() {
 }
 
 function setCameraCapturerConfiguration(preference, cameraDirection) {
-  // AgoraRTC.createCameraVideoTrack({ encoderConfig: curVideoProfile.value });
+  AgoraRTC.createCameraVideoTrack({ encoderConfig: curVideoProfile.value });
 }
 
 function getUserInfoByUid_WGL(uid) {
@@ -58,7 +66,7 @@ function getUserInfoByUid_WGL(uid) {
 
 // Stops/Resumes sending the local video stream.
 async function enableLocalVideo(enabled) {
-  // client_manager.enableLocalVideo(enabled);
+  client_manager.enableLocalVideo(enabled);
 }
 
 // Starts the local video preview before joining the channel
@@ -81,13 +89,27 @@ function enableAudioVolumeIndicator() {
   client_manager.enableAudioVolumeIndicator();
 }
 
-function joinChannelWithUserAccount_WGL(token_str, channelId_str, userAccount_str) {
-  client_manager.joinChannelWithUserAccount_WGL(token_str, channelId_str, userAccount_str);
+function joinChannelWithUserAccount_WGL(
+  token_str,
+  channelId_str,
+  userAccount_str
+) {
+  client_manager.joinChannelWithUserAccount_WGL(
+    token_str,
+    channelId_str,
+    userAccount_str
+  );
 }
 
 // Sets the built-in encryption mode.
 function setEncryptionMode(mode) {
-  var modes = ["aes-128-xts", "aes-256-xts", "aes-128-ecb", "sm4-128-ecb", "none"];
+  var modes = [
+    "aes-128-xts",
+    "aes-256-xts",
+    "aes-128-ecb",
+    "sm4-128-ecb",
+    "none",
+  ];
   var n = modes.includes(mode);
   if (n) {
     savedEncryptionMode = mode;
@@ -109,13 +131,19 @@ async function setMirrorApplied_WGL(apply) {
     wrapper.savedSettings.mirrorOptions = { fit: "cover", mirror: true };
     if (localTracks.videoTrack) {
       localTracks.videoTrack.stop();
-      localTracks.videoTrack.play("local-player", wrapper.savedSettings.mirrorOptions);
+      localTracks.videoTrack.play(
+        "local-player",
+        wrapper.savedSettings.mirrorOptions
+      );
     }
   } else if (apply == 0) {
     wrapper.savedSettings.mirrorOptions = { fit: "cover", mirror: false };
     if (localTracks.videoTrack) {
       localTracks.videoTrack.stop();
-      localTracks.videoTrack.play("local-player", wrapper.savedSettings.mirrorOptions);
+      localTracks.videoTrack.play(
+        "local-player",
+        wrapper.savedSettings.mirrorOptions
+      );
     }
   }
 }
@@ -202,19 +230,19 @@ async function setLocalAudioTrackMicrophone(deviceId) {
 }
 
 async function setLocalTrackCamera(deviceId) {
-  // if (localTracks.videoTrack) {
-  //   localTracks.videoTrack.setDevice(deviceId);
-  // }
+  if (localTracks.videoTrack) {
+    localTracks.videoTrack.setDevice(deviceId);
+  }
 }
 
 async function setVideoDeviceCollectionDeviceWGL(deviceId) {
   if (currentVideoDevice === "") {
     currentVideoDevice = deviceId;
-    // event_manager.raiseGetCurrentVideoDevice(currentVideoDevice);
+    event_manager.raiseGetCurrentVideoDevice(currentVideoDevice);
   } else {
     currentVideoDevice = deviceId;
-    // event_manager.raiseGetCurrentVideoDevice(currentVideoDevice);
-    // setLocalTrackCamera(currentVideoDevice);
+    event_manager.raiseGetCurrentVideoDevice(currentVideoDevice);
+    setLocalTrackCamera(currentVideoDevice);
   }
 }
 
@@ -240,7 +268,7 @@ async function setAudioRecordingCollectionDeviceWGL(deviceId) {
 function handleConnectionStateChange(curState, revState, reason) {}
 
 async function startScreenCaptureForWeb() {
-  client_manager.startScreenCaptureForWeb();
+  client_manager.startScreenCaptureForWeb(); 
 }
 
 async function startScreenCaptureByDisplayId(
@@ -277,23 +305,23 @@ async function switchCamera() {
   var curCamId = localTracks.videoTrack.getMediaStreamTrack().label;
   var otherCams = new Array();
 
-  // AgoraRTC.getCameras()
-  //   .then((cameras) => {
-  //     cameras.forEach((cam) => {
-  //       if (cam.label == curCamId) {
-  //         //console.log("found cur camera");
-  //       } else {
-  //         otherCams.push(cam.deviceId);
-  //       }
-  //     });
+  AgoraRTC.getCameras()
+    .then((cameras) => {
+      cameras.forEach((cam) => {
+        if (cam.label == curCamId) {
+          //console.log("found cur camera");
+        } else {
+          otherCams.push(cam.deviceId);
+        }
+      });
 
-  //     if (otherCams.length > 0) {
-  //       localTracks.videoTrack.setDevice(otherCams[0]);
-  //     }
-  //   })
-  //   .catch((e) => {
-  //     console.log("get cameras error!", e);
-  //   });
+      if (otherCams.length > 0) {
+        localTracks.videoTrack.setDevice(otherCams[0]);
+      }
+    })
+    .catch((e) => {
+      console.log("get cameras error!", e);
+    });
 }
 
 // Starts the last-mile network probe test.
@@ -421,7 +449,17 @@ function disableLogUpload() {
   client_manager.disableLogUpload();
 }
 // Sets the video encoder configuration.
-async function SetVideoEncoderConfiguration(Width, Height, FrameRate, MinFrameRate, Bitrate, MinBitrate, OrientationMode, DegradationPreference, VideoMirrorMode) {
+async function SetVideoEncoderConfiguration(
+  Width,
+  Height,
+  FrameRate,
+  MinFrameRate,
+  Bitrate,
+  MinBitrate,
+  OrientationMode,
+  DegradationPreference,
+  VideoMirrorMode
+) {
   var updatedConfig;
   updatedConfig = {
     width: Width,
@@ -434,9 +472,9 @@ async function SetVideoEncoderConfiguration(Width, Height, FrameRate, MinFrameRa
     //videoMirrorMode: VideoMirrorMode,
   };
   if (localTracks.videoTrack == null) {
-    // AgoraRTC.createCameraVideoTrack({ encoderConfig: updatedConfig });
+    AgoraRTC.createCameraVideoTrack({ encoderConfig: updatedConfig });
   } else {
-    // localTracks.videoTrack && (await localTracks.videoTrack.setEncoderConfiguration(updatedConfig));
+    localTracks.videoTrack && await localTracks.videoTrack.setEncoderConfiguration(updatedConfig);
   }
 }
 
@@ -526,8 +564,12 @@ function SetLiveTranscoding(
       url: StrBackgroundImageRtcImageUrl,
       x: BackgroundImageRtcImageX,
       y: BackgroundImageRtcImageY,
-      width: BackgroundImageRtcImageWidth == 0 ? 1080 : BackgroundImageRtcImageWidth,
-      height: BackgroundImageRtcImageHeight == 0 ? 520 : BackgroundImageRtcImageHeight,
+      width:
+        BackgroundImageRtcImageWidth == 0 ? 1080 : BackgroundImageRtcImageWidth,
+      height:
+        BackgroundImageRtcImageHeight == 0
+          ? 520
+          : BackgroundImageRtcImageHeight,
     };
   }
 }
@@ -566,7 +608,15 @@ function sStopLiveTranscoding(url) {
   }
 }
 
-async function PlayEffect(soundId, filePath, loopCount, pitch, pan, gain, publish) {
+async function PlayEffect(
+  soundId,
+  filePath,
+  loopCount,
+  pitch,
+  pan,
+  gain,
+  publish
+) {
   audioEffects._PlayEffect(soundId, filePath, loopCount, publish);
 }
 
@@ -638,7 +688,8 @@ function SetVolumeOfEffect(soundId, volume) {
 }
 
 function AdjustAudioMixingVolume(volume) {
-  if (localTracks.audioMixingTrack) localTracks.audioMixingTrack.setVolume(volume);
+  if (localTracks.audioMixingTrack)
+    localTracks.audioMixingTrack.setVolume(volume);
 }
 
 function SetAudioMixingPosition(position) {
@@ -648,12 +699,14 @@ function SetAudioMixingPosition(position) {
 }
 
 function GetAudioMixingDuration() {
-  if (localTracks.audioMixingTrack) return localTracks.audioMixingTrack.duration;
+  if (localTracks.audioMixingTrack)
+    return localTracks.audioMixingTrack.duration;
   return 0;
 }
 
 function GetAudioMixingCurrentPosition() {
-  if (localTracks.audioMixingTrack) return localTracks.audioMixingTrack.getCurrentTime();
+  if (localTracks.audioMixingTrack)
+    return localTracks.audioMixingTrack.getCurrentTime();
   return 0;
 }
 
@@ -679,7 +732,15 @@ function GetAudioMixingPublishVolume() {
   return wrapper.savedSettings.audioMixingPublishVolume;
 }
 
-function startChannelMediaRelay(srcChannelName, srcToken, srcUid, destChannelName, destToken, destUid, destCount) {
+function startChannelMediaRelay(
+  srcChannelName,
+  srcToken,
+  srcUid,
+  destChannelName,
+  destToken,
+  destUid,
+  destCount
+) {
   var client = client_manager.getClient();
   if (client) {
     const configuration = AgoraRTC.createChannelMediaRelayConfiguration();
@@ -705,7 +766,15 @@ function startChannelMediaRelay(srcChannelName, srcToken, srcUid, destChannelNam
   }
 }
 
-function updateChannelMediaRelay(srcChannelName, srcToken, srcUid, destChannelName, destToken, destUid, destCount) {
+function updateChannelMediaRelay(
+  srcChannelName,
+  srcToken,
+  srcUid,
+  destChannelName,
+  destToken,
+  destUid,
+  destCount
+) {
   var client = client_manager.getClient();
   if (client) {
     const configuration = AgoraRTC.createChannelMediaRelayConfiguration();
