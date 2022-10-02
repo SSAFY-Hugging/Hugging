@@ -18,7 +18,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CounselReservationResponse {
-	private Integer counselId;
+	private Integer counselorId;
+	private String counselorName;
 	private String memberNickname;
 	private String reservationDate;
 	private String reservationTime;
@@ -27,7 +28,8 @@ public class CounselReservationResponse {
 
 	public static CounselReservationResponse of(Counsel counsel) {
 		return new CounselReservationResponseBuilder()
-			.counselId(counsel.getCounselor().getId())
+			.counselorId(counsel.getCounselor().getId())
+			.counselorName(counsel.getCounselor().getName())
 			.memberNickname(counsel.getMember().getNickname())
 			.reservationDate(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
 			.reservationTime(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("HH:mm")))
