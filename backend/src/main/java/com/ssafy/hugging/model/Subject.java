@@ -1,5 +1,5 @@
 package com.ssafy.hugging.model;
 
 public enum Subject {
-	DEPRESSION, SLEEPLESSNESS, FAMILY
+	Depressed, Insomnia, Family, School, Company, Relationship, Love, SelfUnderstanding
 }
