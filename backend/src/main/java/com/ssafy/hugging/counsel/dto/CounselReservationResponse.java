@@ -1,6 +1,5 @@
 package com.ssafy.hugging.counsel.dto;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
@@ -20,6 +19,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CounselReservationResponse {
 	private Integer counselId;
+	private String memberNickname;
 	private String reservationDate;
 	private String reservationTime;
 	private Subject subject;
@@ -28,6 +28,7 @@ public class CounselReservationResponse {
 	public static CounselReservationResponse of(Counsel counsel) {
 		return new CounselReservationResponseBuilder()
 			.counselId(counsel.getCounselor().getId())
+			.memberNickname(counsel.getMember().getNickname())
 			.reservationDate(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")))
 			.reservationTime(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("HH:mm")))
 			.subject(counsel.getSubject())
