@@ -33,9 +33,15 @@
   top: 45.43%;
   bottom: 53.05%;
   margin: 5px;
+  width: 165px;
+  height: 50px;
+  overflow-y: hidden;
 }
 .MusicTop {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 265px;
   overflow-x: scroll;
 }
 .TitleText {
