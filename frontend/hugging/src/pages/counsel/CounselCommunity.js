@@ -9,6 +9,8 @@ const CounselCommunity = () => {
     unityProvider,
     addEventListener,
     removeEventListener,
+    isLoaded,
+    requestFullscreen,
     // unload
   } = useUnityContext({
     loaderUrl: "Build/WebGLBuild.loader.js",
@@ -35,6 +37,10 @@ const CounselCommunity = () => {
     };
   }, [addEventListener, removeEventListener, exit]);
 
+  function handleClickEnterFullscreen() {
+    requestFullscreen(true);
+  }
+
   return (
     <div>
       {sendToUnity()}
@@ -47,6 +53,8 @@ const CounselCommunity = () => {
         }}
         unityProvider={unityProvider}
       />
+      {isLoaded === true && requestFullscreen(true)}
+      <button onClick={handleClickEnterFullscreen}>전체화면</button>
     </div>
   );
 };
