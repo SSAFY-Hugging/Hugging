@@ -43,7 +43,7 @@ const CounselCommunity = () => {
 
   return (
     <div>
-      {sendToUnity()}
+      {requestFullscreen(true)}
       <Unity
         style={{
           width: "90%",
@@ -53,7 +53,7 @@ const CounselCommunity = () => {
         }}
         unityProvider={unityProvider}
       />
-      {isLoaded === true && requestFullscreen(true)}
+      {isLoaded === true && sendToUnity()}
       <button onClick={handleClickEnterFullscreen}>전체화면</button>
     </div>
   );
