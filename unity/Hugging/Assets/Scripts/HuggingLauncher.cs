@@ -27,7 +27,7 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
     private static string gameVersion = "1";
     private static string[] counselTypes = new string[2];
 
-    public VoiceManager voiceManager;
+    public VoiceChatManager voiceChatManager;
     public GameObject isFullRoomAlert;
     public GameObject StartPanel;
     public GameObject CommunityLobby;
@@ -192,8 +192,8 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
 
     private void SetVoiceChat()
     {
-        voiceManager.channelName = PhotonNetwork.CurrentRoom.Name;
-        voiceManager.JoinChannel();
+        voiceChatManager.channelName = PhotonNetwork.CurrentRoom.Name;
+        voiceChatManager.JoinChannel();
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -210,9 +210,9 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.LeaveRoom();
         }
-        VoiceManager.instance.LeaveVoiceChat();
+        voiceChatManager.LeaveVoiceChat();
         PhotonNetwork.Disconnect();
-        Application.Quit();
+        //Application.Quit();
         Exit();
     }
 
