@@ -21,4 +21,9 @@ public class PlaceManager : MonoBehaviour {
         placeObjct.GetValueOrDefault(subject).SetActive(true);
         Camera.main.transform.position = placePos.GetValueOrDefault(subject).transform.position;
     }
+
+    public void changeActive(GameObject gameObject)
+    {
+        gameObject.SetActive(!gameObject.activeInHierarchy);
+    }
 }

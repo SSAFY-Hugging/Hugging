@@ -11,6 +11,7 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
     [DllImport("__Internal")]
     private static extern void Exit();
 
+    public PlayerMove player;
     public GameObject canvas;
     public Text roomNameText;
     public Text playerCountText;
@@ -176,11 +177,14 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
     private void SpawnPlayer()
     {
         string characterName = "Ch_" + selectedCharacterNum.ToString();
-        GameObject player = PhotonNetwork.Instantiate(characterName, Camera.main.transform.position, Quaternion.identity);
-
+        GameObject playerObj = PhotonNetwork.Instantiate(characterName, Camera.main.transform.position, Quaternion.identity);
+        if(photonView.IsMine)
+        {
+            player = playerObj.GetComponent<PlayerMove>();
+        }
         Camera.main.gameObject.SetActive(false);
-        GameObject characterCamera = PhotonNetwork.Instantiate("characterCamera", player.transform.position, Quaternion.identity);
-        characterCamera.GetComponent<CharacterCamera>().player = player;
+        GameObject characterCamera = PhotonNetwork.Instantiate("characterCamera", playerObj.transform.position, Quaternion.identity);
+        characterCamera.GetComponent<CharacterCamera>().player = playerObj;
 
 
         //GameObject nickName = PhotonNetwork.Instantiate("Nickname", player.transform.position, Quaternion.identity);
@@ -194,6 +198,11 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
     {
         voiceChatManager.channelName = PhotonNetwork.CurrentRoom.Name;
         voiceChatManager.JoinChannel();
+    }
+
+    public void EmotionBtn(string emotion)
+    {
+        player.setEmotionAnim(emotion);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)

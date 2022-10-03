@@ -42,6 +42,11 @@ public class PlayerMove : MonoBehaviourPunCallbacks
         }
     }
 
-
-
+    public void setEmotionAnim(string emotion)
+    {
+        if(photonView.IsMine)
+        {
+            anim.SetTrigger(emotion);
+        }
+    }
 }
