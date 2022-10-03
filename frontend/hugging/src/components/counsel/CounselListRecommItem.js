@@ -2,9 +2,6 @@ import { Fragment } from "react";
 import classes from "./CounselListRecommItem.module.css";
 
 const CounselListRecommItem = (props) => {
-  console.log(props.name);
-  console.log(props.field);
-  console.log(props.score);
   return (
     <div className={classes.back}>
       <img

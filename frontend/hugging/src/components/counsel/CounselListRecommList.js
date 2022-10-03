@@ -4,7 +4,6 @@ import CounselListRecommItem from "./CounselListRecommItem";
 import Card from "../ui/Card";
 
 const CounselListRecommList = (props) => {
-  console.log(props.recommCounselors);
   return (
     <Fragment>
       <div className={classes.title}>맞춤 추천</div>

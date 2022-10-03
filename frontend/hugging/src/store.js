@@ -70,21 +70,48 @@ let user = createSlice({
   },
 });
 
-const initialCounselorState = { counselor: undefined, subject: undefined };
+const initialCounselorState = {
+  counselorName: undefined,
+  counselorId: undefined,
+  subject: undefined,
+  date: undefined,
+  time: undefined,
+  subjectKor: undefined,
+};
 
 let counselSlice = createSlice({
   name: "counsel",
   initialState: initialCounselorState,
   reducers: {
-    selectCounselor(state, action) {
-      console.log("in store");
+    selectCounselorName(state, action) {
+      console.log("in counselorName store");
       console.log(action.payload);
-      state.counselor = action.payload;
+      state.counselorName = action.payload;
+    },
+    selectCounselorId(state, action) {
+      console.log("in counselorId store");
+      console.log(action.payload);
+      state.counselorId = action.payload;
     },
     selectSubject(state, action) {
       console.log("in subject store");
       state.subject = action.payload;
       console.log(state.subject);
+    },
+    selectDate(state, action) {
+      console.log("in date store");
+      state.date = action.payload;
+      console.log(state.date);
+    },
+    selectTime(state, action) {
+      console.log("in time store");
+      state.time = action.payload;
+      console.log(state.time);
+    },
+    setSubjectKor(state, action) {
+      console.log("in setSubjectKor store");
+      state.subjectKor = action.payload;
+      console.log(state.subjectKor);
     },
   },
 });

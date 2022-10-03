@@ -4,9 +4,28 @@ import Calendar from "react-calendar";
 // import "react-calendar/dist/Calendar.css"; // css import
 import "./Calendar.css";
 import moment from "moment";
+import { useDispatch } from "react-redux";
+import { counselActions } from "../../store";
 
 const CounselCalendar = () => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState();
+  const dispatch = useDispatch();
+
+  const calendarClickHandler = (date) => {
+    setDate(date);
+    dispatch(counselActions.selectDate(getFormatDate(date)));
+  };
+
+  // yyyy-MM-dd format 변경
+  const getFormatDate = (date) => {
+    let year = date.getFullYear();
+    let month = date.getMonth();
+    month = month >= 10 ? month : "0" + month;
+    let day = date.getDate();
+    day = day >= 10 ? day : "0" + day;
+
+    return year + "-" + month + "-" + day;
+  };
 
   return (
     <Fragment>
@@ -19,7 +38,8 @@ const CounselCalendar = () => {
         ></img>
         <div className={classes.calendar}>
           <Calendar
-            onChange={setDate}
+            onChange={calendarClickHandler}
+            // onChange={calendarClickHandler}
             formatDay={(locale, date) => moment(date).format("DD")} // 날'일' 제외하고 숫자만 보이도록 설정
             value={date}
             showNeighboringMonth={false} //  이전, 이후 달의 날짜는 보이지 않도록 설정
@@ -29,9 +49,11 @@ const CounselCalendar = () => {
           </div> */}
           </Calendar>
         </div>
-        <p className="text-center">
-          <span className="bold">Selected Date:</span> {date.toDateString()}
-        </p>
+        {date && (
+          <p className="text-center">
+            <span className="bold">Selected Date:</span> {getFormatDate(date)}
+          </p>
+        )}
       </div>
     </Fragment>
   );
