@@ -11,5 +11,6 @@ public final class MissionConstant {
 	public static final String NOT_FOUND_MISSION_ID_ERROR_MESSAGE = "회원 정보가 없습니다.";
 	public static final String NOT_FOUND_PROCEEDING_MISSION_ERROR_MESSAGE = "일치하는 진행중인 미션이 없습니다.";
 	public static final String DELETE_COMPLETE_MISSION_ERROR_MESSAGE = "완료한 미션이라 삭제 불가능합니다.";
+	public static final String SAME_MISSION_ALREADY_EXIST_ERROR_MESSAGE = "이미 같은 미션을 진행중입니다.";
 }
 

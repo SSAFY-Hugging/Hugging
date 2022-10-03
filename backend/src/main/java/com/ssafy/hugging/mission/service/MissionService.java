@@ -52,6 +52,12 @@ public class MissionService {
 	}
 
 	public void addProceedingMission(ProceedingMissionRequest proceedingMissionRequest) {
+		if (proceedingMissionRepository.findProceedingMissionByMissionIdAndMemberIdAndCreateDate(
+			proceedingMissionRequest.getMissionId(), proceedingMissionRequest.getMemberId(),
+			LocalDate.from(ZonedDateTime.now(ZoneId.of("Asia/Seoul")))).isPresent()) {
+			throw new IllegalArgumentException(SAME_MISSION_ALREADY_EXIST_ERROR_MESSAGE);
+		}
+
 		Member member = memberRepository.findMemberById(proceedingMissionRequest.getMemberId())
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
 		Mission mission = missionRepository.findMissionById(proceedingMissionRequest.getMissionId())
@@ -61,17 +67,18 @@ public class MissionService {
 	}
 
 	public void deleteProceedingMission(Integer memberId, Integer missionId) {
-		ProceedingMission proceedingMission = proceedingMissionRepository.findProceedingMissionByMission_IdAndMember_Id(
-				missionId, memberId)
+		ProceedingMission proceedingMission = proceedingMissionRepository.findProceedingMissionByMissionIdAndMemberIdAndCreateDate(
+				missionId, memberId, LocalDate.from(ZonedDateTime.now(ZoneId.of("Asia/Seoul"))))
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_PROCEEDING_MISSION_ERROR_MESSAGE));
-		if(proceedingMission.getStatus() == Status.COMPLETE)
+		if (proceedingMission.getStatus() == Status.COMPLETE)
 			throw new IllegalArgumentException(DELETE_COMPLETE_MISSION_ERROR_MESSAGE);
 		proceedingMissionRepository.delete(proceedingMission);
 	}
 
 	public void completeProceedingMission(ProceedingMissionRequest proceedingMissionRequest) {
-		ProceedingMission proceedingMission = proceedingMissionRepository.findProceedingMissionByMission_IdAndMember_Id(
-				proceedingMissionRequest.getMissionId(), proceedingMissionRequest.getMemberId())
+		ProceedingMission proceedingMission = proceedingMissionRepository.findProceedingMissionByMissionIdAndMemberIdAndCreateDate(
+				proceedingMissionRequest.getMissionId(), proceedingMissionRequest.getMemberId(),
+				LocalDate.from(ZonedDateTime.now(ZoneId.of("Asia/Seoul"))))
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_PROCEEDING_MISSION_ERROR_MESSAGE));
 		proceedingMission.setComplete();
 	}
