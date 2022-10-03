@@ -1,3 +1,4 @@
+import classes from "./CounselCommunity.module.css";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import React, { useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +12,7 @@ const CounselCommunity = () => {
     removeEventListener,
     isLoaded,
     requestFullscreen,
+    loadingProgression,
     // unload
   } = useUnityContext({
     loaderUrl: "Build/WebGLBuild.loader.js",
@@ -18,10 +20,16 @@ const CounselCommunity = () => {
     frameworkUrl: "Build/WebGLBuild.framework.js",
     codeUrl: "Build/WebGLBuild.wasm",
   });
+
+  const loadingPercentage = Math.round(loadingProgression * 100);
   const navigate = useNavigate();
   const exit = useCallback(() => {
     navigate("/counseldone");
   }, []);
+
+  function setLandscape() {
+    window.screen.orientation.lock("landscape");
+  }
 
   function sendToUnity() {
     // AgoraRTC.createStream({ video: false, audio: true });
@@ -43,7 +51,7 @@ const CounselCommunity = () => {
 
   return (
     <div>
-      {requestFullscreen(true)}
+      {setLandscape()}
       <Unity
         style={{
           width: "90%",
@@ -52,9 +60,20 @@ const CounselCommunity = () => {
           alignContent: "center",
         }}
         unityProvider={unityProvider}
+        devicePixelRatio={window.devicePixelRatio}
       />
+      {isLoaded === false && (
+        // We'll conditionally render the loading overlay if the Unity
+        // Application is not loaded.
+        <div className={classes.loadingOverlay}>
+          <p>로딩중... ({loadingPercentage}%)</p>
+        </div>
+      )}
+      {isLoaded === true && requestFullscreen(true)}
       {isLoaded === true && sendToUnity()}
-      <button onClick={handleClickEnterFullscreen}>전체화면</button>
+      {isLoaded === true && (
+        <button onClick={handleClickEnterFullscreen}>전체화면</button>
+      )}
     </div>
   );
 };

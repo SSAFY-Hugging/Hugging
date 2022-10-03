@@ -36,6 +36,8 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        Screen.orientation = ScreenOrientation.LandscapeRight;
+
         PhotonNetwork.AutomaticallySyncScene = true;
         counselTypes[0] = "OneToOne";
         counselTypes[1] = "Community";

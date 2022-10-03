@@ -6,7 +6,7 @@ function PlayingPageIcon() {
     <>
       <div className={styles.Icon}>
         <a href="/recommend_media">
-          <img src="./X.png" alt="image" className={styles.image}></img>
+          <img src="../X.png" alt="image" className={styles.image}></img>
         </a>
       </div>
     </>

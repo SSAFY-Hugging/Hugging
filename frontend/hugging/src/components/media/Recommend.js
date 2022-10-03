@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Recommend.module.css";
 import { useNavigate } from "react-router-dom";
 
-function Recommend() {
+function Recommend(props) {
   const navigate = useNavigate();
   return (
     <>
@@ -16,50 +16,19 @@ function Recommend() {
           ></img>
         </div>
         <div className={styles.List}>
-          <button
-            className={styles.Meditation}
-            onClick={() => navigate("/playing_music")}
-          >
-            <img
-              src="./music.png"
-              alt="music"
-              className={styles.MusicImage}
-            ></img>
-            <p className="MeditationText">집중력 향상을 위한 아침 명상</p>
-          </button>
-          <button
-            className={styles.Meditation}
-            onClick={() => navigate("/playing_music")}
-          >
-            <img
-              src="./music.png"
-              alt="music"
-              className={styles.MusicImage}
-            ></img>
-            <p className="MeditationText">집중력 향상을 위한 아침 명상</p>
-          </button>
-          <button
-            className={styles.Meditation}
-            onClick={() => navigate("/playing_music")}
-          >
-            <img
-              src="./music.png"
-              alt="music"
-              className={styles.MusicImage}
-            ></img>
-            <p className="MeditationText">집중력 향상을 위한 아침 명상</p>
-          </button>
-          <button
-            className={styles.Meditation}
-            onClick={() => navigate("/playing_music")}
-          >
-            <img
-              src="./music.png"
-              alt="music"
-              className={styles.MusicImage}
-            ></img>
-            <p className="MeditationText">집중력 향상을 위한 아침 명상</p>
-          </button>
+          {props.musicdatas.map((musicdata) => (
+            <button
+              className={styles.Meditation}
+              onClick={() => navigate(`/playing_music/${musicdata.id}`)}
+            >
+              <img
+                src="./music.png"
+                alt="music"
+                className={styles.MusicImage}
+              ></img>
+              <p className="MeditationText">{musicdata.name}</p>
+            </button>
+          ))}
         </div>
       </div>
     </>
