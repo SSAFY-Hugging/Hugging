@@ -13,6 +13,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.ssafy.hugging.counselor.dto.CounselorListResponse;
 import com.ssafy.hugging.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -68,9 +69,9 @@ public class MemberService implements UserDetailsService {
 	public MemberResponse getMemberById(Integer id) {
 		Member member = memberRepository.findMemberById(id)
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
-		List<CounselorResponse> counselorList = member.getFavoriteCounselorList()
+		List<CounselorListResponse> counselorList = member.getFavoriteCounselorList()
 			.stream()
-			.map(favoriteCounselor -> CounselorResponse.of(favoriteCounselor.getCounselor(),
+			.map(favoriteCounselor -> CounselorListResponse.of(favoriteCounselor.getCounselor(),
 				counselorReviewRepository.findAvgByCounselorId(favoriteCounselor.getCounselor().getId())))
 			.collect(Collectors.toList());
 		return new MemberResponse(member, counselorList);
@@ -211,12 +212,12 @@ public class MemberService implements UserDetailsService {
 		favoriteMusicRepository.deleteFavoriteMusicByMemberIdAndMusicId(memberId, musicId);
 	}
 
-	public List<CounselorResponse> getFavoriteCounselorList(Integer id) {
+	public List<CounselorListResponse> getFavoriteCounselorList(Integer id) {
 		Member member = memberRepository.findMemberById(id)
 			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
 		return member.getFavoriteCounselorList()
 			.stream()
-			.map(favoriteCounselor -> CounselorResponse.of(favoriteCounselor.getCounselor(),
+			.map(favoriteCounselor -> CounselorListResponse.of(favoriteCounselor.getCounselor(),
 				counselorReviewRepository.findAvgByCounselorId(favoriteCounselor.getCounselor().getId())))
 			.collect(Collectors.toList());
 	}
