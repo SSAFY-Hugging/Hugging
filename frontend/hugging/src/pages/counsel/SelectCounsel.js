@@ -1,8 +1,37 @@
-import { Fragment } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./SelectCounsel.module.css";
 
 const SelectCounsel = () => {
+  const [nickName, setNickName] = useState("비회원");
+
+  const getUserProfile = useCallback(() => {
+    localStorage.setItem(
+      "userProfile",
+      JSON.stringify({
+        id: 10,
+        age: 20,
+        counselList: [],
+        email: "doohui96@naver.com",
+        favoriteCounselorList: [],
+        favoriteMusicList: [],
+        gender: "FEMALE",
+        nickname: "주히",
+        profileImage: 1,
+      })
+    );
+
+    const loadedUserProfile = localStorage.getItem("userProfile");
+    if (loadedUserProfile !== null) {
+      const parsedUser = JSON.parse(loadedUserProfile);
+      setNickName(parsedUser.nickname);
+    }
+  });
+
+  useEffect(() => {
+    getUserProfile();
+  }, [getUserProfile]);
+
   return (
     <Fragment>
       <div className={classes.banner}>
@@ -27,7 +56,11 @@ const SelectCounsel = () => {
           </div>
         </Link>
 
-        <Link to="/counselcommunity" style={{ textDecoration: "none" }}>
+        <Link
+          to="/counselmetaverse"
+          style={{ textDecoration: "none" }}
+          state={{ from: "Community", nickName: nickName }}
+        >
           <div className={classes.purple}>
             <div className={classes.title}>커뮤니티</div>
             <div className={classes.explain}>

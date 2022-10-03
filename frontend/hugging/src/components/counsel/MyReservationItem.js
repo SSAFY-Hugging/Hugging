@@ -1,7 +1,10 @@
 import classes from "./MyReservationItem.module.css";
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 const MyReservationItem = (props) => {
+  const navigate = useNavigate();
+
   const cancelClickHandler = useCallback(async () => {
     try {
       const response = await fetch(
@@ -29,6 +32,22 @@ const MyReservationItem = (props) => {
     props.onCancle();
   }, []);
 
+  const metaverseHandler = (e) => {
+    console.log("입장 클릭 ");
+    // navigate("/edit", { state: e.target.value });
+    //1:1 상담방이면 OneToOne|주희|001|Company
+    navigate("/counselmetaverse", {
+      state: {
+        from: "OneToOne",
+        nickName: props.memberNickname,
+        counselId: props.counselId,
+        subject: props.subject,
+      },
+    });
+  };
+
+  console.log("hre");
+  console.log(props);
   return (
     <>
       <div className={classes.item}>
@@ -43,7 +62,9 @@ const MyReservationItem = (props) => {
           <button className={classes.btnCancel} onClick={cancelClickHandler}>
             예약 취소
           </button>
-          <button className={classes.btnEnter}>입장</button>
+          <button className={classes.btnEnter} onClick={metaverseHandler}>
+            입장
+          </button>
         </div>
       </div>
     </>
