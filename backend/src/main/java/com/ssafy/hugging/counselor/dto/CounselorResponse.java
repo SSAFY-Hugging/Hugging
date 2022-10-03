@@ -1,6 +1,7 @@
 package com.ssafy.hugging.counselor.dto;
 
 import com.ssafy.hugging.counselor.domain.Counselor;
+import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.model.Gender;
 import com.ssafy.hugging.model.Subject;
 
@@ -10,12 +11,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CounselorResponse {
+	private Integer counselorId;
 	private String availableTime;
 	private String career;
 	private String certificate;
@@ -27,11 +32,12 @@ public class CounselorResponse {
 	private String profileImage;
 	private Double average;
 
-	// public CounselorResponse(Counselor counselor, Double average) {
-	// }
+	private List<CounselorReviewResponse> counselorReviewList = new ArrayList<>();
 
-	public static CounselorResponse of(Counselor counselor, Double average) {
-		return new CounselorResponseBuilder().availableTime(counselor.getAvailableTime())
+	public static CounselorResponse of(Counselor counselor, Double average, List<CounselorReviewResponse> counselorReviewList) {
+		return new CounselorResponseBuilder()
+			.counselorId(counselor.getId())
+			.availableTime(counselor.getAvailableTime())
 			.career(counselor.getCareer())
 			.certificate(counselor.getCertificate())
 			.email(counselor.getEmail())
@@ -41,6 +47,7 @@ public class CounselorResponse {
 			.subject(counselor.getSubject())
 			.profileImage(counselor.getProfileImage())
 			.average(average)
+			.counselorReviewList(counselorReviewList)
 			.build();
 	}
 }

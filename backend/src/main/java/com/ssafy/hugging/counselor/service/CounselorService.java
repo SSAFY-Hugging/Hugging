@@ -6,19 +6,16 @@ import static com.ssafy.hugging.member.MemberConstant.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
+import com.ssafy.hugging.counselor.dto.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.counselor.domain.CounselorReview;
-import com.ssafy.hugging.counselor.dto.CounselorLoginRequest;
-import com.ssafy.hugging.counselor.dto.CounselorLoginResponse;
-import com.ssafy.hugging.counselor.dto.CounselorResponse;
-import com.ssafy.hugging.counselor.dto.CounselorReviewRequest;
-import com.ssafy.hugging.counselor.dto.CounselorReviewResponse;
 import com.ssafy.hugging.counselor.repository.CounselorRepository;
 import com.ssafy.hugging.counselor.repository.CounselorReviewRepository;
 import com.ssafy.hugging.member.JwtTokenProvider;
@@ -37,12 +34,12 @@ public class CounselorService {
 	private final JwtTokenProvider jwtTokenProvider;
 
 	// 전문분야별 상담사 조회
-	public List<CounselorResponse> getCounselorBySubject(Subject subject) {
+	public List<CounselorListResponse> getCounselorBySubject(Subject subject) {
 		System.out.println(subject);
-		List<CounselorResponse> counselorList = new ArrayList<>();
+		List<CounselorListResponse> counselorList = new ArrayList<>();
 		for (Counselor counselor : counselorRepository.findCounselorsBySubject(subject)) {
 			counselorList.add(
-				CounselorResponse.of(counselor, counselorReviewRepository.findAvgByCounselorId(counselor.getId())));
+				CounselorListResponse.of(counselor, counselorReviewRepository.findAvgByCounselorId(counselor.getId())));
 		}
 		return counselorList;
 	}
@@ -71,8 +68,14 @@ public class CounselorService {
 
 	// 상담사 정보 조회
 	public CounselorResponse getCounselor(Integer id) {
-		return CounselorResponse.of(counselorRepository.findCounselorById(id),
-			counselorReviewRepository.findAvgByCounselorId(id));
+		Counselor counselor = counselorRepository.findCounselorById(id);
+		List<CounselorReviewResponse> counselorReviewResponseList = counselor.getCounselorReviewList()
+				.stream()
+				.map(counselorReview -> CounselorReviewResponse.of(counselorReview,
+						counselorReviewRepository.findAvgByCounselorId(counselor.getId())))
+				.collect(Collectors.toList());
+		return CounselorResponse.of(counselor,
+			counselorReviewRepository.findAvgByCounselorId(id), counselorReviewResponseList);
 	}
 
 	public Counselor getCounselorById(Integer id) {
