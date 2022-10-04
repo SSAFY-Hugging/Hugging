@@ -17,17 +17,20 @@ const CounselRecommList = (props) => {
         </Link>
       </div>
       <div>
-        <div className={classes.counselor}>
-          {props.counselors.map((counselor) => (
-            <CounselorRecommItem
-              key={counselor.id}
-              id={counselor.id}
-              name={counselor.name}
-              field={counselor.field}
-              score={counselor.score}
-            ></CounselorRecommItem>
-          ))}
-        </div>
+        {props.counselors.length != 0 && (
+          <div className={classes.counselor}>
+            {props.counselors.map((counselor) => (
+              <CounselorRecommItem
+                key={counselor.counselorId}
+                counselorId={counselor.counselorId}
+                name={counselor.name}
+                subject={counselor.subject}
+                average={counselor.average}
+              ></CounselorRecommItem>
+            ))}
+          </div>
+        )}
+        {props.counselors.length == 0 && <div> 상담사가 없습니다. </div>}
       </div>
     </Fragment>
   );

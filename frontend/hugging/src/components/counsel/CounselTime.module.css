@@ -10,5 +10,7 @@
 }
 
 .time {
-  overflow: hidden;
+  /* overflow: hidden; */
+  /* background: red; */
+  margin: 30px 80px;
 }

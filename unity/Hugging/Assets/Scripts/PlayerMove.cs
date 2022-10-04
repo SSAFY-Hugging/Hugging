@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks
 {
     public static VariableJoystick joystick;
     private Rigidbody rigid;
-    public Animator anim;
+    private Animator anim;
     private Vector3 moveVec;
     public int speed;
 
@@ -42,4 +42,11 @@ public class PlayerMove : MonoBehaviourPunCallbacks
         }
     }
 
+    public void setEmotionAnim(string emotion)
+    {
+        if(photonView.IsMine)
+        {
+            anim.SetTrigger(emotion);
+        }
+    }
 }

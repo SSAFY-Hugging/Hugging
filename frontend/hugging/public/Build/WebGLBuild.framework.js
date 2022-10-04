@@ -860,10 +860,10 @@ function unityFramework(Module) {
   var tempDouble;
   var tempI64;
   var ASM_CONSTS = {
-    2908052: function () {
+    2911732: function () {
       return Module.webglContextAttributes.premultipliedAlpha;
     },
-    2908113: function () {
+    2911793: function () {
       return Module.webglContextAttributes.preserveDrawingBuffer;
     },
   };
@@ -1193,10 +1193,10 @@ function unityFramework(Module) {
     var canvasSelector = "#" + jsDomCssEscapeId(canvasId);
     var canvas = document.querySelector(canvasSelector);
 
-    if (canvas) {
-      var rect = canvas.getBoundingClientRect();
-      HEAPU32[targetX >> 2] = viewportX - rect.left;
-      HEAPU32[targetY >> 2] = viewportY - rect.top;
+    if(canvas) {
+        var rect = canvas.getBoundingClientRect();
+        HEAPU32[targetX >> 2] = viewportX - rect.left;
+        HEAPU32[targetY >> 2] = viewportY - rect.top;
     }
   }
   function stringToNewUTF8(jsString) {

@@ -46,8 +46,8 @@ function MissionList() {
   axios.get("https://j7b204.p.ssafy.io/api/missions/").then((res) => {
     localStorage.setItem("missionList", JSON.stringify(res.data.data));
   });
-  let missionList = localStorage.getItem("missionList");
   const navigate = useNavigate();
+  let missionList = localStorage.getItem("missionList");
   missionList = JSON.parse(missionList);
   const [toggle, setToggle] = useState([false, false, false, false, false]);
 
