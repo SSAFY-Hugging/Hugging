@@ -38,4 +38,8 @@ public class MusicReview {
 	public static MusicReview from(MusicReviewRequest musicReviewRequest, Music music, Member member) {
 		return MusicReview.builder().score(musicReviewRequest.getScore()).music(music).member(member).build();
 	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
 }

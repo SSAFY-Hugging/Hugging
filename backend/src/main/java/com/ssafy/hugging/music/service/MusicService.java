@@ -4,6 +4,7 @@ import static com.ssafy.hugging.member.MemberConstant.*;
 import static com.ssafy.hugging.music.MusicConstant.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -64,11 +65,18 @@ public class MusicService {
 
 	@Transactional
 	public void addMusicReview(MusicReviewRequest musicReviewRequest) {
-		Member member = memberRepository.findMemberById(musicReviewRequest.getMemberId())
-			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
-		Music music = musicRepository.findMusicById(musicReviewRequest.getMusicId())
-			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MUSIC_ERROR_MESSAGE));
-		MusicReview musicReview = MusicReview.from(musicReviewRequest, music, member);
-		musicReviewRepository.save(musicReview);
+		Optional<MusicReview> existMusicReview = musicReviewRepository.findMusicReviewByMemberIdAndMusicId(
+			musicReviewRequest.getMemberId(), musicReviewRequest.getMusicId());
+		if (existMusicReview.isPresent()) {
+			MusicReview musicReview = existMusicReview.get();
+			musicReview.setScore(musicReviewRequest.getScore());
+		} else {
+			Member member = memberRepository.findMemberById(musicReviewRequest.getMemberId())
+				.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+			Music music = musicRepository.findMusicById(musicReviewRequest.getMusicId())
+				.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MUSIC_ERROR_MESSAGE));
+			MusicReview musicReview = MusicReview.from(musicReviewRequest, music, member);
+			musicReviewRepository.save(musicReview);
+		}
 	}
 }
