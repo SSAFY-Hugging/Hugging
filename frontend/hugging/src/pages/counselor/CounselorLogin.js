@@ -5,11 +5,13 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginCounselor } from "../../store";
 import jwt_decode from "jwt-decode";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function CounselorLogin() {
   let dispatch = useDispatch();
   const [email, setInputEmail] = useState("");
   const [password, setInputPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleInputId = (e) => {
     setInputEmail(e.target.value);
@@ -51,6 +53,7 @@ function CounselorLogin() {
                 "counselorprofile",
                 JSON.stringify(res.data.data)
               );
+              navigate("/counselor/mypage");
             })
             .catch((err) => {
               console.log("실패");

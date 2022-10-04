@@ -1,0 +1,40 @@
+.timer_div {
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.time {
+  font-size: 32px;
+}
+
+.start_btn {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  bottom: 180px;
+  left: 80px;
+  border-radius: 20px;
+  background: linear-gradient(to left, #c58bf2, #eea4ce);
+  border: none;
+  color: white;
+  width: 200px;
+  height: 50px;
+}
+
+.end_btn {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  bottom: 180px;
+  left: 80px;
+  border-radius: 20px;
+  background: grey;
+  border: none;
+  color: white;
+  width: 200px;
+  height: 50px;
+}

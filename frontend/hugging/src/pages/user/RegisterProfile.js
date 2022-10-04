@@ -8,8 +8,22 @@ import { changeUser, loginUser, changeImg } from "../../store";
 import promiseMiddleware from "redux-promise";
 import { API_HOST_URL } from "../../config";
 import jwt_decode from "jwt-decode";
+import profileimg1 from "../../img/profileimg1.png";
+import profileimg2 from "../../img/profileimg2.png";
+import profileimg3 from "../../img/profileimg3.png";
+import styled from "styled-components";
+
+// const ProfileImg = styled.button`
+//   background-image: url(${backgroundArr[(props) => props]});
+//   margin: 0px;
+//   width: 100vw;
+//   height: 100vh;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+// `;
 
 function RegisterProfile(props) {
+  const backgroundArr = [profileimg1, profileimg2, profileimg3];
   const navigate = useNavigate();
   let user = useSelector((state) => {
     return state.user;
@@ -20,7 +34,7 @@ function RegisterProfile(props) {
   const [nickname, setNickname] = useState("");
   const [age, setAge] = useState("");
   let [modal, setModal] = useState(false);
-  let [profileimg, setProfileimg] = useState("");
+  let [profileimg, setProfileimg] = useState(0);
   const modalClose = () => {
     setModal(!modal);
   };
@@ -31,7 +45,7 @@ function RegisterProfile(props) {
     setAge(e.target.value);
   };
   const selectList = ["MALE", "FEMALE"];
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("MALE");
 
   const handleSelect = (e) => {
     setGender(e.target.value);
@@ -41,7 +55,6 @@ function RegisterProfile(props) {
     e.preventDefault();
     const email = localStorage.getItem("email");
     let emotion = sessionStorage.getItem("emotion");
-    let profileimg = user.profileimg;
     let body = {
       nickname,
       age,
@@ -88,31 +101,36 @@ function RegisterProfile(props) {
       </div>
       <div className={styles.order2}></div>
       <p className={styles.profile_title}>프로필 이미지</p>
-      <div className={styles.profile_circle}>
-        <button
-          className={styles.profile_edit}
-          onClick={() => {
-            setModal(!modal);
-          }}
+      <img
+        src={backgroundArr[profileimg]}
+        className={styles.profile_circ}
+      ></img>
+      <button
+        className={styles.profile_edit}
+        onClick={() => {
+          setModal(!modal);
+        }}
+      >
+        <svg
+          color="white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+          width="30"
         >
-          <svg
-            color="white"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-6 h-6"
-            width="30"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-            />
-          </svg>
-        </button>
-      </div>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+          />
+        </svg>
+      </button>
+      {/* <div className={styles.profile_circle}> */}
+
+      {/* </div> */}
       <form onSubmit={handleSubmit}>
         <input
           className={styles.nickname}
@@ -153,7 +171,36 @@ function RegisterProfile(props) {
         </div>
       </form>
 
-      {modal === true ? <Modal modalClose={modalClose} /> : null}
+      {modal === true ? (
+        <div className={styles.App}>
+          <div className={styles.modal_back}>
+            <div className={styles.modal}>
+              <div className={styles.modal_bar}></div>
+              <button
+                className={styles.modal_select}
+                onClick={() => {
+                  setProfileimg(0);
+                }}
+              ></button>
+              <button
+                className={styles.modal_select2}
+                onClick={() => {
+                  setProfileimg(1);
+                }}
+              ></button>
+              <button
+                className={styles.modal_select3}
+                onClick={() => {
+                  setProfileimg(2);
+                }}
+              ></button>
+            </div>
+            <button className={styles.select_btn} onClick={modalClose}>
+              확인
+            </button>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }

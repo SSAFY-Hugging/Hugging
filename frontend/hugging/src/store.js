@@ -1,5 +1,15 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+let mission = createSlice({
+  name: "mission",
+  initialState: { mission: false },
+  reducers: {
+    changeMission: (state, action) => {
+      return (state = { mission: action.payload });
+    },
+  },
+});
+
 let counselor = createSlice({
   name: "counselor",
   initialState: {
@@ -29,8 +39,12 @@ let user = createSlice({
     emotion: "",
     gender: "",
     profileImage: 0,
+    userId: "",
   },
   reducers: {
+    userId(state, action) {
+      state.userId = action.payload;
+    },
     changeImg(state, action) {
       state.profileImage = action.payload;
     },
@@ -96,8 +110,9 @@ export let {
   deleteEmotion,
   clearUser,
   changeImg,
+  userId,
 } = user.actions;
-
+export let { changeMission } = mission.actions;
 export let { loginCounselor } = counselor.actions;
 export const counselActions = counselSlice.actions;
 
@@ -106,5 +121,6 @@ export default configureStore({
     counselor: counselor.reducer,
     user: user.reducer,
     counsel: counselSlice.reducer,
+    mission: mission.reducer,
   },
 });

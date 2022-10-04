@@ -42,20 +42,20 @@ function RegisterCategory({ history }) {
     "짜증남",
     "불편함",
   ]);
-  let [emotionre, setEmotionre] = useState([
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-    "",
-  ]);
+  // let [emotionre, setEmotionre] = useState([
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  //   "",
+  // ]);
   // useEffect(()=>{
   //             sessionStorage.setItem('emotion', JSON.stringify(emotionre))
   // },[setEmotionre])
@@ -72,26 +72,24 @@ function RegisterCategory({ history }) {
         <p className={styles.category}>category</p>
       </div>
       <div id={styles.category_card}>
-        {emotionre.map(function (a, i) {
+        {btn.map(function (a, i) {
           return (
             <button
               onClick={() => {
-                let copy = [...btn];
-                copy[i] = !btn[i];
-                setBtn(copy);
-                console.log(copy);
-                if (copy[i] === true) {
-                  emotionre[i] = emotion[i];
-                  setEmotionre(emotionre);
-                  sessionStorage.setItem("emotion", JSON.stringify(emotionre));
+                let emotion = [...btn];
+                emotion[i] = !btn[i];
+                setBtn(emotion);
+                console.log(emotion);
+                if (emotion[i] === true) {
+                  // emotionre[i] = emotion[i];
+                  // setEmotionre(emotionre);
+                  sessionStorage.setItem("emotion", JSON.stringify(emotion));
                 } else {
-                  emotionre[i] = "";
-                  setEmotionre(emotionre);
-                  localStorage.setItem("emotion", emotionre);
-                  sessionStorage.setItem("emotion", JSON.stringify(emotionre));
+                  // emotionre[i] = null;
+                  // setEmotionre(emotionre);
+                  // localStorage.setItem("emotion", emotionre);
+                  sessionStorage.setItem("emotion", JSON.stringify(emotion));
                 }
-
-                console.log(emotionre);
               }}
             >
               {emotion[i]}

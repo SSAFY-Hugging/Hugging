@@ -29,6 +29,7 @@ const RedirectUri = (props) => {
           sessionStorage.setItem("token", res.data.token);
           sessionStorage.setItem("isSocialLogin", true);
           let userId = jwt_decode(res.data.token);
+          dispatch(userId(userId.sub));
           axios({
             url: "https://j7b204.p.ssafy.io/api/members/" + userId.sub,
             method: "GET",
@@ -36,6 +37,7 @@ const RedirectUri = (props) => {
             .then((res) => {
               console.log("성공");
               console.log(res.data);
+
               localStorage.setItem("userprofile", JSON.stringify(res.data));
               navigate("/");
             })

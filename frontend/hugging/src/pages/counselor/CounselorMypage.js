@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginCounselor } from "../../store";
 import Calendar from "../../components/counselor/MyCalendar";
 import Star from "../../components/counselor/Star";
-
+import Nav from "../../components/ui/Nav";
 function CounselorMypage() {
   let profile = localStorage.getItem("counselorprofile");
   let counselorprofile = JSON.parse(profile);
@@ -26,15 +26,21 @@ function CounselorMypage() {
         </div>
         <div className={styles.counselor_card_item}>
           <span className={styles.counselor_card_item_text}>가능 시간</span>
-          <span>{counselorprofile.availableTime}</span>
+          <span className={styles.counselor_text}>
+            {counselorprofile.availableTime}
+          </span>
         </div>
         <div>
           <span className={styles.counselor_card_item_text}>자격증</span>
-          <span>{counselorprofile.certificate}</span>
+          <span className={styles.counselor_text}>
+            {counselorprofile.certificate}
+          </span>
         </div>
         <div>
           <span className={styles.counselor_card_item_text}>전문분야</span>
-          <span>{counselorprofile.subject}</span>
+          <span className={styles.counselor_text}>
+            {counselorprofile.subject}
+          </span>
         </div>
         <div>
           <Star />
@@ -44,11 +50,15 @@ function CounselorMypage() {
             주요 자격 및 경력
           </span>
         </div>
-        <span>{counselorprofile.career}</span>
+        <span className={styles.counselor_text2}>
+          {counselorprofile.career}
+        </span>
         <div>
           <span className={styles.counselor_card_item_text}>상담사 이야기</span>
         </div>
-        <span>{counselorprofile.explanation}</span>
+        <span className={styles.counselor_text2}>
+          {counselorprofile.explanation}
+        </span>
       </div>
 
       <Calendar />

@@ -1,0 +1,39 @@
+.mission_div {
+  width: 300px;
+  justify-content: space-between;
+  height: 60px;
+  box-shadow: 3px 1px 10px 1px gray;
+  border-radius: 15px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  /* flex-direction: row; */
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.start_btn {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(to left, #c7dbff, #c0cdff);
+  border-radius: 50%;
+  display: flex;
+  border: none;
+  margin-right: 5px;
+}
+.start_btn_text {
+  color: white;
+  font-weight: 700;
+  display: flex;
+  margin: auto;
+  align-content: center;
+  justify-content: center;
+}
+
+.mission_title {
+  font-weight: 600;
+  display: flex;
+  /* margin-top: 15px; */
+  margin-left: 10px;
+  color: gray;
+  font-size: 13px;
+}

@@ -1,46 +1,43 @@
 .App {
-    width: 360px;
-    height: 740px;
-    margin: auto;
-    justify-content: center;
-    position: relative;
-    border: solid 0.3px;
-    overflow:auto;
+  width: 360px;
+  height: 740px;
+  margin: auto;
+  justify-content: center;
+  position: relative;
+  border: solid 0.3px;
+  overflow: auto;
 }
 .nav {
-    margin-bottom: 0px;
-    height: 60px;
-    width: 360px;
-    display: flex;
-    justify-content: space-around;
-    box-shadow: 1px 1px 3px 0px gray;
-    position: sticky;
-    bottom: 0px;
-    background-color: white;
+  height: 60px;
+  width: 360px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 1px 1px 3px 0px gray;
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
 }
-.nav_btn_title{
-    color: #ADA4A5;
-    font-size: 8px;
-
+.nav_btn_title {
+  color: #ada4a5;
+  font-size: 8px;
 }
 
 .nav_btn {
-    border: none;
-    background-color: white;
-    position: relative;
-    padding: 5px;
+  border: none;
+  background-color: white;
+  position: relative;
+  padding: 5px;
 }
 
 .home_btn {
-    height: 60px;
-    width: 60px;
-    border: none;
-    background: linear-gradient(to left,#92A3FD, #9DCEFF);
-    border-radius: 50%;
-    position: absolute;
-    bottom: 30px;
-    left: 150px;
-    z-index: 9999;
-    box-shadow: 1px 1px 3px 0px gray;
-
+  height: 60px;
+  width: 60px;
+  border: none;
+  background: linear-gradient(to left, #92a3fd, #9dceff);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 30px;
+  left: 150px;
+  z-index: 9999;
+  box-shadow: 1px 1px 3px 0px gray;
 }

@@ -21,8 +21,12 @@ import CounselCommunity from "./pages/counsel/CounselCommunity";
 import CounselProfile from "./pages/counsel/CounselProfile";
 import ListCounselor from "./pages/counsel/ListCounselor";
 import MainPage from "./pages/main/MainPage";
-import CounselorMypage from './pages/counselor/CounselorMypage'
+import CounselorMypage from "./pages/counselor/CounselorMypage";
 import CounselDone from "./pages/counsel/CounselDone";
+import MissionStart from "./pages/mission/MissionStart";
+import Timer from "./components/mission/Timer";
+import MissionList from "./pages/mission/MissionList";
+import MissionManagement from "./pages/mission/MissionManagement";
 
 // import scrollbar from 'smooth-scrollbar';
 
@@ -42,13 +46,16 @@ function App() {
         <Route path="/calendar" element={<MyCalendar />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/counselor/login" element={<CounselorLogin />} />
-        <Route path="/counselor/mypage" element={<CounselorMypage />}/>
+        <Route path="/counselor/mypage" element={<CounselorMypage />} />
         <Route path="/category" element={<RegisterCategory />} />
         <Route path="/profile" element={<RegisterProfile />} />
         <Route path="/profile_img" element={<></>}></Route>
         <Route path="/recommend_media" element={<MediaView />} />
         <Route path="/playing_music:musicId" element={<MusicPlayingPage />} />
-        <Route path="/TopicMediaPage/:categoryId" element={<TopicMediaPage />} />
+        <Route
+          path="/TopicMediaPage/:categoryId"
+          element={<TopicMediaPage />}
+        />
         <Route path="/counselreserve" element={<ReserveCounsel />} />
         <Route path="/" element={<ReserveCounsel />} />
         <Route path="/counselselect" element={<SelectCounsel />}></Route>
@@ -61,6 +68,13 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/counselorlist" element={<ListCounselor />}></Route>
         <Route path="/counseldone" element={<CounselDone />}></Route>
+        <Route path="/missionstart" element={<MissionStart />}></Route>
+        <Route path="/timer" element={<Timer />}></Route>
+        <Route path="/missionlist" element={<MissionList />}></Route>
+        <Route
+          path="/mission/management"
+          element={<MissionManagement />}
+        ></Route>
       </Routes>
     </div>
   );
