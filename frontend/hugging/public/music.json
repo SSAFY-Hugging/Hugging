@@ -1,0 +1,95 @@
+[
+  {
+    "hits": 10,
+    "id": 1,
+    "musicUrl": "./music1.mp3",
+    "name": "가",
+    "tag": "자연",
+    "type": "SOUND"
+  },
+  {
+    "hits": 10,
+    "id": 2,
+    "musicUrl": "./music1.mp3",
+    "name": "나",
+    "tag": "자연",
+    "type": "SOUND"
+  },
+  {
+    "hits": 10,
+    "id": 3,
+    "musicUrl": "./music1.mp3",
+    "name": "다",
+    "tag": "자연",
+    "type": "SOUND"
+  },
+  {
+    "hits": 10,
+    "id": 4,
+    "musicUrl": "./music1.mp3",
+    "name": "라",
+    "tag": "자연",
+    "type": "SOUND"
+  },
+  {
+    "hits": 10,
+    "id": 5,
+    "musicUrl": "./music1.mp3",
+    "name": "마",
+    "tag": "자연",
+    "type": "SOUND"
+  }
+  ,
+  {
+    "hits": 10,
+    "id": 6,
+    "musicUrl": "./music1.mp3",
+    "name": "바",
+    "tag": "자연",
+    "type": "MEDITATION"
+  }
+  ,
+  {
+    "hits": 10,
+    "id": 7,
+    "musicUrl": "./music1.mp3",
+    "name": "사",
+    "tag": "자연",
+    "type": "MEDITATION"
+  }
+  ,
+  {
+    "hits": 10,
+    "id": 8,
+    "musicUrl": "./music1.mp3",
+    "name": "아",
+    "tag": "자연",
+    "type": "MEDITATION"
+  }
+  ,
+  {
+    "hits": 10,
+    "id": 9,
+    "musicUrl": "./music1.mp3",
+    "name": "자",
+    "tag": "자연",
+    "type": "MEDITATION"
+  }
+  ,
+  {
+    "hits": 10,
+    "id": 10,
+    "musicUrl": "./music1.mp3",
+    "name": "차",
+    "tag": "자연",
+    "type": "MEDITATION"
+  },
+  {
+    "hits": 10,
+    "id": 4,
+    "musicUrl": "./music1.mp3",
+    "name": "타파하",
+    "tag": "자연",
+    "type": "MEDITATION"
+  }
+]
