@@ -1,9 +1,11 @@
 package com.ssafy.hugging.counselor.dto;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.ssafy.hugging.counsel.domain.Counsel;
 import com.ssafy.hugging.counsel.dto.CounselReservationResponse;
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.model.Gender;
@@ -38,7 +40,10 @@ public class CounselorLoginResponse {
 		gender = counselor.getGender();
 		this.average = average;
 
-		counselList.addAll(
-			counselor.getCounselList().stream().map(CounselReservationResponse::of).collect(Collectors.toList()));
+		counselList.addAll(counselor.getCounselList()
+			.stream()
+			.sorted(Comparator.comparing(Counsel::getReservationDate))
+			.map(CounselReservationResponse::of)
+			.collect(Collectors.toList()));
 	}
 }
