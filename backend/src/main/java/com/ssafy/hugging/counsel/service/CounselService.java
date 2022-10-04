@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.hugging.counsel.domain.Counsel;
@@ -33,7 +32,8 @@ public class CounselService {
 	// 상담 예약
 	public void insertCounsel(CounselReserveRequest counselReserveRequest) {
 		Counsel counsel = counselRepository.save(Counsel.builder()
-			.reservationDate(LocalDateTime.parse(counselReserveRequest.getReservationDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
+			.reservationDate(LocalDateTime.parse(counselReserveRequest.getReservationDate(),
+				DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")))
 			.subject(counselReserveRequest.getSubject())
 			.status(Status.INCOMPLETE)
 			.build());

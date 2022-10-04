@@ -9,5 +9,6 @@ import com.ssafy.hugging.music.domain.MusicCategory;
 
 public interface MusicCategoryRepository extends JpaRepository<MusicCategory, Integer> {
 	Optional<MusicCategory> getMusicCategoryById(Integer id);
+
 	List<MusicCategory> findAll();
 }

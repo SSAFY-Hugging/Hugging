@@ -49,4 +49,6 @@ public class CounselorReview extends BaseEntity {
 		this.counselor = counselor;
 		counselor.getCounselorReviewList().add(this);
 	}
+
+	public void setScore(Integer score){ this.score = score; }
 }

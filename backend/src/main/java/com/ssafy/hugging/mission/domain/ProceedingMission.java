@@ -26,7 +26,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProceedingMission {
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Enumerated(EnumType.STRING)
 	private Status status;
@@ -44,7 +45,7 @@ public class ProceedingMission {
 		this.createDate = LocalDate.from(ZonedDateTime.now(ZoneId.of("Asia/Seoul")));
 	}
 
-	public ProceedingMission(Member member, Mission mission){
+	public ProceedingMission(Member member, Mission mission) {
 		setCreateDate();
 		this.member = member;
 		this.mission = mission;

@@ -6,8 +6,9 @@ import java.util.stream.Collectors;
 
 import com.ssafy.hugging.counsel.dto.CounselReservationResponse;
 import com.ssafy.hugging.counselor.dto.CounselorListResponse;
-import com.ssafy.hugging.counselor.dto.CounselorResponse;
 import com.ssafy.hugging.member.domain.Member;
+import com.ssafy.hugging.member.domain.MemberMentalCategory;
+import com.ssafy.hugging.member.domain.MentalCategory;
 import com.ssafy.hugging.model.Gender;
 import com.ssafy.hugging.music.dto.MusicResponse;
 
@@ -27,6 +28,7 @@ public class MemberResponse {
 	// private final List<CounselorReviewResponse> counselorReviewList = new ArrayList<>();
 	private final List<MusicResponse> favoriteMusicList = new ArrayList<>();
 	// private final List<MusicReview> musicReviewList = new ArrayList<>();
+	private final List<MentalCategory> memberMentalCategoryList = new ArrayList<>();
 
 	public MemberResponse(Member member, List<CounselorListResponse> favoriteCounselorList) {
 		id = member.getId();
@@ -49,5 +51,9 @@ public class MemberResponse {
 			.map(favoriteMusic -> new MusicResponse(favoriteMusic.getMusic()))
 			.collect(Collectors.toList()));
 		// musicReviewList = getMusicReviewList();
+		memberMentalCategoryList.addAll(member.getMemberMentalCategoryList()
+			.stream()
+			.map(MemberMentalCategory::getCategory)
+			.collect(Collectors.toList()));
 	}
 }

@@ -28,8 +28,7 @@ public class CounselReservationResponse {
 	private Status status;
 
 	public static CounselReservationResponse of(Counsel counsel) {
-		return new CounselReservationResponseBuilder()
-			.counselId(counsel.getId())
+		return new CounselReservationResponseBuilder().counselId(counsel.getId())
 			.counselorId(counsel.getCounselor().getId())
 			.counselorName(counsel.getCounselor().getName())
 			.memberNickname(counsel.getMember().getNickname())

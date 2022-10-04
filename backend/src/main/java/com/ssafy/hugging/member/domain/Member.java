@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -13,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.ssafy.hugging.psychologicalTest.domain.PsychologicalTestResult;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,6 +26,7 @@ import com.ssafy.hugging.member.dto.MemberJoinRequest;
 import com.ssafy.hugging.mission.domain.ProceedingMission;
 import com.ssafy.hugging.model.Gender;
 import com.ssafy.hugging.music.domain.MusicReview;
+import com.ssafy.hugging.psychologicalTest.domain.PsychologicalTestResult;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -84,6 +85,10 @@ public class Member implements UserDetails {
 	@JsonManagedReference
 	private List<PsychologicalTestResult> psychologicalTestResultList = new ArrayList<>();
 
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<MemberMentalCategory> memberMentalCategoryList = new ArrayList<>();
+
 	public static Member from(MemberJoinRequest memberJoinRequest) {
 		return Member.builder()
 			.email(memberJoinRequest.getEmail())
@@ -92,6 +97,10 @@ public class Member implements UserDetails {
 			.gender(memberJoinRequest.getGender())
 			.profileImage(memberJoinRequest.getProfileImage())
 			.build();
+	}
+
+	public void setMemberMentalCategoryList(List<MemberMentalCategory> memberMentalCategoryList) {
+		this.memberMentalCategoryList = memberMentalCategoryList;
 	}
 
 	@Override

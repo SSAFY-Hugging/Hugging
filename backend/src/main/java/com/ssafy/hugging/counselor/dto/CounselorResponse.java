@@ -1,7 +1,9 @@
 package com.ssafy.hugging.counselor.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ssafy.hugging.counselor.domain.Counselor;
-import com.ssafy.hugging.counselor.domain.CounselorReview;
 import com.ssafy.hugging.model.Gender;
 import com.ssafy.hugging.model.Subject;
 
@@ -10,9 +12,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Builder
 @Getter
@@ -34,9 +33,9 @@ public class CounselorResponse {
 
 	private List<CounselorReviewResponse> counselorReviewList = new ArrayList<>();
 
-	public static CounselorResponse of(Counselor counselor, Double average, List<CounselorReviewResponse> counselorReviewList) {
-		return new CounselorResponseBuilder()
-			.counselorId(counselor.getId())
+	public static CounselorResponse of(Counselor counselor, Double average,
+		List<CounselorReviewResponse> counselorReviewList) {
+		return new CounselorResponseBuilder().counselorId(counselor.getId())
 			.availableTime(counselor.getAvailableTime())
 			.career(counselor.getCareer())
 			.certificate(counselor.getCertificate())

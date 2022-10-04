@@ -10,12 +10,17 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
-import com.ssafy.hugging.counselor.dto.*;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.ssafy.hugging.counselor.domain.Counselor;
 import com.ssafy.hugging.counselor.domain.CounselorReview;
+import com.ssafy.hugging.counselor.dto.CounselorListResponse;
+import com.ssafy.hugging.counselor.dto.CounselorLoginRequest;
+import com.ssafy.hugging.counselor.dto.CounselorLoginResponse;
+import com.ssafy.hugging.counselor.dto.CounselorResponse;
+import com.ssafy.hugging.counselor.dto.CounselorReviewRequest;
+import com.ssafy.hugging.counselor.dto.CounselorReviewResponse;
 import com.ssafy.hugging.counselor.repository.CounselorRepository;
 import com.ssafy.hugging.counselor.repository.CounselorReviewRepository;
 import com.ssafy.hugging.member.JwtTokenProvider;
@@ -57,23 +62,32 @@ public class CounselorService {
 
 	// 상담사 리뷰 작성
 	public void insertCounselorReview(CounselorReviewRequest counselorReviewRequest) {
-		CounselorReview counselorReview = counselorReviewRepository.save(
-			CounselorReview.builder().content(counselorReviewRequest.getContent())
-				// .reg_date(LocalDateTime.now())
-				.score(counselorReviewRequest.getScore()).build());
-		counselorReview.setMember(memberRepository.findMemberById(counselorReviewRequest.getMemberId())
-			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE)));
-		counselorReview.setCounselor(counselorRepository.findCounselorById(counselorReviewRequest.getCounselorId()));
+		Optional<CounselorReview> existCounselorReview = counselorReviewRepository.findCounselorReviewByMemberIdAndCounselorId(
+			counselorReviewRequest.getMemberId(), counselorReviewRequest.getCounselorId());
+		if (existCounselorReview.isPresent()) {
+			CounselorReview counselorReview = existCounselorReview.get();
+			counselorReview.setScore(counselorReviewRequest.getScore());
+		} else {
+			CounselorReview counselorReview = counselorReviewRepository.save(
+				CounselorReview.builder()
+					.content(counselorReviewRequest.getContent())
+					.score(counselorReviewRequest.getScore())
+					.build());
+			counselorReview.setMember(memberRepository.findMemberById(counselorReviewRequest.getMemberId())
+				.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE)));
+			counselorReview.setCounselor(
+				counselorRepository.findCounselorById(counselorReviewRequest.getCounselorId()));
+		}
 	}
 
 	// 상담사 정보 조회
 	public CounselorResponse getCounselor(Integer id) {
 		Counselor counselor = counselorRepository.findCounselorById(id);
 		List<CounselorReviewResponse> counselorReviewResponseList = counselor.getCounselorReviewList()
-				.stream()
-				.map(counselorReview -> CounselorReviewResponse.of(counselorReview,
-						counselorReviewRepository.findAvgByCounselorId(counselor.getId())))
-				.collect(Collectors.toList());
+			.stream()
+			.map(counselorReview -> CounselorReviewResponse.of(counselorReview,
+				counselorReviewRepository.findAvgByCounselorId(counselor.getId())))
+			.collect(Collectors.toList());
 		return CounselorResponse.of(counselor,
 			counselorReviewRepository.findAvgByCounselorId(id), counselorReviewResponseList);
 	}

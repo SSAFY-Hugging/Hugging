@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class PsychologicalTestResultRequest {
-    private Integer memberId;
-    private Integer categoryId;
-    private Integer score;
+	private Integer memberId;
+	private Integer categoryId;
+	private Integer score;
 }

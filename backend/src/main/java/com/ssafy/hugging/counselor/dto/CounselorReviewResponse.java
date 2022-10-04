@@ -1,6 +1,5 @@
 package com.ssafy.hugging.counselor.dto;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import com.ssafy.hugging.counselor.domain.CounselorReview;
