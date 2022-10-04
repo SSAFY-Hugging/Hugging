@@ -4,10 +4,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 
-from .models import Counselor, CounselorReview
-from .serializers import CounselorSerializer
+from .models import Counselor, CounselorReview, MusicReview, Music
+from .serializers import CounselorSerializer, MusicSerializer
 
 from .cf_counselor import cf_item_based_counselor as cf
+from.cf_music import cf_music
 
 # Create your views here.
 class CounselorRecomAPI(APIView):
@@ -28,3 +29,16 @@ class CounselorRecomAPI(APIView):
 
         serializer = CounselorSerializer(queryset, many=True)
         return Response(serializer.data)
+
+class MusicRecomAPI(APIView):
+
+    @api_view(['GET',])
+    def get(self, member_id):
+        music_reviews = read_frame(MusicReview.objects.all())
+        recommend_music = cf_music(member_id, music_reviews)
+        queryset = Music.objects.filter(id__in=recommend_music)
+        print(queryset)
+        serializer = MusicSerializer(queryset, many=True)
+        data = serializer.data[:]
+        return Response(data)
+

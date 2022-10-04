@@ -13,11 +13,33 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
-from recom.views import CounselorRecomAPI
+# from django.contrib import admin
+from django.urls import path, include
+
+from rest_framework.permissions import AllowAny
+from recom.views import CounselorRecomAPI, MusicRecomAPI
+from drf_yasg.views import get_schema_view 
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Hugging",
+        default_version='1.0.0',
+        description="Hugging 추천 API 문서",
+        terms_of_service="https://j7b204.p.ssafy.io",
+        contact=openapi.Contact(email="ssafy@ssafy.com"), # 부가정보
+        license=openapi.License(name="mit"),     # 부가정보
+    ),
+    public=True,
+    permission_classes=[AllowAny],
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-	path('recom/counselor/<int:member_id>/', CounselorRecomAPI.get)
+    # path('admin/', admin.site.urls),
+    path(r'recom/swagger(?P<format>\.json|\.yaml)', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path(r'recom/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path(r'recom/redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc-v1'),
+
+	path('recom/counselor/<int:member_id>/', CounselorRecomAPI.get),
+    path('recom/music/<int:member_id>/', MusicRecomAPI.get),
 ]

@@ -22,14 +22,15 @@ class Counsel(models.Model):
 
 class Counselor(models.Model):
     available_time = models.CharField(max_length=255, blank=True, null=True)
-    career = models.CharField(max_length=255, blank=True, null=True)
-    certificate = models.CharField(max_length=255, blank=True, null=True)
+    career = models.CharField(max_length=1000, blank=True, null=True)
+    certificate = models.CharField(max_length=1000, blank=True, null=True)
     email = models.CharField(unique=True, max_length=255)
-    explanation = models.CharField(max_length=255, blank=True, null=True)
+    explanation = models.CharField(max_length=1000, blank=True, null=True)
     gender = models.CharField(max_length=255, blank=True, null=True)
     name = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
     subject = models.CharField(max_length=255, blank=True, null=True)
+    profile_image = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -38,9 +39,10 @@ class Counselor(models.Model):
     def __str__(self):
         return str(self.id)
 
+
 class CounselorReview(models.Model):
-    content = models.CharField(max_length=255)
-    reg_date = models.DateTimeField()
+    content = models.CharField(max_length=255, blank=True, null=True)
+    reg_date = models.DateTimeField(blank=True, null=True)
     score = models.IntegerField()
     counselor = models.ForeignKey(Counselor, models.DO_NOTHING, blank=True, null=True)
     member = models.ForeignKey('Member', models.DO_NOTHING, blank=True, null=True)
@@ -72,7 +74,6 @@ class Member(models.Model):
     age = models.IntegerField(blank=True, null=True)
     email = models.CharField(unique=True, max_length=255)
     gender = models.CharField(max_length=255, blank=True, null=True)
-    name = models.CharField(max_length=255)
     nickname = models.CharField(unique=True, max_length=255)
     profile_image = models.IntegerField(blank=True, null=True)
 
@@ -83,33 +84,49 @@ class Member(models.Model):
     def __str__(self):
         return str(self.id)
 
-class Music(models.Model):
-    music_url = models.CharField(max_length=255, blank=True, null=True)
+
+class MemberMentalCategory(models.Model):
+    category = models.CharField(max_length=255, blank=True, null=True)
+    member = models.ForeignKey(Member, models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'member_mental_category'
+
+
+class Mission(models.Model):
+    explanation = models.CharField(max_length=255, blank=True, null=True)
+    mission_subject = models.CharField(max_length=255, blank=True, null=True)
     name = models.CharField(max_length=255, blank=True, null=True)
-    tag = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'mission'
+
+
+class Music(models.Model):
+    name = models.CharField(max_length=255, blank=True, null=True)
+    type = models.CharField(max_length=255, blank=True, null=True)
+    hits = models.IntegerField(blank=True, null=True)
     thumbnail_url = models.CharField(max_length=255, blank=True, null=True)
-    type = models.IntegerField(blank=True, null=True)
     category = models.ForeignKey('MusicCategory', models.DO_NOTHING, blank=True, null=True)
+    music_url = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'music'
 
+    def __str__(self):
+        return str(self.id)
+
 
 class MusicCategory(models.Model):
-    name = models.IntegerField(blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    title = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'music_category'
-
-
-class MusicHits(models.Model):
-    musid = models.ForeignKey(Music, models.DO_NOTHING, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'music_hits'
 
 
 class MusicReview(models.Model):
@@ -120,3 +137,42 @@ class MusicReview(models.Model):
     class Meta:
         managed = False
         db_table = 'music_review'
+
+
+class ProceedingMission(models.Model):
+    create_date = models.DateField(blank=True, null=True)
+    status = models.CharField(max_length=255, blank=True, null=True)
+    member = models.ForeignKey(Member, models.DO_NOTHING, blank=True, null=True)
+    misson = models.ForeignKey(Mission, models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'proceeding_mission'
+
+
+class PsychologicalTestCategory(models.Model):
+    category = models.CharField(max_length=255, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'psychological_test_category'
+
+
+class PsychologicalTestQuestion(models.Model):
+    question = models.CharField(max_length=255)
+    score = models.IntegerField()
+    psychological_test_category = models.ForeignKey(PsychologicalTestCategory, models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'psychological_test_question'
+
+
+class PsychologicalTestResult(models.Model):
+    score = models.IntegerField()
+    member = models.ForeignKey(Member, models.DO_NOTHING, blank=True, null=True)
+    psychological_test_category = models.ForeignKey(PsychologicalTestCategory, models.DO_NOTHING, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'psychological_test_result'

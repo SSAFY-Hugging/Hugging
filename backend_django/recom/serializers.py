@@ -1,6 +1,7 @@
+from dataclasses import field
 from rest_framework import serializers
 
-from .models import Counselor, Counsel, CounselorReview, Member
+from .models import Counselor, Counsel, CounselorReview, Member, Music
 
 class CounselSerializer(serializers.ModelSerializer):
     class Meta:
@@ -20,4 +21,9 @@ class CounselorReviewSerializer(serializers.ModelSerializer):
 class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
+        fields = '__all__'
+
+class MusicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Music
         fields = '__all__'
