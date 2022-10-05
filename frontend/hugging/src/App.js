@@ -17,7 +17,6 @@ import MusicPlayingPage from "./pages/media/MusicPlayingPage";
 import TopicMediaPage from "./pages/media/TopicMediaPage";
 import ReserveCounsel from "./pages/counsel/ReserveCounsel";
 import SelectCounsel from "./pages/counsel/SelectCounsel";
-import CounselMetaverse from "./pages/counsel/CounselMetaverse";
 import CounselProfile from "./pages/counsel/CounselProfile";
 import ListCounselor from "./pages/counsel/ListCounselor";
 import MainPage from "./pages/main/MainPage";
@@ -51,7 +50,7 @@ function App() {
         <Route path="/profile" element={<RegisterProfile />} />
         <Route path="/profile_img" element={<></>}></Route>
         <Route path="/recommend_media" element={<MediaView />} />
-        <Route path="/playing_music:musicId" element={<MusicPlayingPage />} />
+        <Route path="/playing_music/:musicId" element={<MusicPlayingPage />} />
         <Route
           path="/TopicMediaPage/:categoryId"
           element={<TopicMediaPage />}
@@ -59,7 +58,6 @@ function App() {
         <Route path="/counselreserve" element={<ReserveCounsel />} />
         <Route path="/" element={<ReserveCounsel />} />
         <Route path="/counselselect" element={<SelectCounsel />}></Route>
-        <Route path="/counselmetaverse" element={<CounselMetaverse />}></Route>
         <Route
           path="/counselprofile/:counselorId"
           element={<CounselProfile />}

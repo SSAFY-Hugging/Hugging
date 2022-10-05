@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 function TopicMedia(props) {
   const navigate = useNavigate();
-  console.log(props.musicdatas.musicResponseList);
+
   return (
     <>
       <div>
         <div className={styles.List}>
-          {props.musicdatas.musicResponseList.map((music) => (
+          {props.musicdatas.musicResponseList?.map((music) => (
             <button
               className={styles.Topic}
               onClick={() => navigate(`/playing_music/${music.id}`)}
             >
               <div className="ImgBox">
                 <img
-                  src="../agra.jfif"
+                  src={`https://placeimg.com/200/100/${music.category}/${music.id}`}
                   alt="agra"
                   className={styles.image}
                 ></img>

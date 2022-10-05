@@ -32,6 +32,11 @@ const SelectCounsel = () => {
     getUserProfile();
   }, [getUserProfile]);
 
+  function startMetaverse() {
+    let url = "http://j7b204.p.ssafy.io:3030/unity?from=Community&nickName=" + nickName;
+    window.open(url);
+  }
+
   return (
     <Fragment>
       <div className={classes.banner}>
@@ -56,11 +61,12 @@ const SelectCounsel = () => {
           </div>
         </Link>
 
-        <Link
+        {/* <Link
           to="/counselmetaverse"
           style={{ textDecoration: "none" }}
           state={{ from: "Community", nickName: nickName }}
-        >
+        > */}
+        <div onClick={startMetaverse}>
           <div className={classes.purple}>
             <div className={classes.title}>커뮤니티</div>
             <div className={classes.explain}>
@@ -73,7 +79,8 @@ const SelectCounsel = () => {
               className={classes.purpleImage}
             ></img>
           </div>
-        </Link>
+          </div>
+        {/* </Link> */}
       </div>
     </Fragment>
   );

@@ -15,7 +15,11 @@ function TopMusic(props) {
             className={styles.music}
             onClick={() => navigate(`/playing_music/${topmusic.id}`)}
           >
-            <img src="agra.jfif" alt="agra" className={styles.image}></img>
+            <img
+              src={`https://placeimg.com/200/100/${topmusic.category}/${topmusic.id}`}
+              alt="agra"
+              className={styles.image}
+            ></img>
             <p className={styles.MusicText}>{topmusic.name}</p>
             <img
               src="play-icon.png"

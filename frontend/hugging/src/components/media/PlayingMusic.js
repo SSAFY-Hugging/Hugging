@@ -18,8 +18,7 @@ function PlayingMusic(props) {
   };
 
   const audioPlayer = useRef();
-  const [setCurrentTime] = useState(0);
-  const [seekValue, setSeekValue] = useState(0);
+
   const [audiostatus, setaudiostatus] = useState(true);
   const play = () => {
     setaudiostatus((prev) => !prev);
@@ -31,17 +30,7 @@ function PlayingMusic(props) {
     audioPlayer.current.pause();
   };
 
-  const stop = () => {
-    audioPlayer.current.pause();
-    audioPlayer.current.currentTime = 0;
-  };
 
-  const onPlaying = () => {
-    setCurrentTime(audioPlayer.current.currentTime);
-    setSeekValue(
-      (audioPlayer.current.currentTime / audioPlayer.current.duration) * 100
-    );
-  };
 
   const [textstatus, settextstatus] = useState(true);
 
@@ -56,7 +45,7 @@ function PlayingMusic(props) {
         <audio
           src={music.data?.musicUrl}
           ref={audioPlayer}
-          onTimeUpdate={onPlaying}
+
         ></audio>
       </div>
       {toggle ? (

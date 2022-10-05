@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>TEST Unity WebGL Player | Hugging</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico" />
+    <link rel="stylesheet" href="TemplateData/style.css" />
+
+    <script src="AgoraWebSDK/libs/databuilder.js"></script>
+    <script src="AgoraWebSDK/libs/clientmanager.js"></script>
+    <script src="AgoraWebSDK/libs/wglwrapper.js"></script>
+    <script src="AgoraWebSDK/libs/audioeffects.js"></script>
+    <script src="AgoraWebSDK/libs/eventmanager.js"></script>
+    <script src="AgoraWebSDK/libs/engineglobals.js"></script>
+    <script src="AgoraWebSDK/libs/watermark.js"></script>
+    <script src="AgoraWebSDK/libs/customvideo.js"></script>
+    <script src="AgoraWebSDK/libs/agorachannel.js"></script>
+    <script src="AgoraWebSDK/libs/multichannel.js"></script>
+    <script src="AgoraWebSDK/libs/audiosystem.js"></script>
+    <script src="AgoraWebSDK/libs/testing.js"></script>
+    <script src="AgoraWebSDK/libs/agorautils.js"></script>
+    <script src="AgoraWebSDK/libs/audiomixing.js"></script>
+    <script src="AgoraWebSDK/agorartcenginev2.js"></script>
+    <script src="AgoraWebSDK/vendor/materialize.min.js"></script>
+    <script src="AgoraRTC_N.js"></script>
+    <script src="AgoraWebSDK/vendor/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <script>
+      let query = window.location.search;
+      let param = new URLSearchParams(query);
+
+      let from = param.get("from");
+      let nickName = param.get("nickName");
+      let msg = from + "|" + nickName;
+      if (from === "OneToOne") {
+        let counselId = param.get("counselId");
+        let subject = param.get("subject");
+        msg += "|" + counselId + "|" + subject;
+      }
+      console.log("msg : " + msg);
+    </script>
+
+    <p style="text-align: center; margin-top: 40px; font-size: 30px;">메타버스 상담 😎</p>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas"></canvas>
+      <div id="unity-loading-bar">
+        <image id="unity-logo" src="TemplateData/logo.png"></image>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <!-- <div id="unity-mobile-warning">WebGL builds are not supported on mobile devices.</div> -->
+      <div id="unity-footer">
+        <div id="unity-build-title">Hugging</div>
+        <!-- <button style="float:right">나가기</button> -->
+        <img id="unity-fullscreen-button" src="TemplateData/full-screen.png">
+        <!-- <div id="unity-fullscreen-button"></div> -->
+      </div>
+    </div>
+
+    <canvas
+      id="inMem_Canvas"
+      height="450"
+      width="450"
+      style="display: none"
+    ></canvas>
+    <canvas
+      id="myCanvas"
+      height="450"
+      width="450"
+      style="display: none"
+    ></canvas>
+
+    <button onclick="setAudioRecordingDeviceVolume(Math.abs(100-volume))">음소거 토글</button>
+    
+    <script>
+      let volume = 0;
+      var unityInstance;
+      var mainCanvas = document.getElementById("myCanvas");
+      var mainContext = mainCanvas.getContext("2d");
+      var inMemCanvas = document.getElementById("inMem_Canvas");
+      var inMemContext = inMemCanvas.getContext("2d");
+      var canvasWidth = mainCanvas.width;
+      var canvasHeight = mainCanvas.height;
+      var angle = 0;
+
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/WebGLBuild.loader.js";
+      var config = {
+        dataUrl: buildUrl + "/WebGLBuild.data",
+        frameworkUrl: buildUrl + "/WebGLBuild.framework.js",
+        codeUrl: buildUrl + "/WebGLBuild.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Hugging",
+        productName: "Hugging",
+        productVersion: "0.1",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var isMobile = false;
+      // var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        config.devicePixelRatio = 1;
+        isMobile = true;
+        // mobileWarning.style.display = "block";
+        // setTimeout(() => {
+        //   mobileWarning.style.display = "none";
+        // }, 5000);
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        })
+          .then((instance) => {
+            unityInstance = instance;
+            unityInstance.SendMessage(
+              "HuggingLauncher",
+              "SetCounselInfos",
+              msg
+            );
+            loadingBar.style.display = "none";
+            fullscreenButton.onclick = () => {
+              instance.SetFullscreen(1);
+            };
+            if(isMobile) {
+              var lockFunction =  window.screen.orientation.lock;
+              if (lockFunction.call(window.screen.orientation, 'landscape')) {
+                console.log('Orientation locked')
+              } else {
+                console.error('There was a problem in locking the orientation')
+              }
+              instance.SetFullscreen(1);
+            }
+          })
+          .catch((message) => {
+            alert(message);
+          });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>

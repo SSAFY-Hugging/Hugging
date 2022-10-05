@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { loginCounselor } from "../../store";
 import NavBar from "../../components/ui/NavBar";
-import Topic from "../../components/media/Topic";
+import PersonalRecommend from "../../components/media/PersonalRecommend";
 import styles from "./MainPage.module.css";
 import Nav from "../../components/ui/Nav";
 
@@ -20,7 +20,7 @@ function MainPage() {
       </div>
       <div className={styles.music_recommend}>
         <div>
-          <Topic />
+          <PersonalRecommend />
         </div>
       </div>
       <div className={styles.counseling}>

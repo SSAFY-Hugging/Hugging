@@ -27,7 +27,7 @@ function Topic(props) {
                   onClick={() => navigate(`/playing_music/${music.id}`)}
                 >
                   <img
-                    src="agra.jfif"
+                    src={`https://placeimg.com/200/100/${music.category}/${music.id}`}
                     alt="agra"
                     className={styles.image}
                   ></img>

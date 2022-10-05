@@ -39,6 +39,13 @@ services:
         ports:
             - "8090:8080"
         restart: always
+    unity:
+        depends_on:
+            - nginx
+        image: hugging_unity/prod:latest
+        ports:
+            - "8085:80"
+        restart: always
         
     certbot:
         image: certbot/certbot

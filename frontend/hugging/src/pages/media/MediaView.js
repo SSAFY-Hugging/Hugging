@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 
 import TopMusic from "../../components/media/TopMusic";
 
-import ToggleButton from "../../components/media/ToggleButton";
 import Recommend from "../../components/media/Recommend";
 import Topic from "../../components/media/Topic";
+
+import Navbar from "../../components/ui/NavBar";
+import Nav from "../../components/ui/Nav";
 
 import { API_HOST_URL } from "../../config/index";
 
@@ -37,10 +39,10 @@ function MediaView() {
       });
   }, []);
 
-  console.log(topicmusics);
   return (
     <div>
-      <ToggleButton />
+      <Nav/>
+      <Navbar/>
       <Recommend musicdatas={musics} />
       <TopMusic topmusicdatas={topmusics} />
       <Topic topicdatas={topicmusics} />
