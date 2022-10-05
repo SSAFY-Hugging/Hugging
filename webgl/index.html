@@ -73,8 +73,11 @@
       width="450"
       style="display: none"
     ></canvas>
+
+    <button onclick="setAudioRecordingDeviceVolume(Math.abs(100-volume))">음소거 토글</button>
     
     <script>
+      let volume = 0;
       var unityInstance;
       var mainCanvas = document.getElementById("myCanvas");
       var mainContext = mainCanvas.getContext("2d");
