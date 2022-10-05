@@ -44,7 +44,7 @@ services:
             - nginx
         image: hugging_unity/prod:latest
         ports:
-            - "8085:80"
+            - "81:81"
         restart: always
         
     certbot:

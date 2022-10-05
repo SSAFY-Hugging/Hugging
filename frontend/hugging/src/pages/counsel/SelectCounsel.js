@@ -61,11 +61,6 @@ const SelectCounsel = () => {
           </div>
         </Link>
 
-        {/* <Link
-          to="/counselmetaverse"
-          style={{ textDecoration: "none" }}
-          state={{ from: "Community", nickName: nickName }}
-        > */}
         <div onClick={startMetaverse}>
           <div className={classes.purple}>
             <div className={classes.title}>커뮤니티</div>
