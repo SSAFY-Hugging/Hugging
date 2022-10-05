@@ -1,6 +1,6 @@
 mergeInto(LibraryManager.library, {
   Exit: function () {
-    window.dispatchReactUnityEvent("Exit");
+    window.close()
   },
   emscripten_set_wheel_callback_on_thread: function (
     target,

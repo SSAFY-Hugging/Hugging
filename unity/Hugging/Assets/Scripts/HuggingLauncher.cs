@@ -29,7 +29,7 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
     private static string[] counselTypes = new string[2];
 
     public VoiceChatManager voiceChatManager;
-    public GameObject isFullRoomAlert;
+    public GameObject isFullRoomAlert_OneToOne, isFullRoomAlert_Community;
     public GameObject StartPanel;
     public GameObject CommunityLobby;
     public GameObject SelectCharacter;
@@ -37,8 +37,6 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        Screen.orientation = ScreenOrientation.LandscapeRight;
-
         PhotonNetwork.AutomaticallySyncScene = true;
         counselTypes[0] = "OneToOne";
         counselTypes[1] = "Community";
@@ -209,7 +207,14 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
     {
         Debug.Log("on join room failed");
 
-        isFullRoomAlert.SetActive(true);
+        if (counselType.Equals(counselTypes[0]))
+        {
+            isFullRoomAlert_OneToOne.SetActive(true);
+        }
+        else if (counselType.Equals(counselTypes[1]))
+        {
+            isFullRoomAlert_Community.SetActive(true);
+        }
         PhotonNetwork.JoinLobby();
     }
 
@@ -221,7 +226,6 @@ public class HuggingLauncher : MonoBehaviourPunCallbacks
         }
         voiceChatManager.LeaveVoiceChat();
         PhotonNetwork.Disconnect();
-        //Application.Quit();
         Exit();
     }
 

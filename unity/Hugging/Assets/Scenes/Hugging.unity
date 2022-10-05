@@ -349,8 +349,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 62, y: 26}
-  m_SizeDelta: {x: 1287.8645, y: 883.4293}
+  m_AnchoredPosition: {x: 47, y: -63.793}
+  m_SizeDelta: {x: 932.579, y: 616.207}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &11622645
 MonoBehaviour:
@@ -1622,8 +1622,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1009664653}
   m_HandleRect: {fileID: 1009664652}
   m_Direction: 2
-  m_Value: 1.0000025
-  m_Size: 0.80099314
+  m_Value: 1.0000011
+  m_Size: 0.80099326
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2868,7 +2868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 22400024, guid: 4396a831358f4fe49bb64502f4535264, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -705.95
+      value: -651
       objectReference: {fileID: 0}
     - target: {fileID: 22400024, guid: 4396a831358f4fe49bb64502f4535264, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4592,7 +4592,7 @@ RectTransform:
   - {fileID: 1042188658}
   - {fileID: 97556393}
   m_Father: {fileID: 1750345372}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -9446,7 +9446,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.00048828125}
+  m_AnchoredPosition: {x: 0, y: -0.00018310547}
   m_SizeDelta: {x: 0, y: 876.9}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &636516102
@@ -14688,7 +14688,7 @@ RectTransform:
   m_Father: {fileID: 981463770}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.19900686}
+  m_AnchorMin: {x: 0, y: 0.19900674}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -23726,7 +23726,8 @@ MonoBehaviour:
   nickname: 
   selectedCharacterNum: 0
   voiceChatManager: {fileID: 1933900405}
-  isFullRoomAlert: {fileID: 1055821133}
+  isFullRoomAlert_OneToOne: {fileID: 1055821133}
+  isFullRoomAlert_Community: {fileID: 1753189254}
   StartPanel: {fileID: 268401388}
   CommunityLobby: {fileID: 1188542866}
   SelectCharacter: {fileID: 129561514}
@@ -26010,8 +26011,8 @@ RectTransform:
   m_Children:
   - {fileID: 1046868581}
   - {fileID: 394019126}
-  - {fileID: 1753189255}
   - {fileID: 304623454}
+  - {fileID: 1753189255}
   - {fileID: 1019833755}
   m_Father: {fileID: 1188542867}
   m_RootOrder: 2
@@ -26185,7 +26186,7 @@ RectTransform:
   - {fileID: 414163985}
   - {fileID: 257375991}
   m_Father: {fileID: 1750345372}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
