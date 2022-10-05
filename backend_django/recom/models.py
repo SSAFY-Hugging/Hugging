@@ -93,6 +93,9 @@ class MemberMentalCategory(models.Model):
         managed = False
         db_table = 'member_mental_category'
 
+    def __str__(self):
+        return str(self.category)
+
 
 class Mission(models.Model):
     explanation = models.CharField(max_length=255, blank=True, null=True)
