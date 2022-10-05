@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 public class CounselorReview extends BaseEntity {
 	private String content;
 	@CreatedDate
-	@Column(updatable = false)
+	@Column(updatable = true)
 	private LocalDateTime regDate;
 	@Column(nullable = false)
 	private Integer score;
@@ -50,5 +50,11 @@ public class CounselorReview extends BaseEntity {
 		counselor.getCounselorReviewList().add(this);
 	}
 
-	public void setScore(Integer score){ this.score = score; }
+	public void setScore(Integer score) {
+		this.score = score;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 }

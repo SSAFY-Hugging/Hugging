@@ -67,6 +67,7 @@ public class CounselorService {
 		if (existCounselorReview.isPresent()) {
 			CounselorReview counselorReview = existCounselorReview.get();
 			counselorReview.setScore(counselorReviewRequest.getScore());
+			counselorReview.setContent(counselorReviewRequest.getContent());
 		} else {
 			CounselorReview counselorReview = counselorReviewRepository.save(
 				CounselorReview.builder()
