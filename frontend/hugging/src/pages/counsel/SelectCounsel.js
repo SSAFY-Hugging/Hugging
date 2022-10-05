@@ -33,7 +33,9 @@ const SelectCounsel = () => {
   }, [getUserProfile]);
 
   function startMetaverse() {
-    let url = "http://j7b204.p.ssafy.io:3030/unity?from=Community&nickName=" + nickName;
+    let url =
+      "http://j7b204.p.ssafy.io/unity/index.html?from=Community&nickName=" +
+      nickName;
     window.open(url);
   }
 
@@ -74,7 +76,7 @@ const SelectCounsel = () => {
               className={classes.purpleImage}
             ></img>
           </div>
-          </div>
+        </div>
         {/* </Link> */}
       </div>
     </Fragment>

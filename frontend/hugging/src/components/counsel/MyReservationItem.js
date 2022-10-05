@@ -37,7 +37,9 @@ const MyReservationItem = (props) => {
     // navigate("/edit", { state: e.target.value });
     //1:1 상담방이면 OneToOne|주희|001|Company
 
-    let url = "http://j7b204.p.ssafy.io:3030/unity?from=OneToOne&nickName=" + props.memberNickname;
+    let url =
+      "http://j7b204.p.ssafy.io/unity/index.html?from=OneToOne&nickName=" +
+      props.memberNickname;
     url += "&counselId=" + props.counselId + "&subject=" + props.subject;
     window.open(url);
 
