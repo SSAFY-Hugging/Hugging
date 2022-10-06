@@ -15,14 +15,11 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "@zach.codes/react-calendar": "^0.3.1",
-=======
     "@toast-ui/editor": "^3.2.1",
     "@toast-ui/editor-plugin-code-syntax-highlight": "^3.1.0",
     "@toast-ui/editor-plugin-color-syntax": "^3.1.0",
     "@toast-ui/react-editor": "^3.2.2",
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
     "agora-rtc-sdk": "^3.6.11",
     "axios": "^0.27.2",
     "babel-plugin-macros": "^3.1.0",
@@ -43,10 +40,6 @@
     "react-kakao-login": "^2.1.1",
     "react-kakao-maps-sdk": "^1.1.3",
     "react-live-clock": "^6.0.6",
-<<<<<<< HEAD
-    "react-loader-spinner": "^5.3.4",
-=======
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
     "react-portal": "^4.2.2",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.4.0",

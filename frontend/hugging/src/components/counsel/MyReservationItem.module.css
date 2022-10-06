@@ -8,17 +8,12 @@
   /* justify-content: space-between; */
   /* align-items: flex-end; */
   border-radius: 30px;
-<<<<<<< HEAD
-  background-color: hsl(0, 0%, 95%);
-  border: 1.5px solid #ccc4c4;
-  height: 150px;
-=======
+
   /* background-color: hsl(0, 0%, 95%); */
   /* background-color: #f5f5f5; */
   background-color: #f6f6f6f9;
   /* border: 1.5px solid #d5d2d2; */
   border: 1.8px solid #d4d0d0;
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   margin: 10px;
   height: 140px;
   box-shadow: 0 2px 8px rgba(217, 217, 217, 81%);
@@ -37,13 +32,10 @@
 
 .counselorName {
   color: #5b71e7;
-<<<<<<< HEAD
-  font-weight: bold;
-=======
+
   /* font-weight: bold; */
   font-family: "AppleSDGothicNeoB";
   font-size: 13px;
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
 }
 
 .btnCancel {
@@ -52,61 +44,39 @@
   align-items: center;
   margin: auto;
   background: #ffe6e6;
-<<<<<<< HEAD
   color: #ff0909;
-=======
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   border-radius: 50px;
   border: 0px solid;
   text-align: center;
   cursor: pointer;
   margin-left: 120px;
-<<<<<<< HEAD
-  width: 80px;
-  height: 30px;
-=======
   width: 66px;
   height: 23px;
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
 }
 .fontCancel {
   color: #ff0909;
-<<<<<<< HEAD
   font-size: 12px;
   font-weight: bold;
 }
 
 .btnEnter {
-  display: block;
-  margin: auto;
-  background: linear-gradient(135deg, #9dceff 0%, #92a3fd 100%);
-  color: white;
-=======
   font-size: 11px;
   font-weight: bold;
   font-family: "AppleSDGothicNeoL";
-}
-
-.btnEnter {
   display: flex;
+  color: white;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #9dceff 0%, #92a3fd 100%);
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   border-radius: 50px;
   border: 0px solid;
   text-align: center;
   cursor: pointer;
   margin-left: 10px;
-<<<<<<< HEAD
-  width: 80px;
-  height: 30px;
-=======
   margin-right: 5px;
   width: 55px;
   height: 23px;
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
   justify-content: center;
 }
@@ -119,15 +89,12 @@
 
 .Button {
   display: flex;
-<<<<<<< HEAD
   margin-right: 0px;
   margin-top: 10px;
-=======
 }
 
 .date {
   margin: 0px 0px 0px 4px;
   font-size: 13px;
   font-family: "AppleSDGothicNeoM";
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
 }
