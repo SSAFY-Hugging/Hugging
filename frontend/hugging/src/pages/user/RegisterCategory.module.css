@@ -13,8 +13,8 @@
 
 .order {
   height: 70px;
-  width: 200px;
-  background-image: url("../../img/next.png");
+  width: 120px;
+  background-image: url("../../img/order1.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -41,10 +41,10 @@
 }
 
 #category_card {
-  height: 360px;
+  height: 340px;
   width: 300px;
   margin: auto;
-  padding: 20px 30px;
+  padding: 10px 20px;
   border-radius: 20px;
   box-shadow: 2px 3px 5px 0px gray;
   overflow-y: auto;
@@ -54,13 +54,20 @@
 #category_card button {
   background-color: #e0eaff;
   border-color: #92a3fd;
-  padding: 15px 25px;
+  padding: 10px 12px 10px 12px;
   border-radius: 20px;
   margin-left: 20px;
   margin-bottom: 5px;
   color: #7b6f72;
   font-size: 12px;
   border: none;
+  width: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.emotion_txt {
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
 .counselor_login_btn {
@@ -72,6 +79,30 @@
   font-size: 15px;
   font-weight: 900;
   padding: 15px 80px;
-  margin-top: 80px;
+  margin-top: 50px;
   color: white;
+}
+
+.team {
+  margin-top: 80px;
+  height: 110px;
+  width: 360px;
+  background: #d9d9d9;
+  text-align: center;
+  padding-top: 20px;
+}
+.info {
+  color: #6f6f6f;
+  font-size: 15px;
+}
+.info2 {
+  color: #636161;
+  font-size: 15px;
+}
+.info3 {
+  font-size: 12px;
+}
+.emotion {
+  margin-right: 5px;
+  margin-left: 0px;
 }

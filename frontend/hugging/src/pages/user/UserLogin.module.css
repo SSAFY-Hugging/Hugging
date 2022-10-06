@@ -11,7 +11,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  margin-top: 200px;
+  margin-top: 150px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -81,7 +81,7 @@ body {
   position: absolute;
   left: 10px;
   top: 10px;
-  background-image: url("../../img/kakao_logo.png");
+  background-image: url("../../img/logo.png");
   background-size: cover;
   margin-right: 10px;
   align-items: center;

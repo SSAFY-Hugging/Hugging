@@ -186,9 +186,9 @@ function MainPage() {
           <div className={styles.counsel_btn}>
             <button className={styles.counseling_choice_btn1}>
               <img
-                src={require("../../img/santa.png")}
-                width="70px"
-                height="80px"
+                src={require("../../img/one.png")}
+                width="160px"
+                height="100px"
                 className={styles.counsel_img}
               />
             </button>
@@ -197,20 +197,10 @@ function MainPage() {
           <div className={styles.counsel_btn}>
             <button className={styles.counseling_choice_btn2}>
               <img
-                src={require("../../img/yellow.png")}
-                width="40px"
-                height="80px"
+                src={require("../../img/group.png")}
+                width="160px"
+                height="100px"
                 className={styles.btn_img}
-              />
-              <img
-                src={require("../../img/girl.png")}
-                width="40px"
-                height="80px"
-              />
-              <img
-                src={require("../../img/man.png")}
-                width="40px"
-                height="80px"
               />
             </button>
             <p className={styles.counsel_txt}>단체 상담</p>

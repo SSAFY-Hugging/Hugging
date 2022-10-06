@@ -17,8 +17,8 @@
 }
 
 .start_btn {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: linear-gradient(to left, #c7dbff, #c0cdff);
   border-radius: 50%;
   display: flex;
@@ -27,12 +27,12 @@
 }
 .start_btn_text {
   color: white;
-  font-weight: 700;
+  font-weight: 500;
   display: flex;
   margin: auto;
   align-content: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 .mission_title {
@@ -42,6 +42,7 @@
   margin-left: 10px;
   color: gray;
   font-size: 13px;
+  margin-bottom: 10px;
 }
 
 .minutes {
@@ -68,4 +69,15 @@
 .complete {
   color: white;
   font-weight: 500;
+}
+
+.minutes {
+  margin-left: 10px;
+  color: grey;
+  position: absolute;
+  font-size: 12px;
+  margin-top: 27px;
+}
+.today {
+  font-weight: 600;
 }

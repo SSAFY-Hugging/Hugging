@@ -27,7 +27,7 @@ function MissionManagement() {
         <Stamp></Stamp>
       </div>
       <div className={styles.margin_div}>
-        <h6>TODAY MISSION</h6>
+        <h6 className={styles.today}>TODAY MISSION</h6>
         {missionList.map(function (a, i) {
           return (
             <div className={styles.mission_div}>
@@ -49,9 +49,11 @@ function MissionManagement() {
                   <p className={styles.start_btn_text}>go</p>
                 </button>
               )}
+              <span className={styles.minutes}>1 minuetes</span>
             </div>
           );
         })}
+        <div className={styles.margin_div}></div>
       </div>
     </div>
   );
