@@ -84,25 +84,6 @@ function RegisterCategory({ history }) {
       <button
         className={styles.counselor_login_btn}
         onClick={() => {
-          {
-            btn ===
-            [
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-              false,
-            ]
-              ? null
-              : null;
-          }
           navigate("/profile");
         }}
       >
