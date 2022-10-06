@@ -43,21 +43,16 @@
       console.log("msg : " + msg);
     </script>
 
-    <p style="text-align: center; margin-top: 40px; font-size: 30px;">메타버스 상담 😎</p>
     <div id="unity-container" class="unity-desktop">
+      <p id="warningText">모바일 환경에서 가로 전체화면을 권장합니다! 🐿</p>
       <canvas id="unity-canvas"></canvas>
-      <div id="unity-loading-bar">
-        <image id="unity-logo" src="TemplateData/logo.png"></image>
-        <div id="unity-progress-bar-empty">
-          <div id="unity-progress-bar-full"></div>
-        </div>
+      <div id="loading" style="display: block; font-size: 1.5em">
+        로딩중입니다! ☺️
+        <p id="progressText" style="text-align: center"></p>
       </div>
-      <!-- <div id="unity-mobile-warning">WebGL builds are not supported on mobile devices.</div> -->
       <div id="unity-footer">
         <div id="unity-build-title">Hugging</div>
-        <!-- <button style="float:right">나가기</button> -->
-        <img id="unity-fullscreen-button" src="TemplateData/full-screen.png">
-        <!-- <div id="unity-fullscreen-button"></div> -->
+        <img id="unity-fullscreen-button" src="TemplateData/full-screen.png" />
       </div>
     </div>
 
@@ -74,8 +69,6 @@
       style="display: none"
     ></canvas>
 
-    <button onclick="setAudioRecordingDeviceVolume(Math.abs(100-volume))">음소거 토글</button>
-    
     <script>
       let volume = 0;
       var unityInstance;
@@ -100,32 +93,42 @@
       };
 
       var container = document.querySelector("#unity-container");
+      var warningText = document.querySelector("#warningText");
       var canvas = document.querySelector("#unity-canvas");
-      var loadingBar = document.querySelector("#unity-loading-bar");
-      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var loading = document.querySelector("#loading");
+      var progressText = document.querySelector("#progressText");
+      var footer = document.querySelector("#unity-footer");
       var fullscreenButton = document.querySelector("#unity-fullscreen-button");
       var isMobile = false;
-      // var mobileWarning = document.querySelector("#unity-mobile-warning");
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement("meta");
+        meta.name = "viewport";
+        meta.content =
+          "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes";
+        document.getElementsByTagName("head")[0].appendChild(meta);
         container.className = "unity-mobile";
-        config.devicePixelRatio = 1;
+        config.devicePixelRatio = 2;
+        if (window.devicePixelRatio < 2) {
+          config.devicePixelRatio = 1;
+        }
         isMobile = true;
-        // mobileWarning.style.display = "block";
-        // setTimeout(() => {
-        //   mobileWarning.style.display = "none";
-        // }, 5000);
+        canvas.style.width = "100vw";
+        canvas.style.height = "35vh";
       } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
       }
-      loadingBar.style.display = "block";
+      loading.style.display = "block";
+      warningText.style.display = "none";
+      canvas.style.display = "none";
+      footer.style.display = "none";
 
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
-          progressBarFull.style.width = 100 * progress + "%";
+          progressText.innerHTML = " (" + Math.floor(progress * 100) + "%)";
         })
           .then((instance) => {
             unityInstance = instance;
@@ -134,18 +137,27 @@
               "SetCounselInfos",
               msg
             );
-            loadingBar.style.display = "none";
+            loading.style.display = "none";
+            warningText.style.display = "block";
+            canvas.style.display = "block";
+            footer.style.display = "block";
             fullscreenButton.onclick = () => {
-              instance.SetFullscreen(1);
+              unityInstance.SetFullscreen(1);
             };
-            if(isMobile) {
-              var lockFunction =  window.screen.orientation.lock;
-              if (lockFunction.call(window.screen.orientation, 'landscape')) {
-                console.log('Orientation locked')
-              } else {
-                console.error('There was a problem in locking the orientation')
+            if (isMobile == true) {
+              if (screen.orientation.type == "landscape-primary") {
+                canvas.style.width = "65vw";
+                canvas.style.height = "75vh";
               }
-              instance.SetFullscreen(1);
+              screen.orientation.onchange = function (e) {
+                if (e.currentTarget.type === "landscape-primary") {
+                  canvas.style.width = "65vw";
+                  canvas.style.height = "75vh";
+                } else if (e.currentTarget.type === "portrait-primary") {
+                  canvas.style.width = "100vw";
+                  canvas.style.height = "35vh";
+                }
+              };
             }
           })
           .catch((message) => {
