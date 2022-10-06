@@ -28,6 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+SWAGGER_SETTINGS = {
+   'USE_SESSION_AUTH': False
+}
 
 # Application definition
 

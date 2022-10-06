@@ -52,7 +52,7 @@ class MusicRecomAPI(APIView):
         music_reviews = read_frame(MusicReview.objects.all())
         is_new_member, recommend_music = cf_music(member_id, music_reviews)
         if(is_new_member):
-            mental = MemberMentalCategory.objects.filter(id=member_id)
+            mental = MemberMentalCategory.objects.filter(member_id=member_id)
             member_mentality = music_tag(mental.values())
             queryset = Music.objects.filter(category__in=member_mentality).order_by('hits')[:5]
             # print(queryset)
@@ -64,4 +64,19 @@ class MusicRecomAPI(APIView):
 
         data = serializer.data[:]
         return Response(data)
+
+    @api_view(['GET',])
+    def category(self, mental_id):
+        mental = MemberMentalCategory.objects.filter(id=mental_id)
+        print(type(mental))
+        categories = music_tag(mental.values())
+        queryset = Music.objects.filter(category__in=categories).order_by('hits')[:5]
+        serializer = MusicSerializer(queryset, many=True)
+
+        data = serializer.data[:]
+        return Response(data)
+
+
+
+
 
