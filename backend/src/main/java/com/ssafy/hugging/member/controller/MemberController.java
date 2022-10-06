@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,7 @@ import com.ssafy.hugging.member.JwtTokenProvider;
 import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
 import com.ssafy.hugging.member.dto.MemberLoginResponse;
+import com.ssafy.hugging.member.dto.MemberModifyRequest;
 import com.ssafy.hugging.member.dto.MemberResponse;
 import com.ssafy.hugging.member.service.MemberService;
 
@@ -77,6 +79,13 @@ public class MemberController {
 	public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
 		memberService.deleteUser(id);
 		return response.success(DELETE_MEMBER_REQUEST_SUCCESS);
+	}
+
+	@PutMapping("/modify")
+	@ApiOperation(value = "회원 이미지 변경", notes = "회원 프로필 이미지 변경")
+	public ResponseEntity<?> modifyUser(@RequestBody MemberModifyRequest memberModifyRequest) {
+		memberService.modifyUser(memberModifyRequest);
+		return response.success(MODIFY_MEMBER_PROFILE_SUCCESS);
 	}
 
 	@GetMapping("/music/{id}")

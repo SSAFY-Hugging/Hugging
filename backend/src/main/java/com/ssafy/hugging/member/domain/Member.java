@@ -103,6 +103,10 @@ public class Member implements UserDetails {
 		this.memberMentalCategoryList = memberMentalCategoryList;
 	}
 
+	public void setProfileImage(Integer profileImage) {
+		this.profileImage = profileImage;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return null;

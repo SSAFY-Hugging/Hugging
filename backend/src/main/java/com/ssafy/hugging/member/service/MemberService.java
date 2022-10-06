@@ -38,6 +38,7 @@ import com.ssafy.hugging.member.domain.Member;
 import com.ssafy.hugging.member.domain.MemberMentalCategory;
 import com.ssafy.hugging.member.domain.MentalCategory;
 import com.ssafy.hugging.member.dto.MemberJoinRequest;
+import com.ssafy.hugging.member.dto.MemberModifyRequest;
 import com.ssafy.hugging.member.dto.MemberResponse;
 import com.ssafy.hugging.member.repository.MemberRepository;
 import com.ssafy.hugging.music.domain.Music;
@@ -199,6 +200,12 @@ public class MemberService implements UserDetailsService {
 
 	public void deleteUser(Integer id) {
 		memberRepository.deleteById(id);
+	}
+
+	public void modifyUser(MemberModifyRequest memberModifyRequest) {
+		Member member = memberRepository.findMemberById(memberModifyRequest.getMemberId())
+			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_MEMBER_ERROR_MESSAGE));
+		member.setProfileImage(memberModifyRequest.getProfileImage());
 	}
 
 	@Override
