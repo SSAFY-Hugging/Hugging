@@ -17,14 +17,14 @@ function TopMusic(props) {
           >
             <img
               src={`https://placeimg.com/200/100/${topmusic.category}/${topmusic.id}`}
-              alt="agra"
+              alt="thumbnail"
               className={styles.image}
             ></img>
             <p className={styles.MusicText}>{topmusic.name}</p>
             <img
-              src="play-icon.png"
+              src="playbutton.png"
               alt="play-icon"
-              className="play-icon"
+              className={styles.playicon}
             ></img>
           </button>
         ))}

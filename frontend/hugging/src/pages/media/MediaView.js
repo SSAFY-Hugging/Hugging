@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import axios from "axios";
 import TopMusic from "../../components/media/TopMusic";
 
 import Recommend from "../../components/media/Recommend";
@@ -12,14 +12,20 @@ import { API_HOST_URL } from "../../config/index";
 
 function MediaView() {
   const [musics, setMusics] = useState([]);
-
+  const member = JSON.parse(localStorage.getItem("userProfile"));
+  const member_id = member.id;
   useEffect(() => {
-    fetch("../../music.json")
-      .then((res) => res.json())
+    axios({
+      method: "GET",
+      url: `https://j7b204.p.ssafy.io/recom/music/${member_id}`,
+    })
+      .then((res) => res.data)
       .then((result) => {
         setMusics(result);
       });
   }, []);
+
+  console.log(musics);
   const [topicmusics, setTopicMusics] = useState([]);
 
   useEffect(() => {
@@ -41,11 +47,11 @@ function MediaView() {
 
   return (
     <div>
-      <Nav/>
-      <Navbar/>
+      <Navbar />
       <Recommend musicdatas={musics} />
       <TopMusic topmusicdatas={topmusics} />
       <Topic topicdatas={topicmusics} />
+      <Nav />
     </div>
   );
 }

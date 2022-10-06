@@ -1,5 +1,6 @@
 .Page {
   height: 740px;
-  background: url(../../../public/nature1.gif);
+  background: url(../../../public/background1.gif);
+  background-size: 100%;
   background-repeat: no-repeat;
 }
