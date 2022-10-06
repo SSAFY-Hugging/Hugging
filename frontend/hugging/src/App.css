@@ -17,6 +17,7 @@ body {
   position: relative;
   border: none;
   overflow: auto;
+  border: solid 1px;
 }
 
 .App-logo {
@@ -58,6 +59,13 @@ body {
   display: none;
 }
 
+input:focus,
+select:focus,
+option:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
 /* 아래 폰트*/
 /* @font-face {
   font-family: "BlackhanSans";

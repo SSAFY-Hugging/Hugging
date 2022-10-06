@@ -23,9 +23,8 @@ body {
 }
 
 .counselor_card {
-  width: 350px;
+  width: 320px;
   height: 280px;
-  box-shadow: 1px 1px 3px 1px;
   margin-top: 70px;
   margin-bottom: 10px;
   margin-left: auto;
@@ -48,31 +47,51 @@ body {
 }
 
 .counselor_name {
+  font-family: "AppleSDGothicNeoL";
   font-weight: 600;
   margin-top: 10px;
-  margin-left: 5px;
+  margin-left: 25px;
 }
 
 .counselor_card_item {
   margin-right: 5px;
   align-items: left;
-  margin-left: 5px;
 }
 
 .counselor_card_item_text {
+  font-family: "AppleSDGothicNeoL";
   color: #5b71e7;
   font-weight: 600;
-  margin-left: 5px;
 }
 
 .counselor_text {
-  margin-left: 5px;
+  margin-left: 8px;
   font-weight: 700;
+  font-family: "AppleSDGothicNeoL";
+  font-size: 14px;
 }
 
 .counselor_text2 {
+  font-family: "AppleSDGothicNeoL";
   margin-left: 5px;
   font-weight: 500;
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.starImg {
+  width: 20px;
+}
+
+.back {
+  display: flex;
+}
+
+.profileImage {
+  width: 150px;
+  height: 150px;
+}
+
+.space {
+  margin-top: 10px;
 }

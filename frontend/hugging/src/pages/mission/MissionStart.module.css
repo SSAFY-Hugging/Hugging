@@ -10,7 +10,7 @@
   margin-top: 50px;
   align-items: center;
   padding-bottom: 0px;
-  box-shadow: 1px 1px 20px 0px #d9d9d9;
+  box-shadow: 2px 2px 15px 5px #d9d9d9;
   border-radius: 15px;
 }
 
@@ -40,4 +40,10 @@
 .minutes {
   margin-left: 10px;
   color: grey;
+}
+.bell {
+  width: 50px;
+  position: absolute;
+  left: 260px;
+  top: 120px;
 }

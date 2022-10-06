@@ -42,11 +42,13 @@ body {
 
 .emotion_div_title {
   font-weight: 600;
+  margin-left: 5px;
 }
 
 .emotion_div_text {
   color: #928585;
   font-size: 12px;
+  margin-left: 5px;
 }
 
 .counseling {
@@ -65,6 +67,7 @@ body {
 
 .counseling_title {
   font-weight: 700;
+  margin-left: 5px;
 }
 
 .counseling_choice {
@@ -73,7 +76,7 @@ body {
 }
 
 .counseling_choice_btn1 {
-  height: 130px;
+  height: 120px;
   width: 120px;
   border: none;
   border-radius: 10px;
@@ -85,7 +88,7 @@ body {
 }
 
 .counseling_choice_btn2 {
-  height: 130px;
+  height: 120px;
   width: 120px;
   border: none;
   border-radius: 10px;
@@ -94,6 +97,7 @@ body {
   margin-right: auto;
   color: white;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(to left, #92a3fd, #9dceff);
 }
 
@@ -160,4 +164,26 @@ body {
   margin-top: 10px;
   color: #2f2b2b;
   font-weight: 700;
+}
+.margin_div {
+  height: 50px;
+}
+.team {
+  margin-top: 80px;
+  height: 110px;
+  width: 360px;
+  background: #d9d9d9;
+  text-align: center;
+  padding-top: 20px;
+}
+.info {
+  color: #6f6f6f;
+  font-size: 15px;
+}
+.info2 {
+  color: #636161;
+  font-size: 15px;
+}
+.info3 {
+  font-size: 12px;
 }

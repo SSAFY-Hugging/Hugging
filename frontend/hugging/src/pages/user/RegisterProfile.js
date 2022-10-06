@@ -133,6 +133,25 @@ function RegisterProfile(props) {
 
       {/* </div> */}
       <form onSubmit={handleSubmit}>
+        <div className={styles.nickname_icon}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+            width="20px"
+            height="20px"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+            />
+          </svg>
+        </div>
+
         <input
           className={styles.nickname}
           type="text"
@@ -140,6 +159,25 @@ function RegisterProfile(props) {
           onChange={handleNickname}
         />
         <div id={styles.gender_age}>
+          <div className={styles.age_icon}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+              width="20px"
+              height="20px"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"
+              />
+            </svg>
+          </div>
+
           <input
             type="number"
             min={10}
@@ -147,13 +185,34 @@ function RegisterProfile(props) {
             placeholder="나이"
             onChange={handleAge}
           />
-          <select onChange={handleSelect} value={gender}>
+          <select
+            className={styles.select}
+            onChange={handleSelect}
+            value={gender}
+          >
             {selectList.map((item) => (
               <option value={item} key={item}>
                 {item}
               </option>
             ))}
           </select>
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+              className={styles.gender_icon}
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+          </div>
         </div>
 
         <div className={styles.order_btn}>
@@ -171,7 +230,12 @@ function RegisterProfile(props) {
           </button>
         </div>
       </form>
-
+      <div className={styles.team}>
+        <p className={styles.info2}>TEAM B204 | Hugging</p>
+        <p className={styles.info3}>
+          Copyright © 2022 Hugging All Rights Reserved.
+        </p>
+      </div>
       {modal === true ? (
         <div className={styles.App}>
           <div className={styles.modal_back}>

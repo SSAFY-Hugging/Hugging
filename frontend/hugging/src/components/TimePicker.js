@@ -41,7 +41,6 @@ function TimePicker({
   };
 
   const inputChangeHandler = (e) => {
-    console.log("왜 안나오나고....");
     console.log(e.target.value);
   };
 

@@ -23,7 +23,7 @@
 
 .order2 {
   height: 70px;
-  width: 200px;
+  width: 120px;
   background-image: url("../../img/order2.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -111,14 +111,17 @@
 
 .nickname {
   border: none;
-  width: 300px;
+  width: 260px;
   padding: 15px 40px;
   font-size: 16px;
-  background-color: #f7f8f8;
+  background-color: #eceeee;
   margin-top: 50px;
   border-radius: 10px;
   margin-left: 30px;
   color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nickname :focus {
@@ -130,7 +133,7 @@
 }
 
 #gender_age {
-  width: 200px;
+  width: 290px;
   display: flex;
   flex-direction: row;
   margin-left: 20px;
@@ -141,7 +144,7 @@
   border: none;
   padding: 15px 20px;
   font-size: 16px;
-  background-color: #f7f8f8;
+  background-color: #eceeee;
   margin-top: 5px;
   margin-left: 30px;
   border-radius: 10px;
@@ -149,25 +152,28 @@
 }
 
 #gender_age select {
-  width: 140px;
+  width: 160px;
   border: none;
   padding: 15px 20px;
   font-size: 16px;
-  background-color: #f7f8f8;
+  background-color: #eceeee;
   margin-top: 5px;
-  margin-left: 15px;
+  margin-left: 5px;
   border-radius: 10px;
   color: rgba(0, 0, 0, 0.7);
 }
 
 #gender_age input::placeholder {
   color: rgba(0, 0, 0, 0.3);
+  text-indent: 20px;
 }
 
 #gender_age input:focus {
   outline: none;
 }
-
+.select {
+  color: #7a7474;
+}
 .modal {
   background: white;
   height: 400px;
@@ -264,4 +270,60 @@
   font-weight: 900;
   padding: 15px 40px;
   color: white;
+}
+
+.team {
+  margin-top: 80px;
+  height: 110px;
+  width: 360px;
+  background: #d9d9d9;
+  text-align: center;
+  padding-top: 20px;
+}
+.info {
+  color: #6f6f6f;
+  font-size: 15px;
+}
+.info2 {
+  color: #353333;
+  font-size: 15px;
+  font-weight: 500;
+}
+.info3 {
+  font-size: 12px;
+}
+
+.nickname_icon {
+  position: absolute;
+  left: 65px;
+  top: 460px;
+}
+
+.age_icon {
+  position: absolute;
+  left: 65px;
+  top: 518px;
+}
+
+.arrow_icon {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  border: solid 1px;
+  background-image: url("../../img/arrow.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.gender_icon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  margin-top: 23px;
+  right: 60px;
 }

@@ -9,7 +9,7 @@ function PlayingPageIcon() {
     <>
       <div className={styles.Icon}>
         <button onClick={() => navigate("/recommend_media")}>
-          <img src="../X.png" alt="image" className={styles.image}></img>
+          <img src="../x.png" alt="image" className={styles.image}></img>
         </button>
       </div>
     </>

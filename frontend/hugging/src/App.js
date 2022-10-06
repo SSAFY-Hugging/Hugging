@@ -27,6 +27,7 @@ import Timer from "./components/mission/Timer";
 import MissionList from "./pages/mission/MissionList";
 import MissionManagement from "./pages/mission/MissionManagement";
 import PrivateRoute from "./lib/PrivateRoute";
+import MyPage from "./pages/user/MyPage";
 // import scrollbar from 'smooth-scrollbar';
 
 // // smooth scroll 설정
@@ -190,6 +191,14 @@ function App() {
           element={
             <PrivateRoute>
               <MissionManagement />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/mypage"
+          element={
+            <PrivateRoute>
+              <MyPage />
             </PrivateRoute>
           }
         />
