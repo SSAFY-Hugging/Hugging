@@ -9,7 +9,7 @@ from .serializers import CounselorSerializer, MusicSerializer
 
 from .cf_counselor import cf_item_based_counselor as cf
 from .coldstart_counselor import recom_coldstart_counselor as cs
-from.cf_music import cf_music, music_tag
+from.cf_music import cf_music, music_tag, category
 from django.db.models import Avg, F
 
 import numpy as np
@@ -72,10 +72,10 @@ class MusicRecomAPI(APIView):
         return Response(data)
 
     @api_view(['GET',])
-    def category(self, mental_id):
-        mental = MemberMentalCategory.objects.filter(id=mental_id)
-        print(type(mental))
-        categories = music_tag(mental.values())
+    def category(self, music_category):
+        categories = category(music_category)
+        print(categories)
+        print(type(categories))
         queryset = Music.objects.filter(category__in=categories).order_by('hits')[:5]
         serializer = MusicSerializer(queryset, many=True)
 
