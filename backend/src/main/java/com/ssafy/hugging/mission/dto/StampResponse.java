@@ -6,11 +6,11 @@ import lombok.Getter;
 
 @Getter
 public class StampResponse {
-	private final String crateDate;
-	private final Integer stamp;
+	private final String date;
+	private final Integer count;
 
 	public StampResponse(Stamp stamp) {
-		this.crateDate = stamp.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		this.stamp = stamp.getStamp();
+		this.date = stamp.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		this.count = stamp.getStamp();
 	}
 }
