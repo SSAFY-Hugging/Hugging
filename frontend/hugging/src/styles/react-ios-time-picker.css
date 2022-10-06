@@ -197,7 +197,8 @@ input:focus {
 .react-ios-time-picker-cell-inner-hour:hover,
 .react-ios-time-picker-cell-inner-minute:hover,
 .react-ios-time-picker-cell-inner-hour-format:hover {
-  background-color: #ff9d0ac9;
+  /* background-color: #ff9d0ac9; */
+  background-color: #e4ccff;
   color: white;
 }
 
@@ -218,7 +219,7 @@ input:focus {
   display: flex;
   justify-content: space-between;
   /* background-color: #292929; */
-  background-color: #e9eefe;
+  background-color: #dbeafe;
   border-bottom: 0.5px solid #333;
   z-index: 100;
 }
@@ -239,7 +240,7 @@ input:focus {
 }
 
 .react-ios-time-picker-btn-cancel {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 300;
   font-weight: bold;
 }

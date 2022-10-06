@@ -15,7 +15,7 @@
   /* border: 1.5px solid #d5d2d2; */
   border: 1.8px solid #d4d0d0;
   margin: 10px;
-  height: 140px;
+  height: 150px;
   box-shadow: 0 2px 8px rgba(217, 217, 217, 81%);
 }
 
@@ -49,20 +49,19 @@
   border: 0px solid;
   text-align: center;
   cursor: pointer;
-  margin-left: 120px;
+  margin-left: 110px;
   width: 66px;
   height: 23px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
 }
 .fontCancel {
   color: #ff0909;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
 }
 
 .btnEnter {
   font-size: 11px;
-  font-weight: bold;
   font-family: "AppleSDGothicNeoL";
   display: flex;
   color: white;
@@ -91,6 +90,7 @@
   display: flex;
   margin-right: 0px;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .date {
