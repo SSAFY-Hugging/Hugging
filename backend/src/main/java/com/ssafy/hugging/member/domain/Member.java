@@ -58,30 +58,30 @@ public class Member implements UserDetails {
 	private Gender gender;
 	private Integer profileImage;
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	private List<Counsel> counselList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<FavoriteCounselor> favoriteCounselorList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<CounselorReview> counselorReviewList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<FavoriteMusic> favoriteMusicList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<MusicReview> musicReviewList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<ProceedingMission> proceedingMissionList = new ArrayList<>();
 
-	@OneToMany(mappedBy = "member")
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<PsychologicalTestResult> psychologicalTestResultList = new ArrayList<>();
 
