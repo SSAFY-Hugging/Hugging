@@ -12,13 +12,12 @@ function Topic(props) {
           <div>
             <div className={styles.Title}>
               <h3 className={styles.TitleText}>{topicdata.category}</h3>
-              <a
-                href={`/TopicMediaPage/${topicdata.id}`}
+              <button
+                onClick={() => navigate(`/TopicMediaPage/${topicdata.id}`)}
                 className={styles.LinkText}
               >
-                {" "}
-                전체 보기 {">"}{" "}
-              </a>
+                전체 보기 {">"}
+              </button>
             </div>
             <div className={styles.List}>
               {topicdata.musicResponseList.map((music) => (
@@ -27,7 +26,7 @@ function Topic(props) {
                   onClick={() => navigate(`/playing_music/${music.id}`)}
                 >
                   <img
-                    src={`https://placeimg.com/200/100/${music.category}/${music.id}`}
+                    src={`https://placeimg.com/200/100/${musicdata.category}/${musicdata.id}`}
                     alt="agra"
                     className={styles.image}
                   ></img>
@@ -37,7 +36,6 @@ function Topic(props) {
             </div>
           </div>
         ))}
-        ;
       </div>
     </>
   );

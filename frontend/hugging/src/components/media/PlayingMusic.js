@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PlayingMusic.module.css";
 import PlayingText from "./PlayingText";
+import { useNavigate } from "react-router-dom";
+
 function PlayingMusic(props) {
+  const navigate = useNavigate();
   const [music, setMusic] = useState([]);
   const url = props.url;
   useEffect(() => {
@@ -19,7 +22,7 @@ function PlayingMusic(props) {
 
   const audioPlayer = useRef();
 
-  const [audiostatus, setaudiostatus] = useState(true);
+  const [audiostatus, setaudiostatus] = useState(false);
   const play = () => {
     setaudiostatus((prev) => !prev);
     audioPlayer.current.play();
@@ -45,6 +48,10 @@ function PlayingMusic(props) {
         <audio
           src={music.data?.musicUrl}
           ref={audioPlayer}
+          autoPlay={true}
+
+          muted={false}
+          onEnded={() => navigate(`/musicreview`)}
 
         ></audio>
       </div>
