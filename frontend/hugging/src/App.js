@@ -26,7 +26,7 @@ import MissionStart from "./pages/mission/MissionStart";
 import Timer from "./components/mission/Timer";
 import MissionList from "./pages/mission/MissionList";
 import MissionManagement from "./pages/mission/MissionManagement";
-import { useState } from "react";
+import PrivateRoute from "./lib/PrivateRoute";
 // import scrollbar from 'smooth-scrollbar';
 
 // // smooth scroll 설정
@@ -44,80 +44,157 @@ function App() {
       <Routes>
         {/* <MyCalendar></MyCalendar> */}
         <Route path="/redirecturi" element={<RedirectUri />} />
+
+        <Route
+          path="/location"
+          element={
+            <PrivateRoute>
+              <Location />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/calendar"
+          element={
+            <PrivateRoute>
+              <MyCalendar />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/counselor/login" element={<CounselorLogin />} />
         <Route
           path="/counselor/mypage"
           element={
-            isAuthenticated ? <CounselorMypage /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <CounselorMypage />
+            </PrivateRoute>
           }
         />
         <Route path="/category" element={<RegisterCategory />} />
         <Route path="/profile" element={<RegisterProfile />} />
+
         <Route
           path="/recommend_media"
-          element={isAuthenticated ? <MediaView /> : <Navigate to="/login" />}
+          element={
+            <PrivateRoute>
+              <MediaView />
+            </PrivateRoute>
+          }
         />
         <Route
           path="/playing_music/:musicId"
           element={
-            isAuthenticated ? <MusicPlayingPage /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <MusicPlayingPage />
+            </PrivateRoute>
           }
         />
+
         <Route
           path="/TopicMediaPage/:categoryId"
           element={
-            isAuthenticated ? <TopicMediaPage /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <TopicMediaPage />
+            </PrivateRoute>
           }
         />
         <Route
           path="/counselreserve"
           element={
-            isAuthenticated ? <ReserveCounsel /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <ReserveCounsel />
+            </PrivateRoute>
           }
         />
-        <Route path="/" element={<UserLogin />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <UserLogin />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/counselselect"
           element={
-            isAuthenticated ? <SelectCounsel /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <SelectCounsel />
+            </PrivateRoute>
           }
-        ></Route>
+        />
+
         <Route
           path="/counselprofile/:counselorId"
           element={
-            isAuthenticated ? <CounselProfile /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <CounselProfile />
+            </PrivateRoute>
           }
-        ></Route>
+        />
+        <Route
+          path="/counselreserve"
+          element={
+            <PrivateRoute>
+              <ReserveCounsel />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/main"
+          element={
+            <PrivateRoute>
+              <MainPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/counselorlist"
           element={
-            isAuthenticated ? <ListCounselor /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <ListCounselor />
+            </PrivateRoute>
           }
-        ></Route>
+        />
         <Route
           path="/counseldone"
-          element={isAuthenticated ? <CounselDone /> : <Navigate to="/login" />}
-        ></Route>
+          element={
+            <PrivateRoute>
+              <CounselDone />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/missionstart"
           element={
-            isAuthenticated ? <MissionStart /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <MissionStart />
+            </PrivateRoute>
           }
-        ></Route>
+        />
+        <Route
+          path="/timer"
+          element={
+            <PrivateRoute>
+              <Timer />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/missionlist"
-          element={isAuthenticated ? <MissionList /> : <Navigate to="/login" />}
-        ></Route>
+          element={
+            <PrivateRoute>
+              <MissionList />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/mission/management"
           element={
-            isAuthenticated ? <MissionManagement /> : <Navigate to="/login" />
+            <PrivateRoute>
+              <MissionManagement />
+            </PrivateRoute>
           }
-        ></Route>
-        <Route
-          path="/main"
-          element={isAuthenticated ? <MainPage /> : <Navigate to="/login" />}
         />
       </Routes>
     </div>
