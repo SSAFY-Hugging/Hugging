@@ -6,6 +6,7 @@ import { changeMission } from "../../store";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { propTypes } from "react-bootstrap/esm/Image";
 
 const minuteSeconds = 60;
 
@@ -26,21 +27,14 @@ export default function Timer(props) {
   const endTime = stratTime + 243248;
   const dispatch = useDispatch();
   const remainingTime = endTime - stratTime;
-  //   let userprofile = localStorage.getItem("userprofile");
-  //   userprofile = JSON.parse(userprofile);
-  //   let userId = userprofile.id;
-  //   console.log(userId);
-
-  //   let token = sessionStorage.getItem("token");
-  //   let userId = jwt_decode(token);
-  //   console.log(userId);
-  //   axios
-  //     .get("https://j7b204.p.ssafy.io/api/members/" + userId.sub)
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
+  let userprofile = localStorage.getItem("userprofile");
+  userprofile = JSON.parse(userprofile);
+  let memberId = userprofile.id;
+  let missionList = localStorage.getItem("missionList");
+  missionList = JSON.parse(missionList);
+  let missioncomplete = sessionStorage.getItem("missioncomplete");
+  missioncomplete = JSON.parse(missioncomplete);
   let [btn, setBtn] = useState(false);
-  let [mission, setMission] = useState([false, false, false, false, false]);
   let [Playing, setPlaying] = useState(false);
   //   let body = {
   //     memberId,
@@ -51,44 +45,52 @@ export default function Timer(props) {
     size: 200,
     strokeWidth: 15,
   };
+  console.log(props.missionId);
   return (
     <div className="timer_div">
-      {mission[0] === false ? (
-        <div>
-          <CountdownCircleTimer
-            {...timerProps}
-            colors="#C87CF6"
-            duration={minuteSeconds}
-            // initialRemainingTime={remainingTime % minuteSeconds}
-            onComplete={(totalElapsedTime) => (
-              navigate("/missionlist"),
-              sessionStorage.setItem("missioncomplete", true),
-              setMission((mission[0] = true)),
-              axios
-                .put("https://j7b204.p.ssafy.io/api/missions/", {
-                  memberId: 1,
-                  missionId: 1,
-                })
-                .then((res) => {
-                  console.log(res);
-                })
-                .catch((res) => {
-                  console.log(res);
-                }),
-              console.log(mission),
-              {
-                shouldRepeat: false,
-              }
-            )}
-          >
-            {({ elapsedTime, color }) => (
-              <span style={{ color }}>
-                {renderTime("seconds", getTimeSeconds(elapsedTime))}
-              </span>
-            )}
-          </CountdownCircleTimer>
-        </div>
-      ) : null}
+      <div>
+        <CountdownCircleTimer
+          {...timerProps}
+          colors="#C87CF6"
+          duration={minuteSeconds}
+          // initialRemainingTime={remainingTime % minuteSeconds}
+          onComplete={(totalElapsedTime) => (
+            (missioncomplete[props.missionId] = true),
+            sessionStorage.setItem(
+              "missioncomplete",
+              JSON.stringify(missioncomplete)
+            ),
+            // missioncomplete.push(props.missionId),
+            // sessionStorage.setItem(
+            //   "missioncomplete",
+            //   JSON.stringify(missioncomplete)
+            // ),
+            // sessionStorage.setItem("completeid", props.missionId),
+            navigate("/mission/management"),
+            axios
+              .put("https://j7b204.p.ssafy.io/api/missions/", {
+                memberId,
+                missionId: props.missionId,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((res) => {
+                console.log(res);
+              }),
+            {
+              shouldRepeat: false,
+            }
+          )}
+        >
+          {({ elapsedTime, color }) => (
+            <span style={{ color }}>
+              {renderTime("seconds", getTimeSeconds(elapsedTime))}
+            </span>
+          )}
+        </CountdownCircleTimer>
+      </div>
+
       {btn === false ? (
         <button
           className="start_btn"
@@ -113,3 +115,7 @@ export default function Timer(props) {
     </div>
   );
 }
+
+Timer.propTypes = {
+  memberId: propTypes.number,
+};

@@ -16,7 +16,8 @@ public interface ProceedingMissionRepository extends JpaRepository<ProceedingMis
 		Integer memberId, LocalDate createDate);
 
 	@Query(value = "SELECT " + "new com.ssafy.hugging.mission.dto.Stamp(pm.createDate, COUNT(pm.createDate)) "
-		+ "FROM ProceedingMission pm " + "WHERE pm.member.id = :memberId " + "GROUP BY pm.createDate")
+		+ "FROM ProceedingMission pm " + "WHERE pm.member.id = :memberId AND pm.status = 'COMPLETE'"
+		+ "GROUP BY pm.createDate")
 	List<Stamp> findGroupByCreateDateWithJPQL(@Param("memberId") Integer id);
 
 }

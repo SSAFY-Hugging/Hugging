@@ -21,6 +21,7 @@
   position: fixed;
   background-color: white;
   width: 360px;
+  z-index: 999;
 }
 
 .header_title {

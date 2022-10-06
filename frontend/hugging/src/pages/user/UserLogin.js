@@ -33,7 +33,32 @@ function UserLogin() {
   useEffect(() => {
     localStorage.setItem("emotion", JSON.stringify([]));
   }, []);
-
+  localStorage.setItem(
+    "userprofile",
+    JSON.stringify({
+      id: 2,
+      email: "hjay1029@gmail.com",
+      age: 13,
+      nickname: "엘밍",
+      gender: "FEMALE",
+      profileImage: null,
+      counselList: [
+        {
+          counselId: 33,
+          counselorId: 1,
+          counselorName: "이미소",
+          memberNickname: "엘밍",
+          reservationDate: "2022-10-05",
+          reservationTime: "15:00",
+          subject: "Company",
+          status: "INCOMPLETE",
+        },
+      ],
+      favoriteCounselorList: [],
+      favoriteMusicList: [],
+      memberMentalCategoryList: [],
+    })
+  );
   return (
     <>
       <div className={styles.main_bg}></div>
