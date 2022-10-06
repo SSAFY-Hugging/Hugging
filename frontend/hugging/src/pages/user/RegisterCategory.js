@@ -42,23 +42,6 @@ function RegisterCategory({ history }) {
     "짜증남",
     "불편함",
   ]);
-  // let [emotionre, setEmotionre] = useState([
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  //   "",
-  // ]);
-  // useEffect(()=>{
-  //             sessionStorage.setItem('emotion', JSON.stringify(emotionre))
-  // },[setEmotionre])
 
   return (
     <>
@@ -101,6 +84,25 @@ function RegisterCategory({ history }) {
       <button
         className={styles.counselor_login_btn}
         onClick={() => {
+          {
+            btn ===
+            [
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+              false,
+            ]
+              ? null
+              : null;
+          }
           navigate("/profile");
         }}
       >

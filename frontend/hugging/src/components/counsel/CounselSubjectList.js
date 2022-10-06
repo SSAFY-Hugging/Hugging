@@ -1,6 +1,5 @@
 import classes from "./CounselSubjectList.module.css";
 import CounselSubjectListItem from "./CounselSubjectListItem";
-import { Fragment } from "react";
 
 const DUMMY_SUBJECT1 = [
   {
@@ -42,29 +41,31 @@ const DUMMY_SUBJECT2 = [
 
 const CounselSubjectList = (props) => {
   return (
-    <Fragment>
+    <div className={classes.back}>
       <div className={classes.title}>{props.title}</div>
       <div>
         <div className={classes.subject}>
-          {DUMMY_SUBJECT1.map((subject) => (
+          {DUMMY_SUBJECT1.map((subject, index) => (
             <CounselSubjectListItem
               key={subject.id}
               id={subject.id}
               title={subject.title}
+              imgNo={index}
             ></CounselSubjectListItem>
           ))}
         </div>
         <div className={classes.subject}>
-          {DUMMY_SUBJECT2.map((subject) => (
+          {DUMMY_SUBJECT2.map((subject, index) => (
             <CounselSubjectListItem
               key={subject.id}
               id={subject.id}
               title={subject.title}
+              imgNo={index + 4}
             ></CounselSubjectListItem>
           ))}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

@@ -69,21 +69,27 @@ function MyCalendar() {
       </div>
 
       {counselList.map(function (a, i) {
-        return (
-          <>
-            <div className="reservation_div">
-              <div className="reservation_num">0{i + 1}</div>
-              <div className="reservation_circle"></div>
-              <div className="reservation_content">
-                {counselList[i].reservationTime}
+        if (
+          moment(value).format("YYYY-MM-DD") === counselList[i].reservationDate
+        ) {
+          return (
+            <>
+              <div className="reservation_div">
+                <div className="reservation_num">0{i + 1}</div>
+                <div className="reservation_circle"></div>
+                <div className="reservation_content">
+                  {counselList[i].reservationTime}
+                </div>
+                <div className="reservation_counselid">
+                  {counselList[i].memberNickname}
+                </div>
               </div>
-              <div className="reservation_counselid">
-                {counselList[i].memberNickname}
-              </div>
-            </div>
-            <div className="reservation_tag">#{counselList[i].subject}</div>
-          </>
-        );
+              <div className="reservation_tag">#{counselList[i].subject}</div>
+            </>
+          );
+        } else {
+          <div></div>;
+        }
       })}
     </div>
   );

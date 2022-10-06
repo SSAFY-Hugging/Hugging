@@ -1,8 +1,11 @@
 import classes from "./MyReservationItem.module.css";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { nowCounselActions } from "../../store";
 
 const MyReservationItem = (props) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const cancelClickHandler = useCallback(async () => {
@@ -46,24 +49,41 @@ const MyReservationItem = (props) => {
     navigate("/counseldone");
   };
 
-  console.log("hre");
-  console.log(props);
   return (
     <>
       <div className={classes.item}>
         <div className={classes.title}>나의 예약 정보</div>
         <div className={classes.time}>
-          {props.reservationDate} {props.reservationTime}
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6"
+              width="17px"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </span>
+          <span className={classes.date}>
+            {props.reservationDate} {props.reservationTime}
+          </span>
         </div>
         <div className={classes.counselorName}>
           {props.counselorName} 상담사
         </div>
         <div className={classes.Button}>
           <button className={classes.btnCancel} onClick={cancelClickHandler}>
-            예약 취소
+            <span className={classes.fontCancel}>예약 취소</span>
           </button>
           <button className={classes.btnEnter} onClick={metaverseHandler}>
-            입장
+            <span className={classes.fontEnter}> 입장</span>
           </button>
         </div>
       </div>

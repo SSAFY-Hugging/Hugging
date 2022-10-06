@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import CounselDetail from "../../components/counsel/CounselDetail";
 import CounselReview from "../../components/counsel/CounselReview";
 
+import Header from "../../Layout/Header";
+
 const DUMMY_PROFILE = {
   counselorId: 1,
   name: "조성규",
@@ -79,6 +81,7 @@ const CounselProfile = () => {
 
   return (
     <Fragment>
+      <Header />
       <CounselDetail profile={profile} />
       <CounselReview reviews={profile.counselorReviewList} />
       <div className={classes.btn}>

@@ -1,3 +1,7 @@
+.margin_div {
+  margin-top: 100px;
+}
+
 .mission_div {
   display: flex;
   margin: auto;
@@ -6,7 +10,7 @@
   margin-top: 50px;
   align-items: center;
   padding-bottom: 0px;
-  box-shadow: 1px 1px 5px 1px;
+  box-shadow: 1px 1px 20px 0px #d9d9d9;
   border-radius: 15px;
 }
 

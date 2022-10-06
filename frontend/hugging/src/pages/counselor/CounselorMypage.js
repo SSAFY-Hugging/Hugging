@@ -12,6 +12,12 @@ function CounselorMypage() {
   let counselorprofile = JSON.parse(profile);
   const [clicked, setClicked] = useState([false, false, false, false, false]);
 
+  //프주 수정
+  const starClickHandler = (starScore) => {
+    console.log(starScore);
+  };
+  //
+
   return (
     <>
       <div className={styles.Nav}>
@@ -43,7 +49,7 @@ function CounselorMypage() {
           </span>
         </div>
         <div>
-          <Star />
+          <Star onClick={starClickHandler} />
         </div>
         <div>
           <span className={styles.counselor_card_item_text}>

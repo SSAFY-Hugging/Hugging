@@ -42,16 +42,18 @@ function MissionList() {
   return (
     <div>
       <NavBar />
-      <div className={styles.mission_div}>
-        <div>
-          <h6 className={styles.mission_text}>차를 천천히 우리며 명상하기</h6>
-          <span className={styles.minutes}>1 minuetes</span>
+      <div className={styles.margin_div}>
+        <div className={styles.mission_div}>
+          <div>
+            <h6 className={styles.mission_text}>차를 천천히 우리며 명상하기</h6>
+            <span className={styles.minutes}>1 minuetes</span>
+          </div>
         </div>
+        <div className={styles.timer_div}>
+          <Timer btn={btn} />
+        </div>
+        <Nav></Nav>
       </div>
-      <div className={styles.timer_div}>
-        <Timer btn={btn} />
-      </div>
-      <Nav></Nav>
     </div>
   );
 }

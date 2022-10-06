@@ -30,7 +30,6 @@ function UserLogin() {
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
   const REDIRECT_URI = process.env.REACT_APP_REDIRECT_URL;
   const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-
   useEffect(() => {
     localStorage.setItem("emotion", JSON.stringify([]));
   }, []);
@@ -70,7 +69,11 @@ function UserLogin() {
       <button
         className={styles.counselorBtn}
         onClick={() => {
-          navigate("/counselor/login");
+          if (localStorage.getItem("token") === null) {
+            navigate("/counselor/login");
+          } else {
+            navigate("/counselor/mypage");
+          }
         }}
       >
         상담사 로그인

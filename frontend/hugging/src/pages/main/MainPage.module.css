@@ -36,7 +36,7 @@ body {
   height: 200px;
   border-radius: 10px;
   background-color: white;
-  margin-top: 10px;
+  margin-top: 70px;
   margin-bottom: 15px;
 }
 
@@ -122,8 +122,8 @@ body {
   height: 50px;
   width: 50px;
   position: absolute;
-  left: 85px;
-  top: 715px;
+  left: 90px;
+  top: 490px;
   background-image: url("../../img/test_icon.png");
   background-size: contain;
   background-repeat: no-repeat;
