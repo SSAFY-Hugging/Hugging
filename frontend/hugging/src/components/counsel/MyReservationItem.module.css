@@ -1,62 +1,100 @@
 .item {
   /* align-items: center; */
   /* margin: 8px 8px; */
-  padding: 0px 20px;
-  display: flex; 
+  padding-left: 20px;
+  padding-right: 10px;
+  display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
   /* align-items: flex-end; */
   border-radius: 30px;
-  background-color: hsl(0, 0%, 95%);
-  border: 1.5px solid #ccc4c4;
 
+  /* background-color: hsl(0, 0%, 95%); */
+  /* background-color: #f5f5f5; */
+  background-color: #f6f6f6f9;
+  /* border: 1.5px solid #d5d2d2; */
+  border: 1.8px solid #d4d0d0;
   margin: 10px;
-  box-shadow: 0 2px 8px rgba(217, 217, 217, 0.94);
+  height: 140px;
+  box-shadow: 0 2px 8px rgba(217, 217, 217, 81%);
+}
+
+.time {
+  font-family: "AppleSDGothicNeoL";
 }
 
 .title {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 17px;
   margin: 20px 0px 5px 0px;
+  font-family: "AppleSDGothicNeoM";
 }
 
-.counselorName{
-  color: #5B71E7;
-  font-weight: bold;
+.counselorName {
+  color: #5b71e7;
+
+  /* font-weight: bold; */
+  font-family: "AppleSDGothicNeoB";
+  font-size: 13px;
 }
 
 .btnCancel {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
-  background: #FFE6E6;
-  color: #FF0909;
+  background: #ffe6e6;
+  color: #ff0909;
   border-radius: 50px;
   border: 0px solid;
-
-  font-size: 1px;
-  font-weight: bold;
+  text-align: center;
   cursor: pointer;
-  margin:10px;
-  width: 80px;
-  height: 30px;
+  margin-left: 120px;
+  width: 66px;
+  height: 23px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+}
+.fontCancel {
+  color: #ff0909;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .btnEnter {
-  display: block;
-  margin: auto;
-  background: linear-gradient(135deg, #9dceff 0% ,#92a3fd 100%);;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: "AppleSDGothicNeoL";
+  display: flex;
   color: white;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #9dceff 0%, #92a3fd 100%);
   border-radius: 50px;
   border: 0px solid;
-  font-size: 1px;
-  font-weight: bold;
+  text-align: center;
   cursor: pointer;
-  margin:10px;
-  width: 80px;
-  height: 30px;
+  margin-left: 10px;
+  margin-right: 5px;
+  width: 55px;
+  height: 23px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+  justify-content: center;
 }
+
+.fontEnter {
+  color: white;
+  font-size: 11px;
+  font-family: "AppleSDGothicNeoB";
+}
+
 .Button {
   display: flex;
+  margin-right: 0px;
+  margin-top: 10px;
+}
+
+.date {
+  margin: 0px 0px 0px 4px;
+  font-size: 13px;
+  font-family: "AppleSDGothicNeoM";
 }

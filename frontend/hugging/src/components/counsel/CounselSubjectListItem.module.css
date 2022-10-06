@@ -12,8 +12,13 @@
   margin: 0px 5px 5px 0px;
 }
 
+.subImage {
+  margin-top: 10px;
+}
+
 .text {
   text-align: center;
-  margin: 30px 0px;
-  font-size: 1.5px;
+  margin-top: 7px;
+  font-size: 11px;
+  font-family: "AppleSDGothicNeoL";
 }

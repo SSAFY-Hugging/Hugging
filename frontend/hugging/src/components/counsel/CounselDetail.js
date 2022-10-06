@@ -1,8 +1,11 @@
+import { createBrowserHistory } from "@remix-run/router";
 import { Fragment } from "react";
 import classes from "./CounselDetail.module.css";
 
 const CounselDetail = (props) => {
   console.log(props.profile);
+  const reviewLength = props.profile.counselorReviewList.length;
+
   const inputCareer = props.profile.career;
   const inputExplanation = props.profile.explanation;
   const inputCertificate = props.profile.certificate;
@@ -10,6 +13,7 @@ const CounselDetail = (props) => {
   const careers = inputCareer.split("#");
   const explains = inputExplanation.split("\\n");
   const certificates = inputCertificate.split("#");
+
   //   console.log(inputCareer);
   //   console.log(careers);
 
@@ -27,14 +31,35 @@ const CounselDetail = (props) => {
     const result = [];
     if (props.profile.average === null) {
       for (let i = 0; i < 5; i++) {
-        result.push(<img key={i} src="../emptyStar.png" alt="emptyStar"></img>);
+        result.push(
+          <img
+            key={i}
+            src="../emptyStar.png"
+            alt="emptyStar"
+            className={classes.starImg}
+          ></img>
+        );
       }
     } else {
-      for (let i = 0; i < props.profile.average; i++) {
-        result.push(<img key={i} src="../Star.png" alt="star"></img>);
+      for (let i = 0; i < Math.floor(props.profile.average); i++) {
+        result.push(
+          <img
+            key={i}
+            src="../Star.png"
+            alt="star"
+            className={classes.starImg}
+          ></img>
+        );
       }
-      for (let i = 5 - props.profile.average; i > 0; i--) {
-        result.push(<img key={i} src="../emptyStar.png" alt="emptyStar"></img>);
+      for (let i = 0; i < 5 - Math.floor(props.profile.average); i++) {
+        result.push(
+          <img
+            key={i + 5}
+            src="../emptyStar.png"
+            alt="emptyStar"
+            className={classes.starImg}
+          ></img>
+        );
       }
     }
     return result;
@@ -44,48 +69,74 @@ const CounselDetail = (props) => {
     <Fragment>
       <div className={classes.profile}>
         <div>
-          <img src="../sampleCounselorCircle.png" alt="counselorProfile"></img>
+          <img
+            className={classes.profileImg}
+            src="../sampleCounselorCircle.png"
+            alt="counselorProfile"
+          ></img>
         </div>
-        <div>
+        <div className={classes.detailBox}>
           <div>
             <span className={classes.name}>{props.profile.name} 상담사</span>
-            <img src="../genderM.png" alt="gender"></img>
+            {props.profile.gender === "MALE" && (
+              <img
+                src="../genderM.png"
+                alt="male"
+                className={classes.genderImg}
+              ></img>
+            )}
+            {props.profile.gender === "FEMALE" && (
+              <img
+                src="../female.png"
+                alt="female"
+                className={classes.genderImg}
+              ></img>
+            )}
           </div>
           <div>
             <span className={classes.blue}>가능시간</span>
-            <span>{props.profile.availableTime}</span>
+            <span className={classes.context}>
+              {props.profile.availableTime}
+            </span>
           </div>
           <div>
             <div className={classes.blue}>자격증</div>
             <ul>
               {certificates.map((certificate, index) => (
-                <li key={index}>{certificate}</li>
+                <li key={index} className={classes.context}>
+                  {certificate}
+                </li>
               ))}
             </ul>
-            <span>{props.profile.certificate}</span>
           </div>
           <div>
             <span className={classes.blue}>전문분야</span>
-            <span>{value}</span>
+            <span className={classes.context}>{value}</span>
           </div>
           <div>
             {starRendering()}
-            {props.profile.average != null && (
-              <span>({props.profile.average})</span>
-            )}
-            {props.profile.average === null && <span>({0})</span>}
+            <span className={classes.scoreOuter}>
+              {props.profile.average != null && (
+                <span className={classes.score}>({props.profile.average})</span>
+              )}
+              {props.profile.average === null && (
+                <span className={classes.score}>({0})</span>
+              )}
+            </span>
           </div>
         </div>
       </div>
-      <div>
+      <div className={classes.detailBox}>
         <div className={classes.title}>주요 자격 및 경력</div>
         <ul>
           {careers.map((career, index) => (
-            <li key={index}>{career}</li>
+            <li key={index} className={classes.context}>
+              {career}
+            </li>
           ))}
         </ul>
         <div className={classes.title}>상담사 이야기</div>
-        <div className={classes.explanation}>
+        <div className={classes.context}>
           {explains.map((explain, index) => (
             <div key={index}>{explain}</div>
           ))}

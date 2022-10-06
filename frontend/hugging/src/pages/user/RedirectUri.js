@@ -26,7 +26,7 @@ const RedirectUri = (props) => {
       .then((res) => {
         console.log(res.data);
         if (!res.data.newMember) {
-          sessionStorage.setItem("token", res.data.token);
+          localStorage.setItem("token", res.data.token);
           sessionStorage.setItem("isSocialLogin", true);
           let userId = jwt_decode(res.data.token);
           axios({
@@ -38,7 +38,7 @@ const RedirectUri = (props) => {
               console.log(res.data);
 
               localStorage.setItem("userprofile", JSON.stringify(res.data));
-              navigate("/");
+              navigate("/main");
             })
             .catch((err) => {
               console.log("실패");

@@ -3,23 +3,80 @@
   width: 266px;
   border-radius: 10px;
   background: #f9ebf8;
-  padding: 10px 20px 0px 20px;
-  margin: 10px 45px;
+  padding: 10px 20px;
+  margin: 20px 45px;
   text-align: center;
 }
 
 .title {
-  font-weight: bold;
-  /* font-size: 10px; */
+  font-family: AppleSDGothicNeoB;
+  font-size: 20px;
 }
 
-.back {
+.card {
+  padding: 6px 11px;
+  margin: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  background-color: white;
   display: flex;
   overflow-x: scroll;
 }
 
+.back {
+  padding: 0px 20px;
+}
+.genderImg {
+  padding-left: 5px;
+}
+.profileDetail {
+  margin: 0px 10px;
+  padding: 13px 0px;
+}
+
+.text {
+  font-family: AppleSDGothicNeoL;
+}
+
+.dateTitle {
+  font-family: AppleSDGothicNeoB;
+  color: #5b71e7;
+  padding-top: 3px;
+  font-size: 15px;
+}
+
+.date {
+  font-family: AppleSDGothicNeoM;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.extra {
+  margin-top: 5px;
+}
+
+.counselorName {
+  font-family: AppleSDGothicNeoB;
+}
+
+.profileImage {
+  width: 110px;
+}
+
 .title2 {
-  font-weight: bold;
+  font-family: AppleSDGothicNeoM;
+  font-size: 17px;
+}
+
+.nickname {
+  font-family: AppleSDGothicNeoM;
+  font-size: 15px;
+}
+
+.regDate {
+  font-family: AppleSDGothicNeoM;
+  padding-left: 160px;
+  font-size: 13px;
 }
 
 .cancel {

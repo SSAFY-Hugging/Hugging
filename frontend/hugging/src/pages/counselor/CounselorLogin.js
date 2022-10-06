@@ -12,6 +12,9 @@ function CounselorLogin() {
   const [email, setInputEmail] = useState("");
   const [password, setInputPassword] = useState("");
   const navigate = useNavigate();
+  let token = localStorage.getItem("token");
+  console.log(token);
+  let [alert, setAlert] = useState(false);
 
   const handleInputId = (e) => {
     setInputEmail(e.target.value);
@@ -59,6 +62,9 @@ function CounselorLogin() {
               console.log("실패");
               console.log(err);
             });
+        })
+        .catch((err) => {
+          setAlert((alert = true));
         });
     }
   };
@@ -72,8 +78,21 @@ function CounselorLogin() {
 
       <form id={styles.login_form} onSubmit={LoginFunc}>
         <input type="text" placeholder="Email" onChange={handleInputId}></input>
-        <input type="text" placeholder="Password" onChange={handleInputPw} />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={handleInputPw}
+        />
         <p className={styles.forgot_text}>Forgot your password?</p>
+
+        {alert === false ? null : (
+          <div className={styles.login_alert_view}>
+            <span className={styles.login_alert_text}>
+              회원정보를 확인해주세요
+            </span>
+          </div>
+        )}
+
         <button type="submit" className={styles.counselor_login_btn}>
           로그인
         </button>

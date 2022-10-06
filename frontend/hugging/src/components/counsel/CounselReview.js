@@ -3,18 +3,40 @@ import classes from "./CounselReview.module.css";
 const CounselReview = (props) => {
   const reviews = props.reviews;
   console.log(reviews);
+
   const starRendering = (review) => {
     const result = [];
     if (review.score === null) {
       for (let i = 0; i < 5; i++) {
-        result.push(<img src="../emptyStar.png" alt="emptyStar"></img>);
+        result.push(
+          <img
+            key={i}
+            src="../emptyStar.png"
+            alt="emptyStar"
+            className={classes.starImg}
+          ></img>
+        );
       }
     } else {
-      for (let i = 0; i < review.score; i++) {
-        result.push(<img key={i} src="../Star.png" alt="star"></img>);
+      for (let i = 0; i < Math.floor(review.score); i++) {
+        result.push(
+          <img
+            key={i}
+            src="../Star.png"
+            alt="star"
+            className={classes.starImg}
+          ></img>
+        );
       }
-      for (let i = 5 - review.score; i > 0; i--) {
-        result.push(<img key={i} src="../emptyStar.png" alt="emptyStar"></img>);
+      for (let i = 0; i < 5 - Math.floor(review.score); i++) {
+        result.push(
+          <img
+            key={i + 5}
+            src="../emptyStar.png"
+            alt="emptyStar"
+            className={classes.starImg}
+          ></img>
+        );
       }
     }
     return result;
@@ -26,13 +48,13 @@ const CounselReview = (props) => {
         {reviews.map((review, index) => (
           <div key={index} className={classes.review}>
             <div>
-              <span>{review.nickname}님</span>
-              <span>{review.regDate}</span>
+              <span className={classes.text}>{review.nickname}님</span>
+              <span className={classes.date}>{review.regDate}</span>
             </div>
             <div>
               {starRendering(review)}
-              <span>({review.score})</span>
-              <div>{review.content}</div>
+              <span className={classes.score}>({review.score})</span>
+              <div className={classes.content}>{review.content}</div>
             </div>
           </div>
         ))}

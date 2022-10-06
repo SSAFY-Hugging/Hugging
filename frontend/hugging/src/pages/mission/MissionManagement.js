@@ -16,7 +16,7 @@ function MissionManagement() {
     <div>
       <Nav></Nav>
       <NavBar></NavBar>
-      <div>
+      <div className={styles.margin_div}>
         <h6>TODAY MISSION</h6>
         {missionList.map(function (a, i) {
           return (

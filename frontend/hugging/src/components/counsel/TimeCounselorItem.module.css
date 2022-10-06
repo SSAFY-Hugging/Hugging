@@ -11,21 +11,25 @@
 .score {
   display: flex;
   overflow-x: scroll;
+  padding-top: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .number {
   font-size: 1px;
 }
 
-.starImage {
-  width: 12px;
-  height: 12px;
+.starImg {
+  width: 15px;
 }
 
 .name {
   /* color: #5b71e7; */
   font-weight: bold;
-  font-size: 0.5rem;
+  font-size: 12px;
+  font-family: AppleSDGothicNeoL;
+  margin-top: 5px;
 }
 
 .detail {
@@ -36,9 +40,15 @@
 
 .field {
   border-radius: 5px;
-  width: 50px;
-  height: 15px;
   background: #e9eefe;
   text-align: center;
-  font-size: 1px;
+  font-size: 10px;
+  font-family: AppleSDGothicNeoB;
+  margin-top: 3px;
+  padding: 3px 8px;
+}
+
+.number {
+  font-family: AppleSDGothicNeoB;
+  padding-left: 5px;
 }

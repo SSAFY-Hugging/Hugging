@@ -109,6 +109,7 @@ export default function Timer(props) {
           <span>정지</span>
         </button>
       )}
+      <div></div>
     </div>
   );
 }

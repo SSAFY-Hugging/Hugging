@@ -1,6 +1,8 @@
 .card {
-  padding: 1rem;
-  margin: 1rem;
+  padding: 17px;
+  /* margin: 12px; */
+  margin: 10px;
+  margin-left: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border-radius: 30px;
   background-color: white;

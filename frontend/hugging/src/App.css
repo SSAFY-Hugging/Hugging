@@ -15,7 +15,7 @@ body {
   margin: auto;
   justify-content: center;
   position: relative;
-  border: solid 0.3px;
+  border: none;
   overflow: auto;
 }
 
@@ -56,4 +56,51 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* 아래 폰트*/
+/* @font-face {
+  font-family: "BlackhanSans";
+  font-weight: 50;
+  src: url("./fonts/BlackHanSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Yfont";
+  src: url("./fonts/Y\ 너만을\ 비춤체.ttf");
+} */
+
+@font-face {
+  font-family: "SeoulNamsanB";
+  src: url("./fonts/SeoulNamsanB.ttf");
+}
+
+@font-face {
+  font-family: "PureunJeonnam";
+  src: url("./fonts/PureunJeonnam.ttf");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoB";
+  src: url("./fonts/AppleSDGothicNeoB.ttf");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoEB";
+  src: url("./fonts/AppleSDGothicNeoEB.ttf");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoH";
+  src: url("./fonts/AppleSDGothicNeoH.ttf");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoL";
+  src: url("./fonts/AppleSDGothicNeoL.ttf");
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeoM";
+  src: url("./fonts/AppleSDGothicNeoM.ttf");
 }

@@ -17,8 +17,10 @@
   padding: 10px;
   font-size: 10px;
   box-shadow: 1px 1px 5px 0px gray;
-  position: sticky;
   top: 0px;
+  position: fixed;
+  background-color: white;
+  width: 360px;
 }
 
 .header_title {

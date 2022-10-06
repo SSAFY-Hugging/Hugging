@@ -1,9 +1,12 @@
 .title {
   margin: 10px 20px;
-  font-weight: bolder;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: "AppleSDGothicNeoL";
 }
 
 .back {
   display: flex;
   overflow-x: scroll;
+  padding: 0px 15px;
 }

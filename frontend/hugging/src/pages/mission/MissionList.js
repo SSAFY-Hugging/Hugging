@@ -50,57 +50,59 @@ function MissionList() {
   let missionList = localStorage.getItem("missionList");
   missionList = JSON.parse(missionList);
   const [toggle, setToggle] = useState([false, false, false, false, false]);
+  let userprofile = localStorage.getItem("userProfile");
+  userprofile = JSON.parse(userprofile);
+  let memberId = userprofile.id;
 
-  let memberId = 1;
-  let missionId = 1;
-  let body = {
-    memberId,
-    missionId,
-  };
-
-  const clickedToggle = () => {
-    {
-      missionList.map(function (a, i) {
-        if (toggle[i] === false) {
-          axios
-            .post("https://j7b204.p.ssafy.io/api/missions/", body)
-            .then((res) => {
-              console.log(res);
-            });
-        } else {
-          const params = { missionId: 1 };
-          axios
-            .delete("https://j7b204.p.ssafy.io/api/missions/" + 1, { params })
-            .then((res) => {
-              console.log(res);
-            });
-        }
-      });
+  const clickedToggle = (i) => {
+    if (toggle[i] === false) {
+      axios
+        .post("https://j7b204.p.ssafy.io/api/missions/", {
+          memberId,
+          missionId: missionList[i].id,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    } else {
+      const params = { missionId: missionList[i].id };
+      axios
+        .delete("https://j7b204.p.ssafy.io/api/missions/" + memberId, {
+          params,
+        })
+        .then((res) => {
+          console.log(res);
+        });
     }
   };
   return (
     <div>
       <NavBar></NavBar>
       <Nav></Nav>
-      {missionList.map(function (a, i) {
-        return (
-          <div className={styles.mission_div}>
-            <span className={styles.mission_title}>{missionList[i].name}</span>
-            <ToggleBtn
-              onClick={() => {
-                console.log(toggle);
-                let to = [...toggle];
-                to[i] = !to[i];
-                setToggle(to);
-                clickedToggle();
-              }}
-              toggle={toggle[i]}
-            >
-              <Circle toggle={toggle[i]} />
-            </ToggleBtn>
-          </div>
-        );
-      })}
+      <div className={styles.margin_div}>
+        {missionList.map(function (a, i) {
+          return (
+            <div className={styles.mission_div}>
+              <span className={styles.mission_title}>
+                {missionList[i].name}
+              </span>
+              {}
+              <ToggleBtn
+                onClick={() => {
+                  console.log(toggle);
+                  let to = [...toggle];
+                  to[i] = !to[i];
+                  setToggle(to);
+                  clickedToggle(i);
+                }}
+                toggle={toggle[i]}
+              >
+                <Circle toggle={toggle[i]} />
+              </ToggleBtn>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
