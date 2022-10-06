@@ -6,7 +6,7 @@ import axios from "axios";
 function PersonalRecommend() {
   const navigate = useNavigate();
   const [musics, setMusics] = useState([]);
-  const member = JSON.parse(localStorage.getItem("userProfile"));
+  const member = JSON.parse(localStorage.getItem("userprofile"));
   const member_id = member.id;
   useEffect(() => {
     axios({

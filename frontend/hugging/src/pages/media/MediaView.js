@@ -12,7 +12,7 @@ import { API_HOST_URL } from "../../config/index";
 
 function MediaView() {
   const [musics, setMusics] = useState([]);
-  const member = JSON.parse(localStorage.getItem("userProfile"));
+  const member = JSON.parse(localStorage.getItem("userprofile"));
   const member_id = member.id;
   useEffect(() => {
     axios({
