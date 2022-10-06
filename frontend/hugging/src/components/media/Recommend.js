@@ -28,7 +28,7 @@ function Recommend(props) {
               alt="music"
               className={styles.MusicImage}
             ></img>
-            <p className="contentText">{musicdata.name}</p>
+            <p className={styles.contentText}>{musicdata.name}</p>
             <img
               src="../whiteplaybutton.png"
               alt="play"

@@ -27,7 +27,7 @@ function Topic(props) {
                 >
                   <img
                     src={`https://placeimg.com/200/100/${music.category}/${music.id}`}
-                    alt="agra"
+                    alt="iamge"
                     className={styles.image}
                   ></img>
                   <p className={styles.Text}>{music.name}</p>
