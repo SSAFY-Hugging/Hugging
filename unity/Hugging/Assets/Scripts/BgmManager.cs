@@ -12,29 +12,33 @@ public class BgmManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
-        if(isPaused)
-        {
-            audioSource.Stop();
-        } else if(!isPaused && !audioSource.isPlaying)
-        {
-            audioSource.Play();
-        }
-    }
-
     private void OnApplicationFocus(bool focus)
     {
         isPaused = !focus;
+        setAudioSourceState();
     }
 
     private void OnApplicationPause(bool pause)
     {
         isPaused = pause;
+        setAudioSourceState();
     }
 
     private void OnApplicationQuit()
     {
         isPaused = true;
+        setAudioSourceState();
+    }
+
+    private void setAudioSourceState()
+    {
+        if (isPaused)
+        {
+            audioSource.Stop();
+        }
+        else if (!isPaused)
+        {
+            audioSource.Play();
+        }
     }
 }
