@@ -64,21 +64,21 @@ const ReserveCounsel = () => {
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       memberId = parsedUser.id;
-      try {
-        const response = await fetch(
-          "https://j7b204.p.ssafy.io/api/counsels/" + memberId
-        ); // 프로미스 객체 반환
-        if (!response.ok) {
-          throw new Error("Something went wront!");
-        }
-        const data = await response.json(); // 프로미스 객체 반환
-        // 나의 예약 정보 출력
-        console.log("나의 예약 정보 출력");
-        console.log(data.data);
-        setReservation(data.data);
-      } catch (error) {
-        console.log(error.message);
+    }
+    try {
+      const response = await fetch(
+        "https://j7b204.p.ssafy.io/api/counsels/" + memberId
+      ); // 프로미스 객체 반환
+      if (!response.ok) {
+        throw new Error("Something went wront!");
       }
+      const data = await response.json(); // 프로미스 객체 반환
+      // 나의 예약 정보 출력
+      console.log("나의 예약 정보 출력");
+      console.log(data.data);
+      setReservation(data.data);
+    } catch (error) {
+      console.log(error.message);
     }
   }, [setReservation]);
 
@@ -105,7 +105,7 @@ const ReserveCounsel = () => {
         console.log(error.message);
       }
     }
-  }, [setReservation]);
+  }, [setCounselors]);
 
   // 처음 들어왔을 때 실행
   // useEffect(() => {

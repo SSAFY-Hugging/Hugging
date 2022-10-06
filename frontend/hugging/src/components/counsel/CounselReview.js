@@ -48,8 +48,8 @@ const CounselReview = (props) => {
         {reviews.map((review, index) => (
           <div key={index} className={classes.review}>
             <div>
-              <span className={classes.text}>{review.nickname}님</span>
-              <span className={classes.date}>{review.regDate}</span>
+              <div className={classes.text}>{review.nickname}님</div>
+              <div className={classes.date}>{review.regDate}</div>
             </div>
             <div>
               {starRendering(review)}

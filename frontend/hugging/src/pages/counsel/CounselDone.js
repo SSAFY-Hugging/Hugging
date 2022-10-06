@@ -86,7 +86,7 @@ const CounselDone = () => {
       const data = await response.json(); // 프로미스 객체 반환
       console.log(data.data);
       if (data.data === "OK") {
-        alert("댓글을 작성했습니다.");
+        alert("댓글이 저장되었습니다.");
       } else {
         alert("작성 중 오류가 발생했습니다.");
       }

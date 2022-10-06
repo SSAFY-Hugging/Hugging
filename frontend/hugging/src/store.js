@@ -144,6 +144,7 @@ const initialCounselorState = {
   date: undefined,
   time: undefined,
   subjectKor: undefined,
+  profileImage: undefined,
 };
 
 let counselSlice = createSlice({
@@ -174,6 +175,11 @@ let counselSlice = createSlice({
       console.log("in time store");
       state.time = action.payload;
       console.log(state.time);
+    },
+    selectProfileImage(state, action) {
+      console.log("in profileImage store");
+      state.profileImage = action.payload;
+      console.log(state.profileImage);
     },
     setSubjectKor(state, action) {
       console.log("in setSubjectKor store");

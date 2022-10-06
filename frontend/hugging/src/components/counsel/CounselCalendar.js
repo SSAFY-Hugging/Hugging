@@ -6,6 +6,7 @@ import "./Calendar.css";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { counselActions } from "../../store";
+import Card from "../ui/Card";
 
 const CounselCalendar = () => {
   const [date, setDate] = useState();
@@ -50,9 +51,9 @@ const CounselCalendar = () => {
           </Calendar>
         </div>
         {date && (
-          <p className="text-center">
+          <Card className={classes.date}>
             <span className="bold">선택한 날짜:</span> {getFormatDate(date)}
-          </p>
+          </Card>
         )}
       </div>
     </Fragment>

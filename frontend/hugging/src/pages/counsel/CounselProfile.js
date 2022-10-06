@@ -49,6 +49,8 @@ const CounselProfile = () => {
     dispatch(counselActions.selectCounselorName(profile.name));
     dispatch(counselActions.selectCounselorId(profile.counselorId));
     dispatch(counselActions.selectSubject(profile.subject));
+    dispatch(counselActions.selectProfileImage(profile.profileImage));
+
     navigate("/counselreserve");
   };
 

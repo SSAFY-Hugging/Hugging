@@ -28,33 +28,21 @@ const ModalOverlay = (props) => {
     // counselorId, memberId, reservationDate, subject
 
     // memberId 가져옴
-    localStorage.setItem(
-      "userProfile",
-      JSON.stringify({
-        id: 10,
-        age: 20,
-        counselList: [],
-        email: "doohui96@naver.com",
-        favoriteCounselorList: [],
-        favoriteMusicList: [],
-        gender: "FEMALE",
-        nickname: "주히",
-        profileImage: 1,
-      })
-    );
-    const loadedUserProfile = localStorage.getItem("userProfile");
+    const loadedUserProfile = localStorage.getItem("userprofile");
+    let memberId = 10;
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
-      // console.log(parsedUser.id);
-      const reservation = {
-        counselorId: props.counselorId,
-        memberId: parsedUser.id,
-        reservationDate: props.date + " " + props.time,
-        subject: props.subject,
-      };
-
-      fetchReserveHandler(reservation);
+      memberId = parsedUser.id;
     }
+    // console.log(parsedUser.id);
+    const reservation = {
+      counselorId: props.counselorId,
+      memberId,
+      reservationDate: props.date + " " + props.time,
+      subject: props.subject,
+    };
+
+    fetchReserveHandler(reservation);
   };
 
   const fetchReserveHandler = async (reservation) => {
@@ -90,33 +78,37 @@ const ModalOverlay = (props) => {
 
   return (
     <div className={classes.modal}>
-      <Card>
-        <div>
-          <span className={classes.grayBar} />
-        </div>
-        <Card>
+      <div className={classes.modal_bar}></div>
+      <div>
+        <Card className={classes.card}>
           <div className={classes.column}>
             <div>
-              <img src="./sampleCounselorSquare.png" alt="counselor" />
-              <div>{props.counselorName} 상담사</div>
+              <img
+                src={props.profileImage}
+                alt="counselor"
+                className={classes.profileImage}
+              />
+              <div className={classes.name}>{props.counselorName} 상담사</div>
             </div>
-            <div>
+            <div className={classes.detail}>
               <div className={classes.title}>일시</div>
-              <div>{props.date}</div>
-              <div>{props.time}</div>
+              <div className={classes.text}>{props.date}</div>
+              <div className={classes.text}>{props.time}</div>
               <div>
                 <span className={classes.title}>상담사</span>
-                <span>{props.counselorName}</span>
+                <span className={classes.text}>{props.counselorName}</span>
               </div>
               <div>
                 <span className={classes.title}>주제</span>
-                <span>{value}</span>
+                <span className={classes.text}>{value}</span>
               </div>
             </div>
           </div>
         </Card>
-        <div>예약 완료하시겠습니까?</div>
-        <div>
+        <div className={classes.confirm}>
+          <div className={classes.confirmText}>예약 완료하시겠습니까?</div>
+        </div>
+        <div className={classes.btns}>
           <button className={classes.cancel} onClick={props.onConfirm}>
             취소
           </button>
@@ -124,7 +116,7 @@ const ModalOverlay = (props) => {
             예약
           </button>
         </div>
-      </Card>
+      </div>
     </div>
   );
 };
@@ -135,6 +127,7 @@ const ConfirmModal = (props) => {
   const date = useSelector((state) => state.counsel.date);
   const time = useSelector((state) => state.counsel.time);
   const subject = useSelector((state) => state.counsel.subject);
+  const profileImage = useSelector((state) => state.counsel.profileImage);
 
   return (
     <Fragment>
@@ -149,6 +142,7 @@ const ConfirmModal = (props) => {
           date={date}
           time={time}
           subject={subject}
+          profileImage={profileImage}
           onConfirm={props.onConfirm}
           onReservation={props.onReservation}
         />,

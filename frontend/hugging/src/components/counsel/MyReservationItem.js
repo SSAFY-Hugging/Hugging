@@ -45,6 +45,7 @@ const MyReservationItem = (props) => {
     dispatch(nowCounselActions.setNowDate(props.reservationDate));
     dispatch(nowCounselActions.setNowTime(props.reservationTime));
     dispatch(nowCounselActions.setProfileImage(props.profileImage));
+    dispatch(nowCounselActions.setGender(props.gender));
 
     let url =
       "http://j7b204.p.ssafy.io/unity/index.html?from=OneToOne&nickName=" +

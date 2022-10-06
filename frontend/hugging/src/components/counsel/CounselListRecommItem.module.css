@@ -1,19 +1,23 @@
 .back {
-  padding: 10px;
+  /* padding: 10px; */
+  padding-right: 20px;
 }
 
 .titleImage {
   display: block;
   width: 91px;
   height: 91px;
+  border-radius: 90px;
 }
 
 .score {
+  margin-top: 4px;
   display: flex;
   overflow-x: scroll;
 }
 
 .number {
+  padding-left: 5px;
   font-size: 1px;
 }
 
@@ -24,8 +28,11 @@
 
 .name {
   /* color: #5b71e7; */
+  font-family: "AppleSDGothicNeoL";
   font-weight: bold;
-  font-size: 0.5rem;
+  margin-top: 4px;
+  margin-left: 3px;
+  font-size: 11px;
 }
 
 .detail {
@@ -35,9 +42,9 @@
 }
 
 .field {
+  font-family: "AppleSDGothicNeoM";
   border-radius: 5px;
-  width: 50px;
-  height: 15px;
+  padding: 3px 5px;
   background: #fce9fe;
   text-align: center;
   font-size: 1px;
