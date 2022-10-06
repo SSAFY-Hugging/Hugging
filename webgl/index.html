@@ -144,7 +144,7 @@
             fullscreenButton.onclick = () => {
               unityInstance.SetFullscreen(1);
             };
-            if (isMobile == true) {
+            if (isMobile == true && /Android/i.test(navigator.userAgent)) {
               if (screen.orientation.type == "landscape-primary") {
                 canvas.style.width = "65vw";
                 canvas.style.height = "75vh";
