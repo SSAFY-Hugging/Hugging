@@ -11,7 +11,7 @@ import com.ssafy.hugging.counsel.domain.Counsel;
 
 @Repository
 public interface CounselRepository extends JpaRepository<Counsel, Integer> {
-	@Query("select c from Counsel c where c.member.id = :memberId and c.status = 'INCOMPLETE'")
+	@Query("select c from Counsel c where c.member.id = :memberId and c.status = 'INCOMPLETE' order by c.reservationDate desc")
 	List<Counsel> findCounselByMemberId(@Param("memberId") Integer memberId);
 
 	@Query("select c from Counsel c where c.counselor.id = :counselorId and function('date_format', c.reservationDate, '%Y-%m-%d') = :reservationDate")
