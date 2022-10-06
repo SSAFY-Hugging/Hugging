@@ -7,8 +7,10 @@
 }
 
 .profileImg {
-  width: 170px;
+  width: 160px;
   margin-top: 10px;
+  border-radius: 90px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .name {

@@ -51,7 +51,7 @@ const CounselCalendar = () => {
         </div>
         {date && (
           <p className="text-center">
-            <span className="bold">Selected Date:</span> {getFormatDate(date)}
+            <span className="bold">선택한 날짜:</span> {getFormatDate(date)}
           </p>
         )}
       </div>

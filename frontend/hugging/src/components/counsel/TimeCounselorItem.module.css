@@ -17,7 +17,7 @@
 }
 
 .number {
-  font-size: 1px;
+  font-size: 12px;
 }
 
 .starImg {
@@ -35,7 +35,7 @@
 .detail {
   display: flex;
   overflow-x: scroll;
-  font-size: 0.5rem;
+  font-size: 10px;
 }
 
 .field {

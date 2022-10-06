@@ -37,8 +37,14 @@ const MyReservationItem = (props) => {
 
   const metaverseHandler = (e) => {
     console.log("입장 클릭 ");
-    // navigate("/edit", { state: e.target.value });
-    //1:1 상담방이면 OneToOne|주희|001|Company
+    // 현재 입장한 상담 정보 store 에 저장 (상담 후 리뷰 작성해야 함)
+    // store: 상담사 이름, 아이디, 주제, 날짜, 시간
+    dispatch(nowCounselActions.setNowCounselorName(props.counselorName));
+    dispatch(nowCounselActions.setNowCounselorId(props.counselorId));
+    dispatch(nowCounselActions.setNowSubject(props.subject));
+    dispatch(nowCounselActions.setNowDate(props.reservationDate));
+    dispatch(nowCounselActions.setNowTime(props.reservationTime));
+    dispatch(nowCounselActions.setProfileImage(props.profileImage));
 
     let url =
       "http://j7b204.p.ssafy.io/unity/index.html?from=OneToOne&nickName=" +

@@ -42,8 +42,9 @@ const CounselRecommList = (props) => {
           <div className={classes.counselor}>
             {props.counselors.map((counselor) => (
               <CounselorRecommItem
-                key={counselor.counselorId}
-                counselorId={counselor.counselorId}
+                key={counselor.id}
+                img={counselor.profile_image}
+                counselorId={counselor.id}
                 name={counselor.name}
                 subject={counselor.subject}
                 average={counselor.average}

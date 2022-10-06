@@ -6,7 +6,7 @@ const SelectCounsel = () => {
   const [nickName, setNickName] = useState("비회원");
 
   const getUserProfile = useCallback(() => {
-    const loadedUserProfile = localStorage.getItem("userProfile");
+    const loadedUserProfile = localStorage.getItem("userprofile");
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       setNickName(parsedUser.nickname);

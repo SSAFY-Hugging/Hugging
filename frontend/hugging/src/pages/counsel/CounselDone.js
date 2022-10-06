@@ -6,9 +6,8 @@ import Star from "../../components/counselor/Star";
 
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
-// import { CKEditor } from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import Header from "../../Layout/Header";
+
 const CounselDone = () => {
   // Editor DOM 선택용
   const editorRef = useRef();
@@ -16,16 +15,14 @@ const CounselDone = () => {
 
   let counselorId = useSelector((state) => state.nowCounsel.counselorId);
   let counselorName = useSelector((state) => state.nowCounsel.counselorName);
-  let subject = useSelector((state) => state.nowCounsel.subject);
+  // let subject = useSelector((state) => state.nowCounsel.subject);
   let date = useSelector((state) => state.nowCounsel.date);
   let time = useSelector((state) => state.nowCounsel.time);
-  let score = undefined;
+  let profileImage = useSelector((state) => state.nowCounsel.profileImage);
+  let gender = useSelector((state) => state.nowCounsel.gender);
 
+  let score = 0;
   const [nickname, setNickname] = useState();
-
-  const cancleClickHandler = () => {
-    navigate("/counselreserve");
-  };
 
   // 작성완료 버튼 클릭
   const registerClilckHandler = () => {
@@ -34,37 +31,25 @@ const CounselDone = () => {
     // 입력창에 입력한 내용을 MarkDown 형태로 취득
     // console.log(editorRef.current?.getInstance().getMarkdown());
 
-    // 필요 내용
-    // content, counselorId, memberId, score
-    // 일단 더미 데이터 넣어서 실험해보기
-    counselorId = 1;
     const content = editorRef.current?.getInstance().getMarkdown();
     if (content.trim() === "") {
       alert("댓글을 입력해 주세요.");
       return;
     }
 
-    localStorage.setItem(
-      "userProfile",
-      JSON.stringify({
-        id: 10,
-        age: 20,
-        counselList: [],
-        email: "doohui96@naver.com",
-        favoriteCounselorList: [],
-        favoriteMusicList: [],
-        gender: "FEMALE",
-        nickname: "주히",
-        profileImage: 1,
-      })
-    );
-
-    const loadedUserProfile = localStorage.getItem("userProfile");
+    const loadedUserProfile = localStorage.getItem("userprofile");
     let memberId = undefined;
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       // console.log(parsedUser.id);
       memberId = parsedUser.id;
+    }
+
+    if (counselorId == undefined) {
+      counselorId = 1;
+    }
+    if (memberId == undefined) {
+      memberId = 10;
     }
 
     const review = {
@@ -77,8 +62,9 @@ const CounselDone = () => {
     fetchReview(review);
   };
 
-  const starClickHandler = (starScore) => {
-    score = starScore;
+  // 취소 버튼
+  const cancleClickHandler = () => {
+    navigate("/counselreserve");
   };
 
   // 댓글 작성
@@ -109,6 +95,10 @@ const CounselDone = () => {
     } catch (error) {
       console.log(error.message);
     }
+  };
+
+  const starClickHandler = (starScore) => {
+    score = starScore;
   };
 
   // 화면 들어왔을 때 실행
@@ -143,31 +133,53 @@ const CounselDone = () => {
         </div>
       </div>
       <div className={classes.card}>
-        <img
-          src="./sampleCounselorSquare.png"
-          alt="counselorImg"
-          className={classes.profileImage}
-        ></img>
+        {!profileImage && (
+          <img
+            src="./sampleCounselorSquare.png"
+            alt="counselorImg"
+            className={classes.profileImage}
+          ></img>
+        )}
+        {profileImage && (
+          <img
+            src={profileImage}
+            alt="counselorImg"
+            className={classes.realProfileImage}
+          ></img>
+        )}
         <div className={classes.profileDetail}>
           <div>
-            {/* <span className={classes.counselorName}>{counselorName} 상담사</span> */}
-            <span className={classes.counselorName}>
-              {counselorName} 이미소 상담사
-            </span>
-            {/* {props.profile.gender === "MALE" && ( */}
-            <img
-              src="../genderM.png"
-              alt="male"
-              className={classes.genderImg}
-            ></img>
-            {/* )} */}
-            {/* {props.profile.gender === "FEMALE" && (
+            {counselorName && (
+              <span className={classes.counselorName}>
+                {counselorName} 상담사
+              </span>
+            )}
+            {!counselorName && (
+              <span className={classes.counselorName}>
+                {counselorName} 이미소 상담사
+              </span>
+            )}
+            {!gender && (
+              <img
+                src="../genderM.png"
+                alt="male"
+                className={classes.genderImg}
+              ></img>
+            )}
+            {gender && gender === "MALE" && (
+              <img
+                src="../genderM.png"
+                alt="male"
+                className={classes.genderImg}
+              ></img>
+            )}
+            {gender && gender === "FEMALE" && (
               <img
                 src="../female.png"
                 alt="female"
                 className={classes.genderImg}
               ></img>
-            )} */}
+            )}
           </div>
           <div className={classes.dateTitle}>일시</div>
           <div>
@@ -186,8 +198,14 @@ const CounselDone = () => {
                 d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            {/* {date} {time} */}
-            <span className={classes.date}>2022/10/05 11:00 ~ 12:00</span>
+            {(!date || !time) && (
+              <span className={classes.date}>2022/10/05 11:00 ~ 12:00</span>
+            )}
+            {date && time && (
+              <span className={classes.date}>
+                {date} {time}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -197,7 +215,7 @@ const CounselDone = () => {
           <span className={classes.nickname}>{nickname}님(익명)</span>
           <span className={classes.regDate}>{getFormatDate()}</span>
         </div>
-        <div>
+        <div className={classes.star}>
           <Star onClick={starClickHandler} />
         </div>
         <div>
@@ -218,7 +236,7 @@ const CounselDone = () => {
           ></Editor>
         </div>
       </div>
-      <div>
+      <div className={classes.btns}>
         <button className={classes.cancel} onClick={cancleClickHandler}>
           취소
         </button>

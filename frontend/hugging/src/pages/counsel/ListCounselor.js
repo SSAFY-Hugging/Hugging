@@ -6,33 +6,6 @@ import classes from "./ListCounselor.module.css";
 import TimeCounselorItem from "../../components/counsel/TimeCounselorItem";
 import { useSelector } from "react-redux";
 
-const DUMMY_COUNSELOR = [
-  {
-    id: "c1",
-    img: "",
-    name: "이주희",
-    field: "번아웃",
-    score: 3.5,
-    availableTime: "평일",
-  },
-  {
-    id: "c2",
-    img: "",
-    name: "김호진",
-    field: "가족관계",
-    score: 3.5,
-    availableTime: "주말",
-  },
-  {
-    id: "c3",
-    img: "",
-    name: "김성규",
-    field: "불안",
-    score: 3.5,
-    availableTime: "주말",
-  },
-];
-
 const ListCounselor = () => {
   const location = useLocation();
   const state = location.state;

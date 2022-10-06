@@ -90,6 +90,8 @@ const initialNowCounselState = {
   subject: undefined,
   date: undefined,
   time: undefined,
+  gender: undefined,
+  profileImage: undefined,
 };
 
 // 현재 입장한 상담 정보
@@ -121,6 +123,16 @@ let nowCounselSlice = createSlice({
       console.log("in time store");
       state.time = action.payload;
       console.log(state.time);
+    },
+    setProfileImage(state, action) {
+      console.log("in profile image store");
+      state.profileImage = action.payload;
+      console.log(state.profileImage);
+    },
+    setGender(state, action) {
+      console.log("in gender store");
+      state.gender = action.payload;
+      console.log(state.gender);
     },
   },
 });
