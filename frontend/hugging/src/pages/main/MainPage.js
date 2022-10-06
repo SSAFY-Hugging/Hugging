@@ -173,7 +173,7 @@ function MainPage() {
         </div>
       </div>
       <div className={styles.music_recommend}>
-        <div>{/* <Topic /> */}</div>
+        <div>{<PersonalRecommend />}</div>
       </div>
       <div className={styles.counseling}>
         <button className={styles.counseling_btn}>
@@ -221,7 +221,6 @@ function MainPage() {
         <CounselorRecommList counselors={counselors} />
       </div>
       <Nav></Nav>
-      {/* <PersonalRecommend /> */}
     </div>
   );
 }

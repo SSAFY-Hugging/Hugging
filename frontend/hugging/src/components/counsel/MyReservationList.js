@@ -17,6 +17,8 @@ const MyReservationList = (props) => {
               reservationTime={reservation.reservationTime}
               subject={reservation.subject}
               counselorName={reservation.counselorName}
+              profileImage={reservation.profileImage}
+              gender={reservation.gender}
               onCancle={props.onCancle}
             ></MyReservationItem>
           ))}

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./PlayingText.module.css";
 
-function PlayingText(props) {
+function PlayingText() {
   const texts = [
     "삶이라는 여행에서 겪게 되는 힘든 사건은 나를 한번 크게 되돌아보게 하고 비슷한 어려움을 겪고 있는 사람들의 아픔도 생각하게 하면서 자비심을 일으키게 하는 밑거름이 됩니다.힘든 일을 겪고 계신 분들, 그 일로 인해 지혜와 자비가 발현되시길..",
     "남들보다 더 잘하려고 고민하지 마세요. '지금의 나'보다 잘하려 애쓰는 게 중요해요",

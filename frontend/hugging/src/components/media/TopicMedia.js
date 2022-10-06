@@ -16,7 +16,7 @@ function TopicMedia(props) {
             >
               <div className={styles.ImgBox}>
                 <img
-                  src={`https://placeimg.com/200/100/${music.category}/${music.id}`}
+                  src={music.thumbnailUrl}
                   alt="thumbnail"
                   className={styles.image}
                 ></img>

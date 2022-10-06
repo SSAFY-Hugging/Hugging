@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./PlayingMusic.module.css";
 import PlayingText from "./PlayingText";
 import { useNavigate } from "react-router-dom";
-
+import Review from "./Review";
 function PlayingMusic(props) {
   const navigate = useNavigate();
   const [music, setMusic] = useState([]);
@@ -33,12 +33,15 @@ function PlayingMusic(props) {
     audioPlayer.current.pause();
   };
 
-
-
   const [textstatus, settextstatus] = useState(true);
 
   const clicktext = () => {
     settextstatus((prev) => !prev);
+  };
+  const [modalOpen, setModalOpen] = useState(false);
+  // 모달창 노출
+  const showModal = () => {
+    setModalOpen(true);
   };
 
   return (
@@ -49,10 +52,8 @@ function PlayingMusic(props) {
           src={music.data?.musicUrl}
           ref={audioPlayer}
           autoPlay={true}
-
           muted={false}
           onEnded={() => navigate(`/musicreview`)}
-
         ></audio>
       </div>
       {toggle ? (
@@ -93,11 +94,18 @@ function PlayingMusic(props) {
             alt="text"
             onClick={clicktext}
           ></img>
-          <img
-            src="../Heart2.png"
-            className={styles.HeartButton}
-            alt="heart"
-          ></img>
+          <div>
+            <button onClick={showModal}>
+              <img
+                src="../Heart2.png"
+                className={styles.HeartButton}
+                alt="heart"
+              ></img>
+              {modalOpen && (
+                <Review setModalOpen={setModalOpen} musicid={music.data.id} />
+              )}
+            </button>
+          </div>
         </div>
       )}
     </div>

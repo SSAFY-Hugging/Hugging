@@ -1,6 +1,8 @@
 .List {
   display: flex;
   flex-direction: column;
+  margin-top: 65px;
+  margin-bottom: 65px;
 }
 .Topic {
   margin-top: 10px;

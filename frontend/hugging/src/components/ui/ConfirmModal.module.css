@@ -9,45 +9,97 @@
 }
 
 .modal {
-  position: fixed;
-  top: 30vh;
-  left: 10%;
-  width: 80%;
   z-index: 100;
   overflow: hidden;
+  background: white;
+  height: 400px;
+  width: 360px;
+  margin-top: 300px;
+  padding: 20px;
+  position: absolute;
+  bottom: 0px;
+  margin: auto;
+  border-radius: 30px 30px 0px 0px;
 }
 
-.grayBar {
-  background-color: #d9d9d9;
-  height: 4px;
-  width: 38px;
-  left: 162px;
-  top: 370px;
-  border-radius: [object Object]px;
+.detail {
+  padding-left: 20px;
+  margin-top: 9px;
 }
+.name {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  font-family: "AppleSDGothicNeoB";
+}
+
+.profileImage {
+  width: 120px;
+  border-radius: 15px;
+}
+
+.card {
+  margin-top: 50px;
+}
+
+.text {
+  font-family: "AppleSDGothicNeoM";
+  font-size: 16px;
+  margin-left: 8px;
+}
+.confirm {
+  margin-top: 20px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.confirmText {
+  font-family: "AppleSDGothicNeoM";
+  text-align: center;
+}
+
+.modal_bar {
+  width: 80px;
+  height: 5px;
+  position: absolute;
+  display: flex;
+  margin-left: 120px;
+  color: grey;
+  border-radius: 20px;
+  background-image: url("../../img/Rectangle\ 5725.png");
+}
+
 .column {
   display: flex;
   overflow-x: scroll;
 }
 
 .title {
+  font-family: "AppleSDGothicNeoB";
   color: #5b71e7;
-  font-weight: bold;
+}
+
+.btns {
+  margin-top: 20px;
 }
 
 .cancel {
   height: 37px;
-  width: 110px;
+  width: 114px;
   border-radius: 0px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
   cursor: pointer;
   border-radius: 50px;
   background: #d9d9d9;
+  margin-left: 30px;
 }
 
 .reservation {
+  margin-left: 20px;
   height: 37px;
-  width: 110px;
+  width: 114px;
   border-radius: 0px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
   cursor: pointer;

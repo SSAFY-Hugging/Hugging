@@ -69,9 +69,14 @@ const CounselDetail = (props) => {
     <Fragment>
       <div className={classes.profile}>
         <div>
-          <img
+          {/* <img
             className={classes.profileImg}
             src="../sampleCounselorCircle.png"
+            alt="counselorProfile"
+          ></img> */}
+          <img
+            className={classes.profileImg}
+            src={props.profile.profileImage}
             alt="counselorProfile"
           ></img>
         </div>

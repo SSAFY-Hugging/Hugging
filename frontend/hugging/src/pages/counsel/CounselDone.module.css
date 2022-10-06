@@ -63,6 +63,12 @@
   width: 110px;
 }
 
+.realProfileImage {
+  width: 100px;
+  padding: 10px;
+  border-radius: 25px;
+}
+
 .title2 {
   font-family: AppleSDGothicNeoM;
   font-size: 17px;
@@ -80,7 +86,7 @@
 }
 
 .cancel {
-  margin: auto;
+  margin-left: 40px;
   background: linear-gradient(135deg, #9dceff 0%, #92a3fd 100%);
   color: white;
   border-radius: 50px;
@@ -97,7 +103,7 @@
 }
 
 .done {
-  margin: auto;
+  margin-left: 20px;
   background: linear-gradient(135deg, #eea4ce 0%, #c58bf2 100%);
   color: white;
   border-radius: 99px;
@@ -114,4 +120,13 @@
 .ck.ck-editor__editable:not(.ck-editor__nested-editable) {
   min-height: 400px;
   margin-bottom: 20px;
+}
+
+.star {
+  margin-bottom: 12px;
+}
+
+.btns {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }

@@ -1,5 +1,6 @@
 .titleImage {
-  /* width: 91px; */
+  width: 100px;
+  border-radius: 15px;
   /* height: 107px; */
 }
 
@@ -24,7 +25,7 @@
 }
 
 .field {
-  padding: 5px;
+  padding: 2px 5px;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
@@ -32,7 +33,7 @@
   /* height: 15px; */
   background: #eaf0fe;
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
   font-family: "AppleSDGothicNeoL";
 }
 

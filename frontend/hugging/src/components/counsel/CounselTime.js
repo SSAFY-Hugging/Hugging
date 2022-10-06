@@ -5,7 +5,7 @@ import TimePicker from "../TimePicker";
 const CounselTime = () => {
   // const [value, setValue] = React.useState(new Date());
   return (
-    <Fragment>
+    <div className={classes.back}>
       <div>
         <span className={classes.title}>시간 선택</span>
         <img src="./clock.png" alt="clock"></img>
@@ -14,7 +14,7 @@ const CounselTime = () => {
         <TimePicker />
       </div>
       <div className={classes.explain}>상담은 최대 한시간 진행됩니다.</div>
-    </Fragment>
+    </div>
   );
 };
 

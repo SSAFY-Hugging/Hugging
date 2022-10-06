@@ -17,7 +17,7 @@ function Rating(props) {
   };
 
   return (
-    <Wrap>
+    <div>
       <Stars>
         {ARRAY.map((el, idx) => {
           return (
@@ -30,7 +30,7 @@ function Rating(props) {
           );
         })}
       </Stars>
-    </Wrap>
+    </div>
   );
 }
 

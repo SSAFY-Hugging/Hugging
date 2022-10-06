@@ -59,44 +59,62 @@ const ReserveCounsel = () => {
   const fetchMyreservationHandler = useCallback(async () => {
     console.log("fetchMyreservationHandler 실행됨");
 
-    localStorage.setItem(
-      "userProfile",
-      JSON.stringify({
-        id: 10,
-        age: 20,
-        counselList: [],
-        email: "doohui96@naver.com",
-        favoriteCounselorList: [],
-        favoriteMusicList: [],
-        gender: "FEMALE",
-        nickname: "주히",
-        profileImage: 1,
-      })
-    );
+    const loadedUserProfile = localStorage.getItem("userprofile");
+    const memberId = 10;
+    if (loadedUserProfile !== null) {
+      const parsedUser = JSON.parse(loadedUserProfile);
+      memberId = parsedUser.id;
+    }
+    try {
+      const response = await fetch(
+        "https://j7b204.p.ssafy.io/api/counsels/" + memberId
+      ); // 프로미스 객체 반환
+      if (!response.ok) {
+        throw new Error("Something went wront!");
+      }
+      const data = await response.json(); // 프로미스 객체 반환
+      // 나의 예약 정보 출력
+      console.log("나의 예약 정보 출력");
+      console.log(data.data);
+      setReservation(data.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [setReservation]);
+
+  // 나의 추천 상담사 가져옴
+  const fetchRecommCounselorHandler = useCallback(async () => {
+    console.log("fetchfetchRecommCounselorHandlerHandler 실행됨");
 
     const loadedUserProfile = localStorage.getItem("userProfile");
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       try {
         const response = await fetch(
-          "https://j7b204.p.ssafy.io/api/counsels/" + parsedUser.id
+          "https://j7b204.p.ssafy.io/recom/counselor/" + parsedUser.id
         ); // 프로미스 객체 반환
         if (!response.ok) {
           throw new Error("Something went wront!");
         }
         const data = await response.json(); // 프로미스 객체 반환
-        console.log(data.data);
-        setReservation(data.data);
+        console.log("추천 상담사 출력");
+        console.log(data);
+        setCounselors(data);
+        // setReservation(data.data);
       } catch (error) {
         console.log(error.message);
       }
     }
-  }, [setReservation]);
+  }, [setCounselors]);
 
   // 처음 들어왔을 때 실행
+  // useEffect(() => {
+  //   fetchMyreservationHandler();
+  // }, [fetchMyreservationHandler]);
   useEffect(() => {
     fetchMyreservationHandler();
-  }, [fetchMyreservationHandler]);
+    fetchRecommCounselorHandler();
+  }, [fetchMyreservationHandler, fetchRecommCounselorHandler]);
 
   // 상담 주제 클릭할 때 마다 실행
   useEffect(() => {
