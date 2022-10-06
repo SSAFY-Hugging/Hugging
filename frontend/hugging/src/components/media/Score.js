@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 function Score(props) {
   const navigate = useNavigate();
-  const member = JSON.parse(localStorage.getItem("userProfile"));
+  const member = JSON.parse(localStorage.getItem("userprofile"));
   const member_id = member.id;
   const [clicked, setClicked] = useState([false, false, false, false, false]);
   const array = [0, 1, 2, 3, 4];
