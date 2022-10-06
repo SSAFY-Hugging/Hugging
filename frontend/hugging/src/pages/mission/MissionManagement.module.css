@@ -32,6 +32,7 @@
   margin: auto;
   align-content: center;
   justify-content: center;
+  margin-bottom: 15px;
 }
 
 .mission_title {
@@ -46,4 +47,25 @@
 .minutes {
   margin-left: 10px;
   color: grey;
+}
+
+.stamp {
+  margin-top: 90px;
+}
+
+.complete_div {
+  display: flex;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  margin-right: 5px;
+  background-color: #d398f5;
+  border-radius: 10px;
+  height: 30px;
+  width: 100px;
+}
+
+.complete {
+  color: white;
+  font-weight: 500;
 }

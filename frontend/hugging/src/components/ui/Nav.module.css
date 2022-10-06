@@ -17,6 +17,7 @@
   background-color: white;
   position: fixed;
   width: 360px;
+  z-index: 999;
 }
 .nav_btn_title {
   color: #ada4a5;

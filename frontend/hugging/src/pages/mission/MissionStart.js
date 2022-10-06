@@ -11,14 +11,6 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import { useCountdown } from "react-countdown-circle-timer";
 import Timer from "../../components/mission/Timer";
 function MissionList() {
-  //   const { time, start, pause, reset, status } = useTimer({
-  //     initialTime: 100,
-  //     endTime: 30,
-  //     timerType: "DECREMENTAL",
-  //     onTimeOver: () => {
-  //       console.log("Time is over");
-  //     },
-  //   });
   const {
     path,
     pathLength,
@@ -29,7 +21,10 @@ function MissionList() {
     size,
     strokeWidth,
   } = useCountdown({ isPlaying: false, duration: 60, colors: "#abc" });
-
+  let missionList = localStorage.getItem("missionList");
+  missionList = JSON.parse(missionList);
+  let missionId = sessionStorage.getItem("missionid");
+  missionId = Number(missionId);
   let [Playing, setPlaying] = useState(false);
   let [btn, setBtn] = useState(false);
   let [mcompleted, setMcompleted] = useState(false);
@@ -45,12 +40,14 @@ function MissionList() {
       <div className={styles.margin_div}>
         <div className={styles.mission_div}>
           <div>
-            <h6 className={styles.mission_text}>차를 천천히 우리며 명상하기</h6>
+            <h6 className={styles.mission_text}>
+              {missionList[missionId - 1].name}
+            </h6>
             <span className={styles.minutes}>1 minuetes</span>
           </div>
         </div>
         <div className={styles.timer_div}>
-          <Timer btn={btn} />
+          <Timer btn={btn} missionId={missionId} />
         </div>
         <Nav></Nav>
       </div>
