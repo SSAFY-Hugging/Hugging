@@ -1,5 +1,7 @@
 package com.ssafy.hugging.member.controller;
 
+import static com.ssafy.hugging.member.MemberConstant.*;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -70,30 +72,37 @@ public class MemberController {
 		return new ResponseEntity<>(jwtTokenProvider.createToken(String.valueOf(memberId)), HttpStatus.OK);
 	}
 
+	@DeleteMapping("/{id}")
+	@ApiOperation(value = "회원 탈퇴", notes = "회원 탈퇴 진행")
+	public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
+		memberService.deleteUser(id);
+		return response.success(DELETE_MEMBER_REQUEST_SUCCESS);
+	}
+
 	@GetMapping("/music/{id}")
 	@ApiOperation(value = "츨겨찾기 음악 리스트 검색", notes = "회원 아이디로 즐겨찾기 한 음악 리스트 검색")
 	public ResponseEntity<?> getFavoriteMusicList(@PathVariable Integer id) {
-		return response.success(memberService.getFavoriteMusicList(id), "getFavoriteMusicList success", HttpStatus.OK);
+		return response.success(memberService.getFavoriteMusicList(id), GET_FAVORITE_MUSIC_LIST_SUCCESS, HttpStatus.OK);
 	}
 
 	@PostMapping("/music")
 	@ApiOperation(value = "즐겨찾기 음악 등록", notes = "즐겨찾기 음악 등록")
 	public ResponseEntity<?> registerFavoriteMusic(@RequestBody FavoriteMusicRequest favoriteMusicRequest) {
 		memberService.registerFavoriteMusic(favoriteMusicRequest);
-		return response.success("register favorite music success");
+		return response.success(REGISTER_FAVORITE_MUSIC_LIST_SUCCESS);
 	}
 
 	@DeleteMapping("/music")
 	@ApiOperation(value = "즐겨찾기 음악 삭제", notes = "음악 아이디로 즐겨 찾기 한 음악 리스트 모두 삭제")
 	public ResponseEntity<?> deleteFavoriteMusic(@RequestParam Integer memberId, @RequestParam Integer musicId) {
 		memberService.deleteFavoriteMusic(memberId, musicId);
-		return response.success("delete favorite music success");
+		return response.success(DELETE_FAVORITE_MUSIC_LIST_SUCCESS);
 	}
 
 	@GetMapping("/counselor/{id}")
 	@ApiOperation(value = "즐겨찾기 상담사 리스트 검색", notes = "회원 아이디로 즐겨찾기 한 상담사 리스트 검색")
 	public ResponseEntity<?> getFavoriteCounselorList(@PathVariable Integer id) {
-		return response.success(memberService.getFavoriteCounselorList(id), "getFavoriteCounselorList success",
+		return response.success(memberService.getFavoriteCounselorList(id), GET_FAVORITE_COUNSELOR_LIST_SUCCESS,
 			HttpStatus.OK);
 	}
 
@@ -101,7 +110,7 @@ public class MemberController {
 	@ApiOperation(value = "즐겨찾기 상담사 등록", notes = "즐겨찾기 상담사 등록")
 	public ResponseEntity<?> registerFavoriteCounselor(@RequestBody FavoriteCounselorRequest favoriteCounselorRequest) {
 		memberService.registerFavoriteCounselor(favoriteCounselorRequest);
-		return response.success("register favorite counselor success");
+		return response.success(REGISTER_FAVORITE_COUNSELOR_LIST_SUCCESS);
 	}
 
 	@DeleteMapping("/cousnelor")
@@ -109,6 +118,6 @@ public class MemberController {
 	public ResponseEntity<?> deleteFavoriteCounselor(@RequestParam Integer memberId,
 		@RequestParam Integer counselorId) {
 		memberService.deleteFavoriteCounselor(memberId, counselorId);
-		return response.success("delete favorite counselor success");
+		return response.success(DELETE_FAVORITE_COUNSELOR_LIST_SUCCESS);
 	}
 }

@@ -23,6 +23,7 @@ public class CounselorLoginResponse {
 	private final Subject subject;
 	private final String career;
 	private final String explanation;
+	private final String profileImage;
 	private final Gender gender;
 	private final Double average;
 
@@ -37,6 +38,7 @@ public class CounselorLoginResponse {
 		subject = counselor.getSubject();
 		career = counselor.getCareer();
 		explanation = counselor.getExplanation();
+		profileImage = counselor.getProfileImage();
 		gender = counselor.getGender();
 		this.average = average;
 

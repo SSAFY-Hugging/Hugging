@@ -197,6 +197,10 @@ public class MemberService implements UserDetailsService {
 		memberRepository.save(member);
 	}
 
+	public void deleteUser(Integer id) {
+		memberRepository.deleteById(id);
+	}
+
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {
 		return memberRepository.findById(Integer.parseInt(id))
