@@ -1745,11 +1745,7 @@
     "schema-utils" "^3.0.0"
     "source-map" "^0.7.3"
 
-<<<<<<< HEAD
-"@popperjs/core@^2.0.0", "@popperjs/core@^2.11.5", "@popperjs/core@^2.11.6", "@popperjs/core@^2.9.2":
-=======
-"@popperjs/core@^2.11.5":
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
+"@popperjs/core@^2.11.5", "@popperjs/core@^2.11.6", "@popperjs/core@^2.9.2":
   "integrity" "sha512-50/17A98tWUfQ176raKiOGXuYpLyyVMkxxG6oylzL3BPOlA6ADGdK7EYunSa4I064xerltq9TGXs8HmOk5E+vw=="
   "resolved" "https://registry.npmjs.org/@popperjs/core/-/core-2.11.6.tgz"
   "version" "2.11.6"
@@ -3434,29 +3430,7 @@
   "resolved" "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   "version" "1.2.2"
 
-<<<<<<< HEAD
-"ckeditor5@^35.1.0":
-  "integrity" "sha512-Mk8qPXT1OW1BxwVbDnphJmNww8kodKv48HUqSWBCI5i+hOZ/zXNdBoD48NCYqJ5Lr2rJCvlfZ93t3cc//20hwg=="
-  "resolved" "https://registry.npmjs.org/ckeditor5/-/ckeditor5-35.1.0.tgz"
-  "version" "35.1.0"
-  dependencies:
-    "@ckeditor/ckeditor5-clipboard" "^35.1.0"
-    "@ckeditor/ckeditor5-core" "^35.1.0"
-    "@ckeditor/ckeditor5-engine" "^35.1.0"
-    "@ckeditor/ckeditor5-enter" "^35.1.0"
-    "@ckeditor/ckeditor5-paragraph" "^35.1.0"
-    "@ckeditor/ckeditor5-select-all" "^35.1.0"
-    "@ckeditor/ckeditor5-typing" "^35.1.0"
-    "@ckeditor/ckeditor5-ui" "^35.1.0"
-    "@ckeditor/ckeditor5-undo" "^35.1.0"
-    "@ckeditor/ckeditor5-upload" "^35.1.0"
-    "@ckeditor/ckeditor5-utils" "^35.1.0"
-    "@ckeditor/ckeditor5-widget" "^35.1.0"
-
 "classnames@^2.2.1", "classnames@^2.2.5", "classnames@^2.2.6", "classnames@^2.3.1":
-=======
-"classnames@^2.2.1", "classnames@^2.2.5", "classnames@^2.3.1":
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   "integrity" "sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw=="
   "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
   "version" "2.3.2"
@@ -3930,16 +3904,12 @@
     "whatwg-mimetype" "^2.3.0"
     "whatwg-url" "^8.0.0"
 
-<<<<<<< HEAD
 "date-arithmetic@^4.1.0":
   "integrity" "sha512-QWxYLR5P/6GStZcdem+V1xoto6DMadYWpMXU82ES3/RfR3Wdwr3D0+be7mgOJ+Ov0G9D5Dmb9T17sNLQYj9XOg=="
   "resolved" "https://registry.npmjs.org/date-arithmetic/-/date-arithmetic-4.1.0.tgz"
   "version" "4.1.0"
 
-"date-fns@^2.0.0", "date-fns@^2.24.0", "date-fns@^2.28.0", "date-fns@^2.29.3", "date-fns@>=2":
-=======
-"date-fns@^2.29.3":
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
+"date-fns@^2.24.0", "date-fns@^2.29.3":
   "integrity" "sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA=="
   "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.29.3.tgz"
   "version" "2.29.3"
@@ -6540,14 +6510,11 @@
   dependencies:
     "p-locate" "^5.0.0"
 
-<<<<<<< HEAD
-"lodash-es@^4.17.11", "lodash-es@^4.17.15", "lodash-es@^4.17.21":
+"lodash-es@^4.17.21":
   "integrity" "sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw=="
   "resolved" "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
   "version" "4.17.21"
 
-=======
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
 "lodash.clamp@^4.0.3":
   "integrity" "sha512-HvzRFWjtcguTW7yd8NJBshuNaCa8aqNFtnswdT7f/cMd/1YKy5Zzoq4W/Oxvnx9l7aeY258uSdDfM793+eLsVg=="
   "resolved" "https://registry.npmjs.org/lodash.clamp/-/lodash.clamp-4.0.3.tgz"
@@ -6792,18 +6759,14 @@
   dependencies:
     "minimist" "^1.2.6"
 
-<<<<<<< HEAD
-"moment-timezone@^0.5.33", "moment-timezone@^0.5.34":
+"moment-timezone@^0.5.34":
   "integrity" "sha512-uEDzDNFhfaywRl+vwXxffjjq1q0Vzr+fcQpQ1bU0kbzorfS7zVtZnCnGc8mhWmF39d4g4YriF6kwA75mJKE/Zg=="
   "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.37.tgz"
   "version" "0.5.37"
   dependencies:
     "moment" ">= 2.9.0"
 
-"moment@^2.29.0", "moment@^2.29.1", "moment@^2.29.4", "moment@>= 2.9.0":
-=======
-"moment@^2.29.4":
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
+"moment@^2.29.4", "moment@>= 2.9.0":
   "integrity" "sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
   "version" "2.29.4"
@@ -8160,11 +8123,7 @@
     "strip-ansi" "^6.0.1"
     "text-table" "^0.2.0"
 
-<<<<<<< HEAD
-"react-dom@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^15.5.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^15.5.x || ^16.x || ^17.x || ^18.x", "react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0", "react-dom@^16.14.0 || ^17 || ^18", "react-dom@^16.3.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", "react-dom@^16.8.0 || ^17 || ^18", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.9.0 || ^17 || ^18", "react-dom@^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@>=16.0.0", "react-dom@>=16.14.0", "react-dom@>=16.3.0", "react-dom@>=16.6.0", "react-dom@>=16.8", "react-dom@>=16.8.0", "react-dom@>=16.9.0":
-=======
 "react-dom@^18.2.0":
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -8243,21 +8202,6 @@
   "resolved" "https://registry.npmjs.org/react-live-clock/-/react-live-clock-6.0.6.tgz"
   "version" "6.0.6"
 
-<<<<<<< HEAD
-"react-loader-spinner@^5.3.4":
-  "integrity" "sha512-G2vw4ssX+RDZ/vfaeva06yfNqyFViv/u+tVZ3kFLy5TKNlNx2DbuwreBSpRtPespQA+VxinxUJsigwLwG9erOg=="
-  "resolved" "https://registry.npmjs.org/react-loader-spinner/-/react-loader-spinner-5.3.4.tgz"
-  "version" "5.3.4"
-  dependencies:
-    "react-is" "^18.2.0"
-    "styled-components" "^5.3.5"
-    "styled-tools" "^1.7.2"
-
-"react-moment@1.1.2":
-  "integrity" "sha512-lfb+shYXI2tXlQrNUpNr05/1D/kzFj8Isbfp89DQrpZk0fs2JIAnLHWETR0hQS9zvtzwLWlVv0wKLffbue5HoA=="
-  "resolved" "https://registry.npmjs.org/react-moment/-/react-moment-1.1.2.tgz"
-  "version" "1.1.2"
-
 "react-onclickoutside@^6.12.0":
   "integrity" "sha512-NMXGa223OnsrGVp5dJHkuKxQ4czdLmXSp5jSV9OqiCky9LOpPATn3vLldc+q5fK3gKbEHvr7J1u0yhBh/xYkpA=="
   "resolved" "https://registry.npmjs.org/react-onclickoutside/-/react-onclickoutside-6.12.2.tgz"
@@ -8285,8 +8229,6 @@
     "react-fast-compare" "^3.0.1"
     "warning" "^4.0.2"
 
-=======
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
 "react-portal@^4.2.2":
   "integrity" "sha512-vS18idTmevQxyQpnde0Td6ZcUlv+pD8GTyR42n3CHUQq9OHi1C4jDE4ZWEbEsrbrLRhSECYiao58cvocwMtP7Q=="
   "resolved" "https://registry.npmjs.org/react-portal/-/react-portal-4.2.2.tgz"
@@ -8456,16 +8398,6 @@
   "resolved" "https://registry.npmjs.org/react-unity-webgl/-/react-unity-webgl-9.2.1.tgz"
   "version" "9.2.1"
 
-<<<<<<< HEAD
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.5.0 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^15.5.x || ^16.x || ^17.x || ^18.x", "react@^16.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0", "react@^16.13.1 || ^17.0.0 || ^18.0.0", "react@^16.14.0 || ^17 || ^18", "react@^16.3.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17 || ^18", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0-rc.1 || ^18.0.0", "react@^16.9.0 || ^17 || ^18", "react@^16.9.0 || ^17.0.0 || ^18", "react@^18.0.0", "react@^18.2.0", "react@>= 15.3.0", "react@>= 16", "react@>= 16.8.0", "react@>=0.14.0", "react@>=15.0.0", "react@>=16", "react@>=16.0.0", "react@>=16.14.0", "react@>=16.3", "react@>=16.3.0", "react@>=16.6.0", "react@>=16.8", "react@>=16.8.0", "react@>=16.9.0":
-  "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
-  "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
-  "version" "18.2.0"
-  dependencies:
-    "loose-envify" "^1.1.0"
-
-=======
->>>>>>> 4c17c29b008ea6c8c82c351f1aeeb88f57296a01
 "react@^16.1.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
