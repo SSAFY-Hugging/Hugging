@@ -9,7 +9,8 @@ from .serializers import CounselorSerializer, MusicSerializer
 
 from .cf_counselor import cf_item_based_counselor as cf
 from .coldstart_counselor import recom_coldstart_counselor as cs
-from.cf_music import cf_music, music_tag
+from.cf_music import cf_music, music_tag, category
+from django.db.models import Avg, F
 
 import numpy as np
 # Create your views here.
@@ -33,12 +34,17 @@ class CounselorRecomAPI(APIView):
             # cf_list = list(map(int, cf_list))
             print(cf_list)
 
-            resultset = Counselor.objects.filter(id__in=cf_list.index)
+            
 
-            print(resultset)
+            # print(reviewAvg.values('counselor__id', 'score__avg'))
 
-            serializer = CounselorSerializer(resultset, many=True)
-            return Response(serializer.data)
+            resultset = Counselor.objects.filter(id__in=cf_list.index).annotate(Avg('counselorreview__score'))\
+                .annotate(average=F('counselorreview__score__avg'), profileImage=F('profile_image'), counselorId=F('id'), availableTime=F('available_time'))\
+                    .values('counselorId', 'availableTime', 'career', 'certificate', 'email', 'explanation', 'gender', 'name', 'password', 'subject', 'profileImage', 'average')
+
+            # print('resultset', resultset.values())
+
+            return Response(resultset.values())
         else:
             member_category = MemberMentalCategory.objects.filter(member__id = member_id).values()
             # print(member_category)
@@ -66,10 +72,10 @@ class MusicRecomAPI(APIView):
         return Response(data)
 
     @api_view(['GET',])
-    def category(self, mental_id):
-        mental = MemberMentalCategory.objects.filter(id=mental_id)
-        print(type(mental))
-        categories = music_tag(mental.values())
+    def category(self, music_category):
+        categories = category(music_category)
+        print(categories)
+        print(type(categories))
         queryset = Music.objects.filter(category__in=categories).order_by('hits')[:5]
         serializer = MusicSerializer(queryset, many=True)
 

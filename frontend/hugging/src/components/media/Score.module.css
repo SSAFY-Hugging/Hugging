@@ -1,0 +1,27 @@
+.Box {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+}
+.text {
+  color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+}
+.select {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+}
+.scorebutton {
+  width: 80px;
+  height: 40px;
+  background: linear-gradient(134.71deg, #99c0fe 3.9%, #93a7fd 87.95%);
+  border-radius: 10px;
+}
+.exit {
+  width: 80px;
+  height: 40px;
+  background: linear-gradient(134.71deg, #99c0fe 3.9%, #93a7fd 87.95%);
+  border-radius: 10px;
+}

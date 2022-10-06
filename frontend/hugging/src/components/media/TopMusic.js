@@ -16,7 +16,7 @@ function TopMusic(props) {
             onClick={() => navigate(`/playing_music/${topmusic.id}`)}
           >
             <img
-              src={`https://placeimg.com/200/100/${topmusic.category}/${topmusic.id}`}
+              src={topmusic.thumbnailUrl}
               alt="thumbnail"
               className={styles.image}
             ></img>

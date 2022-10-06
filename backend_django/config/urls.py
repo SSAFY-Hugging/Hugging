@@ -42,5 +42,5 @@ urlpatterns = [
 
 	path('recom/counselor/<int:member_id>/', CounselorRecomAPI.get),
     path('recom/music/<int:member_id>/', MusicRecomAPI.get),
-    path('recom/music/mental/<int:mental_id>/', MusicRecomAPI.category),
+    path('recom/music/mental/<str:music_category>/', MusicRecomAPI.category),
 ]
