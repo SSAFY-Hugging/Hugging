@@ -26,6 +26,7 @@ public class CounselReservationResponse {
 	private String reservationTime;
 	private Subject subject;
 	private Status status;
+	private String profileImage;
 
 	public static CounselReservationResponse of(Counsel counsel) {
 		return new CounselReservationResponseBuilder().counselId(counsel.getId())
@@ -36,6 +37,7 @@ public class CounselReservationResponse {
 			.reservationTime(counsel.getReservationDate().format(DateTimeFormatter.ofPattern("HH:mm")))
 			.subject(counsel.getSubject())
 			.status(counsel.getStatus())
+			.profileImage(counsel.getCounselor().getProfileImage())
 			.build();
 	}
 }
