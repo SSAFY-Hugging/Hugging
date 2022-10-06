@@ -6,21 +6,6 @@ const SelectCounsel = () => {
   const [nickName, setNickName] = useState("비회원");
 
   const getUserProfile = useCallback(() => {
-    localStorage.setItem(
-      "userProfile",
-      JSON.stringify({
-        id: 10,
-        age: 20,
-        counselList: [],
-        email: "doohui96@naver.com",
-        favoriteCounselorList: [],
-        favoriteMusicList: [],
-        gender: "FEMALE",
-        nickname: "주히",
-        profileImage: 1,
-      })
-    );
-
     const loadedUserProfile = localStorage.getItem("userProfile");
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);

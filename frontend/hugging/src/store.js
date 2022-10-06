@@ -84,6 +84,47 @@ let user = createSlice({
   },
 });
 
+const initialNowCounselState = {
+  counselorName: undefined,
+  counselorId: undefined,
+  subject: undefined,
+  date: undefined,
+  time: undefined,
+};
+
+// 현재 입장한 상담 정보
+let nowCounselSlice = createSlice({
+  name: "nowCounsel",
+  initialState: initialNowCounselState,
+  reducers: {
+    setNowCounselorName(state, action) {
+      console.log("in counselorName store");
+      console.log(action.payload);
+      state.counselorName = action.payload;
+    },
+    setNowCounselorId(state, action) {
+      console.log("in counselorId store");
+      console.log(action.payload);
+      state.counselorId = action.payload;
+    },
+    setNowSubject(state, action) {
+      console.log("in subject store");
+      state.subject = action.payload;
+      console.log(state.subject);
+    },
+    setNowDate(state, action) {
+      console.log("in date store");
+      state.date = action.payload;
+      console.log(state.date);
+    },
+    setNowTime(state, action) {
+      console.log("in time store");
+      state.time = action.payload;
+      console.log(state.time);
+    },
+  },
+});
+
 const initialCounselorState = {
   counselorName: undefined,
   counselorId: undefined,
@@ -142,6 +183,7 @@ export let {
 export let { changeMission } = mission.actions;
 export let { loginCounselor } = counselor.actions;
 export const counselActions = counselSlice.actions;
+export const nowCounselActions = nowCounselSlice.actions;
 
 export default configureStore({
   reducer: {
@@ -149,5 +191,6 @@ export default configureStore({
     user: user.reducer,
     counsel: counselSlice.reducer,
     mission: mission.reducer,
+    nowCounsel: nowCounselSlice.reducer,
   },
 });

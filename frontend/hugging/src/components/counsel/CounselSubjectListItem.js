@@ -3,13 +3,14 @@ import { counselActions } from "../../store";
 import { useDispatch, useSelector } from "react-redux";
 
 const CounselSubjectListItem = (props) => {
+  console.log(props.imgNo);
   const dispatch = useDispatch();
   // 선택된 subject 정보
   const subjectKor = useSelector((state) => state.counsel.subjectKor);
 
   // 클릭되면 store 에 subject 저장하기, API 호출
   const subjectSelectHandler = () => {
-    console.log("clicked!!");
+    console.log("clicked!");
     dispatch(counselActions.setSubjectKor(props.title));
 
     // 우울, 불면, 가족, 학교, 직장/진로, 대인관계, 연애/결혼, 자기이해
@@ -39,6 +40,7 @@ const CounselSubjectListItem = (props) => {
             : "#e9eefe",
       }}
     >
+      <img src={"./subject " + props.imgNo + ".png"}></img>
       <div className={classes.text}>{props.title}</div>
     </button>
   );

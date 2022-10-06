@@ -1,10 +1,28 @@
 .title {
-    margin: 10px 20px;
-    font-weight: bolder;
+  margin: 10px 10px;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: "AppleSDGothicNeoL";
 }
 
 .counselor {
   display: flex;
   overflow-x: scroll;
   margin: 0px 0px 0px 10px;
+}
+
+.noCounselor {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-family: "AppleSDGothicNeoL";
+}
+
+.cards {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.back {
+  padding: 10px;
+  background-color: #f7f8f8;
 }

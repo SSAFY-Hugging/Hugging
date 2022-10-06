@@ -1,8 +1,10 @@
 .title {
   margin: 10px 0px 10px 20px;
-  font-weight: bolder;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "AppleSDGothicNeoL";
 }
 
 .calendar {
-    margin: 5px 20px;
+  margin: 5px 20px;
 }

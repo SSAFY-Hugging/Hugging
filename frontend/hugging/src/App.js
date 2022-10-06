@@ -56,7 +56,7 @@ function App() {
           element={<TopicMediaPage />}
         />
         <Route path="/counselreserve" element={<ReserveCounsel />} />
-        <Route path="/" element={<ReserveCounsel />} />
+        <Route path="/" element={<UserLogin />} />
         <Route path="/counselselect" element={<SelectCounsel />}></Route>
         <Route
           path="/counselprofile/:counselorId"

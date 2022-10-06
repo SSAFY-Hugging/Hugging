@@ -18,7 +18,9 @@ const CounselListRecommList = (props) => {
                 score={counselor.score}
               />
             ))}
-          {!props.recommCounselors && <div>추천 상담사가 없습니다. </div>}
+          {!props.recommCounselors && (
+            <div className={classes.noCounselors}>추천 상담사가 없습니다. </div>
+          )}
         </div>
       </Card>
     </Fragment>

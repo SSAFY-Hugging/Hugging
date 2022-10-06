@@ -7,6 +7,11 @@
   justify-content: space-between;
   /* align-items: flex-end; */
   align-items: center;
+  z-index: 100;
+  position: fixed;
+  bottom: 10vh;
+  left: 10%;
+  width: 80%;
 }
 
 .btn button {
