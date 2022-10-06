@@ -44,7 +44,7 @@ function PersonalRecommend() {
             onClick={() => navigate(`/playing_music/${musicdata.id}`)}
           >
             <img
-              src={musicdata.thumbnailUrl}
+              src={musicdata.thumbnail_url}
               alt="music"
               className={styles.MusicImage}
             ></img>
