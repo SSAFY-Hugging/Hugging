@@ -23,9 +23,36 @@ import emotion9 from "../../img/emotion9.png";
 import emotion10 from "../../img/emotion10.png";
 import emotion11 from "../../img/emotion11.png";
 import emotion12 from "../../img/emotion12.png";
+import classes from "../../components/counsel/CounselListRecommList.module.css";
 
 function MainPage() {
   const [nickName, setNickName] = useState("비회원");
+  const [counselors, setCounselors] = useState();
+
+  // 나의 추천 상담사 가져옴
+  const fetchRecommCounselorHandler = useCallback(async () => {
+    console.log("fetchfetchRecommCounselorHandlerHandler 실행됨");
+
+    const loadedUserProfile = localStorage.getItem("userprofile");
+    if (loadedUserProfile !== null) {
+      const parsedUser = JSON.parse(loadedUserProfile);
+      try {
+        const response = await fetch(
+          "https://j7b204.p.ssafy.io/recom/counselor/" + parsedUser.id
+        ); // 프로미스 객체 반환
+        if (!response.ok) {
+          throw new Error("Something went wront!");
+        }
+        const data = await response.json(); // 프로미스 객체 반환
+        console.log("추천 상담사 출력");
+        console.log(data);
+        setCounselors(data);
+        // setReservation(data.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  }, [setCounselors]);
 
   const getUserProfile = useCallback(() => {
     const loadedUserProfile = localStorage.getItem("userprofile");
@@ -37,7 +64,8 @@ function MainPage() {
 
   useEffect(() => {
     getUserProfile();
-  }, [getUserProfile]);
+    fetchRecommCounselorHandler();
+  }, [getUserProfile, fetchRecommCounselorHandler]);
 
   function startMetaverse() {
     let url =
@@ -185,7 +213,7 @@ function MainPage() {
         </div>
       </div>
       <div className={styles.counselor}></div>
-      <CounselListRecommList />
+      <CounselListRecommList recommCounselors={counselors} />
       <Nav></Nav>
     </div>
   );
