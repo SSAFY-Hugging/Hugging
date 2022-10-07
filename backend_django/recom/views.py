@@ -49,7 +49,7 @@ class CounselorRecomAPI(APIView):
             member_category = MemberMentalCategory.objects.filter(member__id = member_id).values()
             # print(member_category)
             result = cs(member_category)
-            return Response(result)
+            return Response(result.values())
 
 class MusicRecomAPI(APIView):
 
