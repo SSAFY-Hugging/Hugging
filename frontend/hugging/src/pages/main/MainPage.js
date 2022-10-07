@@ -30,29 +30,29 @@ function MainPage() {
   const [counselors, setCounselors] = useState();
 
   // 나의 추천 상담사 가져옴
-  const fetchRecommCounselorHandler = useCallback(async () => {
-    console.log("fetchfetchRecommCounselorHandlerHandler 실행됨");
+  // const fetchRecommCounselorHandler = useCallback(async () => {
+  //   console.log("fetchfetchRecommCounselorHandlerHandler 실행됨");
 
-    const loadedUserProfile = localStorage.getItem("userprofile");
-    if (loadedUserProfile !== null) {
-      const parsedUser = JSON.parse(loadedUserProfile);
-      try {
-        const response = await fetch(
-          "https://j7b204.p.ssafy.io/recom/counselor/" + parsedUser.id
-        ); // 프로미스 객체 반환
-        if (!response.ok) {
-          throw new Error("Something went wront!");
-        }
-        const data = await response.json(); // 프로미스 객체 반환
-        console.log("추천 상담사 출력");
-        console.log(data);
-        setCounselors(data);
-        // setReservation(data.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
-  }, [setCounselors]);
+  //   const loadedUserProfile = localStorage.getItem("userprofile");
+  //   if (loadedUserProfile !== null) {
+  //     const parsedUser = JSON.parse(loadedUserProfile);
+  //     try {
+  //       const response = await fetch(
+  //         "https://j7b204.p.ssafy.io/recom/counselor/" + parsedUser.id
+  //       ); // 프로미스 객체 반환
+  //       if (!response.ok) {
+  //         throw new Error("Something went wront!");
+  //       }
+  //       const data = await response.json(); // 프로미스 객체 반환
+  //       console.log("추천 상담사 출력");
+  //       console.log(data);
+  //       setCounselors(data);
+  //       // setReservation(data.data);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //     }
+  //   }
+  // }, [setCounselors]);
 
   const getUserProfile = useCallback(() => {
     const loadedUserProfile = localStorage.getItem("userprofile");
@@ -62,10 +62,14 @@ function MainPage() {
     }
   });
 
+  // useEffect(() => {
+  //   getUserProfile();
+  //   fetchRecommCounselorHandler();
+  // }, [getUserProfile, fetchRecommCounselorHandler]);
+
   useEffect(() => {
     getUserProfile();
-    fetchRecommCounselorHandler();
-  }, [getUserProfile, fetchRecommCounselorHandler]);
+  }, [getUserProfile]);
 
   function startMetaverse() {
     let url =

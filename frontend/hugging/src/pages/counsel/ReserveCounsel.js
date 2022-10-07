@@ -62,7 +62,7 @@ const ReserveCounsel = () => {
     console.log("fetchMyreservationHandler 실행됨");
 
     const loadedUserProfile = localStorage.getItem("userprofile");
-    const memberId = 10;
+    let memberId = 10;
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       memberId = parsedUser.id;
