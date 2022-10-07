@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,12 +41,12 @@ public class MissionController {
 			HttpStatus.OK);
 	}
 
-	@PutMapping("/")
-	@ApiOperation(value = "미션 완료 등록", notes = "특정 회원의 미션 완료 처리")
-	public ResponseEntity<?> completeProceedingMission(@RequestBody ProceedingMissionRequest proceedingMissionRequest) {
-		missionService.completeProceedingMission(proceedingMissionRequest);
-		return response.success(COMPLETE_PROCEEDING_MISSION_SUCCESS_MESSAGE);
-	}
+	// @PutMapping("/")
+	// @ApiOperation(value = "미션 완료 등록", notes = "특정 회원의 미션 완료 처리")
+	// public ResponseEntity<?> completeProceedingMission(@RequestBody ProceedingMissionRequest proceedingMissionRequest) {
+	// 	missionService.completeProceedingMission(proceedingMissionRequest);
+	// 	return response.success(COMPLETE_PROCEEDING_MISSION_SUCCESS_MESSAGE);
+	// }
 
 	@DeleteMapping("/{memberId}")
 	@ApiOperation(value = "진행중인 미션 삭제", notes = "진행중인 미션 삭제")
@@ -57,7 +56,7 @@ public class MissionController {
 	}
 
 	@PostMapping("/")
-	@ApiOperation(value = "진행중인 미션 등록", notes = "회원에게 미션 등록")
+	@ApiOperation(value = "진행완료 미션 등록", notes = "회원에게 미션 등록")
 	public ResponseEntity<?> addProceedingMission(@RequestBody ProceedingMissionRequest proceedingMissionRequest) {
 		missionService.addProceedingMission(proceedingMissionRequest);
 		return response.success(ADD_PROCEEDING_MISSION_SUCCESS_MESSAGE);

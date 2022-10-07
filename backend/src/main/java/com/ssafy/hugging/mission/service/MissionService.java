@@ -63,6 +63,7 @@ public class MissionService {
 		Mission mission = missionRepository.findMissionById(proceedingMissionRequest.getMissionId())
 			.orElseThrow(() -> new IllegalArgumentException((NOT_FOUND_MISSION_ID_ERROR_MESSAGE)));
 		ProceedingMission proceedingMission = new ProceedingMission(member, mission);
+		proceedingMission.setComplete();
 		proceedingMissionRepository.save(proceedingMission);
 	}
 
@@ -75,13 +76,13 @@ public class MissionService {
 		proceedingMissionRepository.delete(proceedingMission);
 	}
 
-	public void completeProceedingMission(ProceedingMissionRequest proceedingMissionRequest) {
-		ProceedingMission proceedingMission = proceedingMissionRepository.findProceedingMissionByMissionIdAndMemberIdAndCreateDate(
-				proceedingMissionRequest.getMissionId(), proceedingMissionRequest.getMemberId(),
-				LocalDate.from(ZonedDateTime.now(ZoneId.of("Asia/Seoul"))))
-			.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_PROCEEDING_MISSION_ERROR_MESSAGE));
-		proceedingMission.setComplete();
-	}
+	// public void completeProceedingMission(ProceedingMissionRequest proceedingMissionRequest) {
+	// 	ProceedingMission proceedingMission = proceedingMissionRepository.findProceedingMissionByMissionIdAndMemberIdAndCreateDate(
+	// 			proceedingMissionRequest.getMissionId(), proceedingMissionRequest.getMemberId(),
+	// 			LocalDate.from(ZonedDateTime.now(ZoneId.of("Asia/Seoul"))))
+	// 		.orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_PROCEEDING_MISSION_ERROR_MESSAGE));
+	// 	proceedingMission.setComplete();
+	// }
 
 	public List<StampResponse> getMemberStamp(Integer memberId) {
 		return proceedingMissionRepository.findGroupByCreateDateWithJPQL(memberId)
