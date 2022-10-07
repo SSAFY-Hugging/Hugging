@@ -59,6 +59,7 @@ const CounselProfile = () => {
     <Fragment>
       <Nav></Nav>
       <NavBar></NavBar>
+      <div className={classes.marginDivH} />
       {profile && <CounselDetail profile={profile} />}
       {!profile && <div>잘못된 접근입니다.</div>}
       {profile && <CounselReview reviews={profile.counselorReviewList} />}
@@ -66,6 +67,7 @@ const CounselProfile = () => {
       <div className={classes.btn}>
         <button onClick={selectCounselorHandler}>상담사 선택</button>
       </div>
+      <div className={classes.marginDiv} />
     </Fragment>
   );
 };

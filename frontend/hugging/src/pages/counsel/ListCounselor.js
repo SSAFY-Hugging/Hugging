@@ -99,6 +99,7 @@ const ListCounselor = () => {
     <Fragment>
       <Nav></Nav>
       <NavBar></NavBar>
+      <div className={classes.marginDivH} />
       <CounselListRecommList recommCounselors={counselors} />
       <CounselSubjectList title="전문 분야별" />
       <div>
@@ -146,6 +147,7 @@ const ListCounselor = () => {
           {subject == undefined && <Card>전문 분야를 선택해 주세요. </Card>}
         </div>
       </div>
+      <div className={classes.marginDiv} />
     </Fragment>
   );
 };

@@ -1,6 +1,6 @@
 .btn {
   display: flex;
-  margin: 10px 0px;
+  margin: 25px 0px;
   padding: 0px;
   /* text-align: center;
   align-items: center; */
@@ -28,4 +28,15 @@
   width: 160px;
   height: 37px;
   box-shadow: 0 2px 8px rgba(192, 192, 192, 0.79);
+}
+
+.marginDivH {
+  height: 65px;
+  width: 360px;
+}
+
+.marginDiv {
+  margin-top: 60px;
+  height: 65px;
+  width: 360px;
 }

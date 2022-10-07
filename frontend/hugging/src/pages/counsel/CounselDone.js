@@ -129,6 +129,7 @@ const CounselDone = () => {
       {/* <Header /> */}
       <Nav></Nav>
       <NavBar></NavBar>
+      <div className={classes.marginDivH} />
       <div className={classes.pink}>
         <div className={classes.title}>상담완료!</div>
         <div className={classes.extra}>
@@ -248,6 +249,7 @@ const CounselDone = () => {
           작성 완료
         </button>
       </div>
+      <div className={classes.marginDiv} />
     </div>
   );
 };

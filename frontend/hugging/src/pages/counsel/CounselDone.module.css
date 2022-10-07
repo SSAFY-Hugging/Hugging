@@ -130,3 +130,15 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+.marginDiv {
+  margin-top: 60px;
+  height: 65px;
+  width: 360px;
+}
+
+.marginDivH {
+  margin-bottom: 10px;
+  height: 65px;
+  width: 360px;
+}

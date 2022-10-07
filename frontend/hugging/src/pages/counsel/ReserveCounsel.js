@@ -188,6 +188,7 @@ const ReserveCounsel = () => {
       {/* <Header /> */}
       <Nav></Nav>
       <NavBar></NavBar>
+      <div className={classes.marginDivH} />
       <MyReservationList
         reservations={reservations}
         onCancle={counselCancelHandler}
@@ -200,6 +201,7 @@ const ReserveCounsel = () => {
         <button>예약</button>
       </div>
       {/* <FooterNavigation /> */}
+      <div className={classes.marginDiv} />
     </Fragment>
   );
 };
