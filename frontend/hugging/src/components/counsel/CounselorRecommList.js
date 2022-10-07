@@ -43,7 +43,7 @@ const CounselRecommList = (props) => {
             {props.counselors.map((counselor) => (
               <CounselorRecommItem
                 key={counselor.id}
-                img={counselor.profile_image}
+                profileImage={counselor.profileImage}
                 counselorId={counselor.id}
                 name={counselor.name}
                 subject={counselor.subject}

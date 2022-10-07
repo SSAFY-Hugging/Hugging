@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 const CounselorRecommItem = (props) => {
   // const subjectKor = useSelector((state) => state.counsel.subjectKor);
+  console.log("이미지 불러오기");
+  console.log(props.img);
 
   let value = "우울";
   if (props.subject === "Depressed") value = "우울";
@@ -28,8 +30,8 @@ const CounselorRecommItem = (props) => {
           className={classes.titleImage}
         ></img> */}
         <img
-          src={props.img}
-          alt="counselor"
+          src={props.profileImage}
+          alt="coun"
           className={classes.titleImage}
         ></img>
         <div className={classes.name}>{props.name} 상담사</div>

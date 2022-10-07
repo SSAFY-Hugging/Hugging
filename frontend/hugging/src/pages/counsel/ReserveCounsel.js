@@ -121,7 +121,7 @@ const ReserveCounsel = () => {
   // 상담 주제 클릭할 때 마다 실행
   useEffect(() => {
     if (subject != undefined) {
-      console.log("상담주제변경됨!!!");
+      console.log("상담주제변경됨!");
       const fetchData = async () => {
         try {
           const response = await fetch(

@@ -83,6 +83,7 @@
 
 .btns {
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .cancel {
@@ -113,4 +114,10 @@
     left: calc(50% - 20rem);
     width: 40rem;
   }
+}
+
+.marginDiv {
+  margin-bottom: 50px;
+  height: 65px;
+  width: 360px;
 }

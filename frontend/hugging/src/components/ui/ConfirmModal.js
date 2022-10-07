@@ -117,6 +117,7 @@ const ModalOverlay = (props) => {
           </button>
         </div>
       </div>
+      <div className={classes.marginDiv} />
     </div>
   );
 };
