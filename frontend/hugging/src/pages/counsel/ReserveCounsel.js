@@ -9,6 +9,8 @@ import CounselTime from "../../components/counsel/CounselTime";
 import { useSelector } from "react-redux";
 import ErrorModal from "../../components/ui/ErrorModal";
 import ConfirmModal from "../../components/ui/ConfirmModal";
+import Nav from "../../components/ui/Nav";
+import NavBar from "../../components/ui/NavBar";
 
 const ReserveCounsel = () => {
   const [reservations, setReservation] = useState();
@@ -86,7 +88,7 @@ const ReserveCounsel = () => {
   const fetchRecommCounselorHandler = useCallback(async () => {
     console.log("fetchfetchRecommCounselorHandlerHandler 실행됨");
 
-    const loadedUserProfile = localStorage.getItem("userProfile");
+    const loadedUserProfile = localStorage.getItem("userprofile");
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       try {
@@ -183,7 +185,9 @@ const ReserveCounsel = () => {
           onReservation={reservationDoneHandler}
         />
       )}
-      <Header />
+      {/* <Header /> */}
+      <Nav></Nav>
+      <NavBar></NavBar>
       <MyReservationList
         reservations={reservations}
         onCancle={counselCancelHandler}

@@ -105,14 +105,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <UserLogin />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<UserLogin />} />
         <Route
           path="/counselselect"
           element={

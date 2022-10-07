@@ -7,6 +7,8 @@ import Star from "../../components/counselor/Star";
 import { Editor } from "@toast-ui/react-editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import Header from "../../Layout/Header";
+import Nav from "../../components/ui/Nav";
+import NavBar from "../../components/ui/NavBar";
 
 const CounselDone = () => {
   // Editor DOM 선택용
@@ -103,7 +105,7 @@ const CounselDone = () => {
 
   // 화면 들어왔을 때 실행
   useEffect(() => {
-    const loadedUserProfile = localStorage.getItem("userProfile");
+    const loadedUserProfile = localStorage.getItem("userprofile");
     if (loadedUserProfile !== null) {
       const parsedUser = JSON.parse(loadedUserProfile);
       setNickname(parsedUser.nickname);
@@ -124,7 +126,9 @@ const CounselDone = () => {
 
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
+      <Nav></Nav>
+      <NavBar></NavBar>
       <div className={classes.pink}>
         <div className={classes.title}>상담완료!</div>
         <div className={classes.extra}>

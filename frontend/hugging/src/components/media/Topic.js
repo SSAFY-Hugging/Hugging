@@ -11,7 +11,7 @@ function Topic(props) {
         {props.topicdatas.map((topicdata) => (
           <div>
             <div className={styles.Title}>
-              <h3 className={styles.TitleText}>{topicdata.category}</h3>
+              <h3 className={styles.TitleText}>{topicdata.title}</h3>
               <button
                 onClick={() => navigate(`/TopicMediaPage/${topicdata.id}`)}
                 className={styles.LinkText}

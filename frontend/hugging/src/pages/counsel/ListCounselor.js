@@ -6,6 +6,9 @@ import classes from "./ListCounselor.module.css";
 import TimeCounselorItem from "../../components/counsel/TimeCounselorItem";
 import { useSelector } from "react-redux";
 import Card from "../../components/ui/Card";
+import Nav from "../../components/ui/Nav";
+import NavBar from "../../components/ui/NavBar";
+
 const ListCounselor = () => {
   const location = useLocation();
   const state = location.state;
@@ -94,6 +97,8 @@ const ListCounselor = () => {
 
   return (
     <Fragment>
+      <Nav></Nav>
+      <NavBar></NavBar>
       <CounselListRecommList recommCounselors={counselors} />
       <CounselSubjectList title="전문 분야별" />
       <div>

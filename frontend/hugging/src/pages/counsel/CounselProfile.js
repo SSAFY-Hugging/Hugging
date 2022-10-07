@@ -6,8 +6,9 @@ import { counselActions } from "../../store";
 import { useDispatch } from "react-redux";
 import CounselDetail from "../../components/counsel/CounselDetail";
 import CounselReview from "../../components/counsel/CounselReview";
-
-import Header from "../../Layout/Header";
+import Nav from "../../components/ui/Nav";
+import NavBar from "../../components/ui/NavBar";
+// import Header from "../../Layout/Header";
 
 const CounselProfile = () => {
   const navigate = useNavigate();
@@ -56,7 +57,8 @@ const CounselProfile = () => {
 
   return (
     <Fragment>
-      <Header />
+      <Nav></Nav>
+      <NavBar></NavBar>
       {profile && <CounselDetail profile={profile} />}
       {!profile && <div>잘못된 접근입니다.</div>}
       {profile && <CounselReview reviews={profile.counselorReviewList} />}
