@@ -9,7 +9,7 @@ function Topic(props) {
     <>
       <div>
         {props.topicdatas.map((topicdata) => (
-          <div>
+          <div className={styles.back}>
             <div className={styles.Title}>
               <h3 className={styles.TitleText}>{topicdata.title}</h3>
               <button

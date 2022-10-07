@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 function TopMusic(props) {
   const navigate = useNavigate();
   return (
-    <>
-      <div>
+    <div className={styles.background}>
+      <div className={styles.back}>
         <p className={styles.TitleText}>인기 추천</p>
       </div>
       <div className={styles.MusicTop}>
@@ -29,7 +29,7 @@ function TopMusic(props) {
           </button>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

@@ -8,7 +8,7 @@ function Recommend(props) {
   const sounds = props.musicdatas;
 
   return (
-    <div>
+    <div className={styles.back}>
       <div className={styles.Title}>
         <h3 className={styles.TitleText}>맞춤 추천</h3>
         <img

@@ -2,19 +2,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: "AppleSDGothicNeoM";
 }
 .TitleText {
   margin: 0px 0px 0px 15px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
   line-height: 19px;
+  font-family: "AppleSDGothicNeoM";
 }
 .LinkText {
-
-  font-weight: bold;
-  font-size: 16px;
-
+  margin-right: 10px;
+  font-size: 13px;
+  font-family: "AppleSDGothicNeoM";
 }
 .image {
   border-radius: 15px;
@@ -36,6 +37,8 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 15px;
+  margin-top: 7px;
+  font-family: "AppleSDGothicNeoM";
 }
 .Topic {
   vertical-align: middle;
@@ -44,4 +47,8 @@
   width: 200px;
   background-color: #ffffff;
   border: none;
+}
+
+.back {
+  margin-top: 30px;
 }

@@ -13,9 +13,12 @@ function TopicMediaPage() {
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
+        console.log("여기 출력");
+        console.log(result.data);
         setMusics(result.data);
       });
   }, []);
+
   return (
     <div>
       {<Nav />}

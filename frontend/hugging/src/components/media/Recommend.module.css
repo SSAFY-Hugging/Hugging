@@ -1,3 +1,8 @@
+.back {
+  margin-left: 10px;
+  padding-top: 10px;
+}
+
 .Title {
   display: flex;
   align-items: center;
@@ -5,8 +10,9 @@
 }
 .TitleText {
   margin-left: 10px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+  font-family: "AppleSDGothicNeoL";
 }
 .TitleImage {
   margin-left: 10px;
@@ -44,6 +50,8 @@
   text-align: center;
 
   color: #000000;
+  margin-top: 10px;
+  font-family: "AppleSDGothicNeoM";
 }
 .List {
   height: 200px;

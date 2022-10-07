@@ -33,10 +33,13 @@
   top: 45.43%;
   bottom: 53.05%;
   margin: 7px;
-  width: 165px;
+  width: 155px;
   height: 50px;
   overflow-y: hidden;
   text-align: start;
+  font-size: 15px;
+  padding: 5px 0px;
+  font-family: "AppleSDGothicNeoM";
 }
 .MusicTop {
   display: flex;
@@ -47,10 +50,26 @@
 }
 .TitleText {
   margin: 0 0 0 10px;
-  font-size: 20px;
   font-weight: bold;
+  font-family: "AppleSDGothicNeoL";
+  font-size: 17px;
 }
 .playicon {
   width: 20px;
   height: 20px;
+}
+
+.back {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.MusicTop {
+  margin-left: 10px;
+}
+
+.background {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  background-color: #dbeafe;
 }
