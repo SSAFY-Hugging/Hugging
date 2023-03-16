@@ -246,8 +246,8 @@
             <img src="https://avatars.githubusercontent.com/yerim8373" width="140px" />  <br> 😎 송예림 <br>(Back-End) </a> <br></td>
         <td height="140px" align="center"> <a href="https://github.com/sungkyu523">
             <img src="https://avatars.githubusercontent.com/sungkyu523" width="140px" /> <br> 😮 조성규 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/J00HUI">
-            <img src="https://avatars.githubusercontent.com/J00HUI" width="140px" /> <br> 😁 이주희 <br>(Front-End) </a> <br></td>
+        <td height="140px" align="center"> <a href="https://github.com/joohee56">
+            <img src="https://avatars.githubusercontent.com/joohee56" width="140px" /> <br> 😁 이주희 <br>(Front-End) </a> <br></td>
         <td height="140px" align="center"> <a href="https://github.com/choijoohee213">
             <img src="https://avatars.githubusercontent.com/choijoohee213" width="140px" /> <br> 😊 최주희 <br>(Back-End) </a> <br></td>
     </tr>
